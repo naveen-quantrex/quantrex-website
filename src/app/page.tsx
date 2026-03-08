@@ -55,7 +55,7 @@ export default function Home() {
               About
             </Link>
             <a
-              href="mailto:hello@quantrex.com"
+              href="mailto:naveen@quantrex.com.au"
               className="rounded-full px-4 py-1.5 text-sm font-medium transition-colors"
               style={{
                 border: "1px solid var(--border)",
@@ -120,7 +120,7 @@ export default function Home() {
               <ArrowRight className="h-4 w-4" />
             </a>
             <a
-              href="mailto:hello@quantrex.com"
+              href="mailto:naveen@quantrex.com.au"
               className="text-sm transition-colors"
               style={{ color: "var(--muted)" }}
             >
@@ -258,7 +258,7 @@ export default function Home() {
                   </p>
 
                   <a
-                    href="mailto:hello@quantrex.com"
+                    href="mailto:naveen@quantrex.com.au"
                     className="inline-flex items-center gap-1.5 text-sm font-medium transition-colors hover:opacity-80"
                     style={{ color: "var(--muted)" }}
                   >
@@ -301,26 +301,60 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="grid grid-cols-2 gap-3">
-              {[
-                { title: "Vertical SaaS", desc: "Deep focus on specific industries" },
-                { title: "Built in Australia", desc: "Proudly Australian made" },
-                { title: "Small by design", desc: "Quality over growth for its own sake" },
-                { title: "Regulated industries", desc: "Complex problems, real solutions" },
-              ].map((item) => (
-                <div
-                  key={item.title}
-                  className="rounded-xl p-4"
-                  style={{ background: "var(--surface)", border: "1px solid var(--border)" }}
-                >
-                  <p className="text-sm font-semibold" style={{ color: "var(--text)" }}>
-                    {item.title}
-                  </p>
-                  <p className="mt-1 text-xs leading-relaxed" style={{ color: "var(--muted)" }}>
-                    {item.desc}
-                  </p>
+            <div className="space-y-3">
+              {/* Founder card */}
+              <div
+                className="rounded-xl p-5"
+                style={{ background: "var(--surface)", border: "1px solid var(--border)" }}
+              >
+                <div className="flex items-center gap-4">
+                  <div
+                    className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full text-base font-bold text-white"
+                    style={{ background: "var(--accent)" }}
+                  >
+                    N
+                  </div>
+                  <div>
+                    <p className="text-sm font-semibold" style={{ color: "var(--text)" }}>
+                      Naveen Gugulothu
+                    </p>
+                    <p className="text-xs" style={{ color: "var(--muted)" }}>
+                      Founder & CEO
+                    </p>
+                  </div>
                 </div>
-              ))}
+                <div className="mt-4 flex items-center gap-2">
+                  <a
+                    href="mailto:naveen@quantrex.com.au"
+                    className="text-xs transition-opacity hover:opacity-70"
+                    style={{ color: "var(--accent)" }}
+                  >
+                    naveen@quantrex.com.au
+                  </a>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-2 gap-3">
+                {[
+                  { title: "Vertical SaaS", desc: "Deep focus on specific industries" },
+                  { title: "Built in Australia", desc: "Proudly Australian made" },
+                  { title: "Small by design", desc: "Quality over growth for its own sake" },
+                  { title: "Regulated industries", desc: "Complex problems, real solutions" },
+                ].map((item) => (
+                  <div
+                    key={item.title}
+                    className="rounded-xl p-4"
+                    style={{ background: "var(--surface)", border: "1px solid var(--border)" }}
+                  >
+                    <p className="text-sm font-semibold" style={{ color: "var(--text)" }}>
+                      {item.title}
+                    </p>
+                    <p className="mt-1 text-xs leading-relaxed" style={{ color: "var(--muted)" }}>
+                      {item.desc}
+                    </p>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </section>
@@ -355,7 +389,7 @@ export default function Home() {
               customer, partner, or just have an idea.
             </p>
             <a
-              href="mailto:hello@quantrex.com"
+              href="mailto:naveen@quantrex.com.au"
               className="inline-flex items-center gap-2.5 rounded-full px-6 py-3 text-sm font-semibold text-white transition-opacity hover:opacity-85"
               style={{ background: "var(--accent)" }}
             >
@@ -363,7 +397,7 @@ export default function Home() {
                 <rect x="2" y="4" width="20" height="16" rx="2" />
                 <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
               </svg>
-              hello@quantrex.com
+              naveen@quantrex.com.au
             </a>
           </div>
         </section>
@@ -395,11 +429,11 @@ export default function Home() {
               VisaDocket
             </a>
             <a
-              href="mailto:hello@quantrex.com"
+              href="mailto:naveen@quantrex.com.au"
               className="text-sm transition-colors hover:opacity-80"
               style={{ color: "var(--muted-2)" }}
             >
-              Contact
+              naveen@quantrex.com.au
             </a>
           </div>
         </footer>

@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   title: "Quantrex — Software for professionals",
   description:
     "Quantrex builds focused, purpose-built software for professionals working in complex, regulated industries.",
-  metadataBase: new URL("https://quantrex.com"),
+  metadataBase: new URL("https://quantrex.com.au"),
   openGraph: {
     title: "Quantrex — Software for professionals",
     description: "Software built for the niches that matter.",
