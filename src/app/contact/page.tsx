@@ -1,4 +1,10 @@
+import type { Metadata } from "next";
 import { Mail, MapPin, Phone } from "lucide-react";
+
+export const metadata: Metadata = {
+  title: "Contact | Quantrex — Get in Touch",
+  description: "Contact Quantrex to discuss IT support, field engineering, custom software, or SaaS product development. Based in Melbourne, Australia.",
+};
 import { SiteShell } from "@/components/site-shell";
 import { SectionIntro } from "@/components/section";
 import { ContactForm } from "@/components/contact-form";

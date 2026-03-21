@@ -1,4 +1,10 @@
+import type { Metadata } from "next";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "Products | Quantrex — VisaDocket & Vertical SaaS",
+  description: "Quantrex builds focused software products for high-friction industries. VisaDocket is practice management software for migration professionals.",
+};
 import { ArrowUpRight, Sparkles } from "lucide-react";
 import { SiteShell } from "@/components/site-shell";
 import { SectionIntro } from "@/components/section";

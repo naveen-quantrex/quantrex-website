@@ -69,7 +69,7 @@ export function ContactForm() {
             required
             value={formData.name}
             onChange={handleChange}
-            placeholder="Naveen Gugulothu"
+            placeholder="Jane Smith"
             className="w-full rounded-xl border border-(--border) bg-background px-4 py-3 text-sm text-foreground placeholder:text-(--muted-2) outline-none transition-colors focus:border-(--accent)"
           />
         </div>

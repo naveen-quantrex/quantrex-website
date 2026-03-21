@@ -1,4 +1,10 @@
+import type { Metadata } from "next";
 import { Mail, Linkedin, MapPin, Building2 } from "lucide-react";
+
+export const metadata: Metadata = {
+  title: "About | Quantrex — Technology Company Based in Melbourne",
+  description: "Quantrex is a Melbourne-based technology company founded by Naveen Gugulothu, delivering IT services, engineering, and custom software for growing businesses.",
+};
 import Link from "next/link";
 import { SiteShell } from "@/components/site-shell";
 import { SectionIntro } from "@/components/section";

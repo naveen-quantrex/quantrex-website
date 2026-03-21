@@ -1,4 +1,10 @@
+import type { Metadata } from "next";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "Services | Quantrex — IT Support, Field Engineering & Custom Software",
+  description: "Quantrex delivers IT support, field engineering, custom software development, infrastructure management, and SaaS product strategy for Australian businesses.",
+};
 import { ArrowRight, CheckCircle2, Headphones, Network, Wrench, Workflow, ShieldCheck, Cloud } from "lucide-react";
 import { SiteShell } from "@/components/site-shell";
 import { SectionIntro } from "@/components/section";

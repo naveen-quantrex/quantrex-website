@@ -92,34 +92,29 @@ export function SiteShell({
 
         <main className="flex-1">{children}</main>
 
-        <footer className="mt-12 flex flex-wrap items-center justify-between gap-4 border-t border-[var(--border)] py-8">
-          <div className="flex items-center gap-2">
-            <div className="flex h-5 w-5 items-center justify-center rounded bg-[var(--accent)] text-[10px] font-black text-white">
-              Q
+        <footer className="mt-12 border-t border-[var(--border)] py-8">
+          <div className="flex flex-wrap items-center justify-between gap-4">
+            <div className="flex items-center gap-2">
+              <div className="flex h-5 w-5 items-center justify-center rounded bg-[var(--accent)] text-[10px] font-black text-white">
+                Q
+              </div>
+              <p className="text-sm text-[var(--muted-2)]">
+                © {new Date().getFullYear()} Quantrex Pty Ltd
+              </p>
             </div>
-            <p className="text-sm text-[var(--muted-2)]">
-              © {new Date().getFullYear()} Quantrex Pty Ltd
-            </p>
+            <div className="flex flex-wrap items-center gap-5 text-sm text-[var(--muted-2)]">
+              <Link href="/services" className="hover:text-foreground">Services</Link>
+              <Link href="/products" className="hover:text-foreground">Products</Link>
+              <Link href="/about" className="hover:text-foreground">About</Link>
+              <Link href="/contact" className="hover:text-foreground">Contact</Link>
+              <a href="tel:+61466300421" className="hover:text-foreground">0466 300 421</a>
+              <a href="mailto:hello@quantrex.com.au" className="hover:text-foreground">hello@quantrex.com.au</a>
+            </div>
           </div>
-          <div className="flex flex-wrap items-center gap-5 text-sm text-[var(--muted-2)]">
-            <Link href="/services" className="hover:text-foreground">
-              Services
-            </Link>
-            <Link href="/products" className="hover:text-foreground">
-              Products
-            </Link>
-            <Link href="/about" className="hover:text-foreground">
-              About
-            </Link>
-            <Link href="/contact" className="hover:text-foreground">
-              Contact
-            </Link>
-            <a href="tel:+61466300421" className="hover:text-foreground">
-              0466 300 421
-            </a>
-            <a href="mailto:hello@quantrex.com.au" className="hover:text-foreground">
-              hello@quantrex.com.au
-            </a>
+          <div className="mt-4 flex items-center gap-4 text-xs text-[var(--muted-2)]">
+            <Link href="/privacy" className="hover:text-foreground">Privacy Policy</Link>
+            <span>·</span>
+            <span>Melbourne, VIC, Australia</span>
           </div>
         </footer>
       </div>
