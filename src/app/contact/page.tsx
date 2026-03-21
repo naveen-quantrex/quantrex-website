@@ -1,6 +1,7 @@
 import { Mail, MapPin, Phone } from "lucide-react";
 import { SiteShell } from "@/components/site-shell";
 import { SectionIntro } from "@/components/section";
+import { ContactForm } from "@/components/contact-form";
 
 export default function ContactPage() {
   return (
@@ -14,17 +15,8 @@ export default function ContactPage() {
       </section>
 
       <section className="border-t border-(--border) py-20">
-        <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
-          <div className="card p-8">
-            <h2 className="text-2xl font-semibold">What to send us</h2>
-            <div className="mt-5 space-y-4 text-sm leading-7 text-(--muted)">
-              <p>Tell us what you need help with, what systems or environments are involved, and whether you need support, onsite work, or software delivery.</p>
-              <p>If you already have a project scope, product idea, or business problem mapped out, include that too. A short summary is enough to get started.</p>
-            </div>
-            <a href="mailto:hello@quantrex.com.au" className="btn-primary mt-8">
-              Email Quantrex
-            </a>
-          </div>
+        <div className="grid gap-8 lg:grid-cols-[1.4fr_0.6fr]">
+          <ContactForm />
 
           <div className="space-y-4">
             <div className="card p-6">
@@ -32,7 +24,7 @@ export default function ContactPage() {
                 <Mail className="mt-1 h-5 w-5 text-(--accent)" />
                 <div>
                   <div className="text-sm font-semibold">Email</div>
-                  <a href="mailto:hello@quantrex.com.au" className="mt-1 block text-sm text-(--muted) hover:text-foreground">
+                  <a href="mailto:hello@quantrex.com.au" className="mt-1 block text-sm text-(--muted) hover:text-foreground transition-colors">
                     hello@quantrex.com.au
                   </a>
                 </div>
@@ -43,7 +35,7 @@ export default function ContactPage() {
                 <Phone className="mt-1 h-5 w-5 text-(--accent)" />
                 <div>
                   <div className="text-sm font-semibold">Phone</div>
-                  <a href="tel:+61466300421" className="mt-1 block text-sm text-(--muted) hover:text-foreground">
+                  <a href="tel:+61466300421" className="mt-1 block text-sm text-(--muted) hover:text-foreground transition-colors">
                     0466 300 421
                   </a>
                 </div>
@@ -57,6 +49,10 @@ export default function ContactPage() {
                   <div className="mt-1 text-sm text-(--muted)">Melbourne, VIC, Australia</div>
                 </div>
               </div>
+            </div>
+            <div className="card p-6">
+              <p className="text-sm font-semibold">Response time</p>
+              <p className="mt-1 text-sm text-(--muted)">Within 1 business day</p>
             </div>
           </div>
         </div>
