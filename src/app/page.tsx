@@ -89,7 +89,7 @@ export default function Home() {
             <span className="text-(--border)">·</span>
             <span className="flex items-center gap-1.5 text-sm text-(--muted-2)">
               <MapPin className="h-3.5 w-3.5" />
-              Australia
+              Melbourne, Australia
             </span>
             <span className="text-(--border)">·</span>
             <span className="text-sm text-(--muted-2)">IT Services &amp; Engineering</span>

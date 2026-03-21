@@ -60,7 +60,7 @@ export default function AboutPage() {
               </span>
               <span className="flex items-center gap-2 text-(--muted-2)">
                 <MapPin className="h-4 w-4" />
-                Australia
+                Melbourne, Australia
               </span>
             </div>
           </div>
@@ -77,17 +77,17 @@ export default function AboutPage() {
             </div>
             <p className="mt-5 text-sm leading-7 text-(--muted)">
               Technology operator and builder with experience across IT service delivery,
-              systems integration, and software product development. Founded Quantrex to
+              systems integration, and software product development. He founded Quantrex to
               provide businesses with an end-to-end technology partner — from support
               through to custom software.
             </p>
             <div className="mt-6 flex flex-col gap-3 border-t border-(--border) pt-5">
               <a
-                href="mailto:naveen@quantrex.com.au"
+                href="mailto:naveen@quantrex.com"
                 className="flex items-center gap-2.5 text-sm text-(--accent) hover:opacity-80 transition-opacity"
               >
                 <Mail className="h-4 w-4" />
-                naveen@quantrex.com.au
+                naveen@quantrex.com
               </a>
               <a
                 href="https://linkedin.com/in/naveengugulothu"

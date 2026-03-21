@@ -54,7 +54,7 @@ export default function ContactPage() {
                 <MapPin className="mt-1 h-5 w-5 text-(--accent)" />
                 <div>
                   <div className="text-sm font-semibold">Location</div>
-                  <div className="mt-1 text-sm text-(--muted)">Australia</div>
+                  <div className="mt-1 text-sm text-(--muted)">Melbourne, VIC, Australia</div>
                 </div>
               </div>
             </div>
