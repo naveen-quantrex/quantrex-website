@@ -1,444 +1,230 @@
 import Link from "next/link";
-import { ArrowUpRight, ArrowRight } from "lucide-react";
+import { ArrowRight, ArrowUpRight, CheckCircle2, Wrench, Laptop, Server, Shield, ChevronRight, Building2, MapPin } from "lucide-react";
+import { SiteShell } from "@/components/site-shell";
+
+const services = [
+  {
+    title: "IT Support",
+    description:
+      "Responsive support for day-to-day IT operations, user issues, devices, networks, and business continuity.",
+    icon: Laptop,
+  },
+  {
+    title: "Field Engineering",
+    description:
+      "Hands-on onsite engineering for installs, upgrades, troubleshooting, hardware rollouts, and site visits.",
+    icon: Wrench,
+  },
+  {
+    title: "Custom Software",
+    description:
+      "Business software tailored to your workflows, with practical automation and systems that fit how your team works.",
+    icon: Server,
+  },
+  {
+    title: "SaaS Products",
+    description:
+      "Focused software products designed for industries where generic tools create friction and wasted effort.",
+    icon: Shield,
+  },
+];
+
+const highlights = [
+  "Managed IT support and issue resolution",
+  "Onsite field engineering coverage",
+  "Internal tools, portals, and workflow systems",
+  "Vertical SaaS product development",
+];
+
+const industries = ["Professional services", "Operations teams", "Distributed businesses", "Regulated industries"];
+
+const reasons = [
+  {
+    number: "01",
+    title: "Practical delivery",
+    body: "We focus on operational outcomes. No generic packages — every engagement starts with understanding how your business actually works.",
+  },
+  {
+    number: "02",
+    title: "Full-stack capability",
+    body: "Support, field engineering, custom software, and SaaS product development under one partner — so nothing falls between vendors.",
+  },
+  {
+    number: "03",
+    title: "Built to fit",
+    body: "We work best where the business has real complexity and off-the-shelf tools consistently fall short.",
+  },
+];
 
 export default function Home() {
   return (
-    <div className="min-h-screen" style={{ background: "var(--bg)", color: "var(--text)" }}>
-
-      {/* Grid background */}
-      <div
-        className="pointer-events-none fixed inset-0 z-0"
-        style={{
-          backgroundImage:
-            "linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px)",
-          backgroundSize: "64px 64px",
-        }}
-      />
-
-      {/* Radial glow */}
-      <div
-        className="pointer-events-none fixed left-1/2 -top-48 z-0 h-[600px] w-[900px] -translate-x-1/2"
-        style={{
-          background:
-            "radial-gradient(ellipse at center, rgba(99,102,241,0.07) 0%, transparent 65%)",
-        }}
-      />
-
-      <div className="relative z-10 mx-auto max-w-5xl px-6">
-
-        {/* ── Nav ── */}
-        <nav className="flex items-center justify-between py-6" style={{ borderBottom: "1px solid var(--border)" }}>
-          <div className="flex items-center gap-2.5">
-            <div
-              className="flex h-7 w-7 items-center justify-center rounded-md text-xs font-black text-white"
-              style={{ background: "var(--accent)" }}
-            >
-              Q
-            </div>
-            <span className="text-sm font-bold tracking-widest" style={{ color: "var(--text)" }}>
-              QUANTREX
-            </span>
-          </div>
-          <div className="flex items-center gap-6">
-            <Link
-              href="#products"
-              className="text-sm transition-colors hover:opacity-100"
-              style={{ color: "var(--muted)" }}
-            >
-              Products
-            </Link>
-            <Link
-              href="#about"
-              className="text-sm transition-colors hover:opacity-100"
-              style={{ color: "var(--muted)" }}
-            >
-              About
-            </Link>
-            <a
-              href="mailto:naveen@quantrex.com.au"
-              className="rounded-full px-4 py-1.5 text-sm font-medium transition-colors"
-              style={{
-                border: "1px solid var(--border)",
-                background: "var(--surface)",
-                color: "var(--text)",
-              }}
-            >
-              Contact
-            </a>
-          </div>
-        </nav>
-
-        {/* ── Hero ── */}
-        <section className="pb-24 pt-28">
-          <div className="animate-fade-up">
-            <span
-              className="mb-6 inline-flex items-center gap-2 rounded-full px-3.5 py-1.5 text-xs font-semibold uppercase tracking-widest"
-              style={{
-                border: "1px solid var(--accent-border)",
-                background: "var(--accent-light)",
-                color: "var(--accent)",
-              }}
-            >
-              <span className="h-1.5 w-1.5 rounded-full" style={{ background: "var(--accent)" }} />
-              Independent software · Australia
-            </span>
-          </div>
-
-          <h1
-            className="animate-fade-up delay-100 mt-6 max-w-3xl text-5xl font-bold leading-[1.1] tracking-[-0.035em] sm:text-6xl lg:text-7xl"
-            style={{ color: "var(--text)" }}
-          >
-            Software built for the{" "}
-            <span
-              style={{
-                background: "linear-gradient(135deg, #818cf8 0%, #a78bfa 55%, #c084fc 100%)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                backgroundClip: "text",
-              }}
-            >
-              niches that matter.
-            </span>
+    <SiteShell>
+      <section className="pb-16 pt-20 sm:pb-24 sm:pt-24">
+        <div className="max-w-4xl">
+          <span className="pill animate-fade-up">
+            Australia-based technology partner
+          </span>
+          <h1 className="animate-fade-up delay-100 mt-6 max-w-4xl text-5xl font-bold leading-[1.02] tracking-[-0.05em] sm:text-6xl lg:text-7xl">
+            IT support, field engineering, software, and SaaS built for real operations.
           </h1>
-
-          <p
-            className="animate-fade-up delay-200 mt-6 max-w-xl text-lg leading-relaxed"
-            style={{ color: "var(--muted)" }}
-          >
-            We build focused, purpose-built products for professionals
-            working in complex, regulated industries — where generic
-            software never quite fits.
+          <p className="animate-fade-up delay-200 mt-6 max-w-2xl text-lg leading-8 text-(--muted)">
+            Quantrex helps businesses stay supported, stay operational, and build the right
+            systems for growth. We combine practical IT services with custom software and
+            product thinking.
           </p>
-
-          <div className="animate-fade-up delay-300 mt-10 flex items-center gap-4">
-            <a
-              href="#products"
-              className="inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold text-white transition-opacity hover:opacity-85"
-              style={{ background: "var(--accent)" }}
-            >
-              See our products
+          <div className="animate-fade-up delay-300 mt-10 flex flex-wrap items-center gap-4">
+            <Link href="/contact" className="btn-primary">
+              Book a consultation
               <ArrowRight className="h-4 w-4" />
-            </a>
-            <a
-              href="mailto:naveen@quantrex.com.au"
-              className="text-sm transition-colors"
-              style={{ color: "var(--muted)" }}
-            >
-              Get in touch →
-            </a>
+            </Link>
+            <Link href="/services" className="btn-secondary">
+              Explore services
+            </Link>
           </div>
-        </section>
+          <div className="mt-8 flex flex-wrap items-center gap-x-5 gap-y-2 border-t border-(--border) pt-8">
+            <span className="flex items-center gap-1.5 text-sm text-(--muted-2)">
+              <Building2 className="h-3.5 w-3.5" />
+              Quantrex Pty Ltd
+            </span>
+            <span className="text-(--border)">·</span>
+            <span className="flex items-center gap-1.5 text-sm text-(--muted-2)">
+              <MapPin className="h-3.5 w-3.5" />
+              Australia
+            </span>
+            <span className="text-(--border)">·</span>
+            <span className="text-sm text-(--muted-2)">IT Services &amp; Engineering</span>
+            <span className="text-(--border)">·</span>
+            <span className="text-sm text-(--muted-2)">Custom Software &amp; SaaS</span>
+          </div>
+        </div>
 
-        {/* ── Divider ── */}
-        <div style={{ height: "1px", background: "var(--border)" }} />
+        <div className="mt-16 grid gap-4 md:grid-cols-3">
+          <div className="card p-6 md:col-span-2">
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-(--muted-2)">
+              What we do
+            </p>
+            <div className="mt-6 grid gap-4 sm:grid-cols-2">
+              {highlights.map((item) => (
+                <div key={item} className="flex items-start gap-3 rounded-2xl border border-(--border) bg-background p-4">
+                  <CheckCircle2 className="mt-0.5 h-5 w-5 text-(--green)" />
+                  <span className="text-sm leading-6 text-(--muted)">{item}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="card p-6">
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-(--muted-2)">
+              Industries we serve
+            </p>
+            <div className="mt-6 space-y-3">
+              {industries.map((item) => (
+                <div key={item} className="rounded-2xl border border-(--border) bg-background px-4 py-3 text-sm text-(--muted)">
+                  {item}
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
 
-        {/* ── Products ── */}
-        <section id="products" className="py-20">
-          <p
-            className="mb-10 text-xs font-semibold uppercase tracking-widest"
-            style={{ color: "var(--muted-2)" }}
-          >
-            Products
+      <section className="border-t border-(--border) py-20">
+        <div className="mb-12 max-w-3xl">
+          <p className="section-eyebrow">Services</p>
+          <h2 className="text-3xl font-bold tracking-[-0.04em] sm:text-4xl">
+            IT services and software, delivered by one team.
+          </h2>
+          <p className="section-description">
+            From day-to-day support to complex software builds, Quantrex covers the
+            full technology stack for businesses that need reliable infrastructure and
+            custom systems.
           </p>
+        </div>
+        <div className="grid gap-5 md:grid-cols-2">
+          {services.map((service) => (
+            <div key={service.title} className="card p-6">
+              <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-(--accent-light) text-(--accent)">
+                <service.icon className="h-5 w-5" />
+              </div>
+              <h3 className="mt-5 text-xl font-semibold tracking-tight">{service.title}</h3>
+              <p className="mt-3 text-sm leading-7 text-(--muted)">{service.description}</p>
+              <Link href="/services" className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-(--accent) hover:opacity-80">
+                Learn more <ChevronRight className="h-4 w-4" />
+              </Link>
+            </div>
+          ))}
+        </div>
+      </section>
 
-          <div
-            className="overflow-hidden rounded-2xl"
-            style={{ border: "1px solid var(--border)" }}
-          >
-            {/* VisaDocket */}
+      <section className="border-t border-(--border) py-20">
+        <div className="grid gap-8 lg:grid-cols-[1.2fr_0.8fr]">
+          <div className="card p-8">
+            <p className="section-eyebrow">Products</p>
+            <h2 className="text-3xl font-bold tracking-[-0.04em] sm:text-4xl">Software built for industries where generic tools fall short.</h2>
+            <p className="mt-4 max-w-2xl text-sm leading-7 text-(--muted)">
+              Quantrex builds vertical SaaS products for high-friction industries.
+              VisaDocket is the first — purpose-built for migration professionals
+              who need more than a generic CRM.
+            </p>
             <a
               href="https://visadocket.com.au"
               target="_blank"
               rel="noopener noreferrer"
-              className="group product-card-link"
+              className="mt-8 block rounded-2xl border border-(--border) bg-background p-6 transition-colors hover:bg-(--surface-hover)"
             >
-              <div className="grid gap-8 p-8 lg:grid-cols-2 lg:items-center">
-                <div className="space-y-5">
-                  <span
-                    className="inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-semibold uppercase tracking-wider"
-                    style={{
-                      background: "var(--green-light)",
-                      border: "1px solid var(--green-border)",
-                      color: "var(--green)",
-                    }}
-                  >
-                    <span className="h-1.5 w-1.5 rounded-full" style={{ background: "var(--green)" }} />
-                    Live
-                  </span>
-
-                  <div>
-                    <h2 className="text-2xl font-bold tracking-tight" style={{ color: "var(--text)" }}>
-                      VisaDocket
-                    </h2>
-                    <p className="mt-1 text-sm font-medium" style={{ color: "var(--accent)" }}>
-                      Migration practice management
-                    </p>
+              <div className="flex items-center justify-between gap-4">
+                <div>
+                  <div className="pill border-[rgba(34,197,94,0.2)]! bg-[rgba(34,197,94,0.08)]! text-(--green)!">
+                    Live product
                   </div>
-
-                  <p className="text-base leading-relaxed" style={{ color: "var(--muted)" }}>
-                    End-to-end practice management for registered migration agents.
-                    Client records, visa applications, document tracking, compliance
-                    tools, and automated workflows — built for how agents actually work.
+                  <h3 className="mt-4 text-xl font-semibold">VisaDocket</h3>
+                  <p className="mt-2 max-w-xl text-sm leading-6 text-(--muted)">
+                    Practice management software for migration professionals, covering client workflows,
+                    compliance, applications, and document operations.
                   </p>
-
-                  <span
-                    className="inline-flex items-center gap-1.5 text-sm font-medium transition-transform group-hover:gap-2"
-                    style={{ color: "var(--accent)" }}
-                  >
-                    visadocket.com.au
-                    <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-                  </span>
                 </div>
-
-                {/* Product preview card */}
-                <div
-                  className="hidden rounded-xl p-5 lg:block"
-                  style={{ background: "var(--bg)", border: "1px solid var(--border)" }}
-                >
-                  <div className="space-y-3">
-                    {[
-                      { label: "Client management", check: true },
-                      { label: "Visa application tracking", check: true },
-                      { label: "Document management", check: true },
-                      { label: "MARA compliance tools", check: true },
-                      { label: "Immigration updates feed", check: true },
-                      { label: "Client portal", check: true },
-                    ].map((item) => (
-                      <div key={item.label} className="flex items-center gap-3">
-                        <div
-                          className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full"
-                          style={{ background: "var(--green-light)", border: "1px solid var(--green-border)" }}
-                        >
-                          <svg width="10" height="10" viewBox="0 0 12 12" fill="none">
-                            <path d="M2 6l3 3 5-5" stroke="#22c55e" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                          </svg>
-                        </div>
-                        <span className="text-sm" style={{ color: "var(--muted)" }}>
-                          {item.label}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
+                <ArrowUpRight className="hidden h-5 w-5 text-(--accent) sm:block" />
               </div>
             </a>
+          </div>
 
-            {/* Divider */}
-            <div style={{ height: "1px", background: "var(--border)" }} />
-
-            {/* Next product */}
-            <div className="p-8" style={{ background: "var(--surface)" }}>
-              <div className="flex items-start justify-between gap-8">
-                <div className="space-y-4">
-                  <span
-                    className="inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-semibold uppercase tracking-wider"
-                    style={{
-                      background: "rgba(113,113,122,0.1)",
-                      border: "1px solid var(--border)",
-                      color: "var(--muted)",
-                    }}
-                  >
-                    <span className="h-1.5 w-1.5 rounded-full" style={{ background: "var(--muted)" }} />
-                    Coming soon
-                  </span>
-
-                  <div>
-                    <h2 className="text-2xl font-bold tracking-tight" style={{ color: "var(--muted-2)" }}>
-                      Next product
-                    </h2>
-                    <p className="mt-1 text-sm font-medium" style={{ color: "var(--muted-2)" }}>
-                      TBD
-                    </p>
+          <div className="card p-8">
+            <p className="section-eyebrow">Why Quantrex</p>
+            <div className="space-y-6">
+              {reasons.map((item) => (
+                <div key={item.number} className="flex gap-4">
+                  <div className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-md border border-(--border) bg-background text-xs font-bold text-(--muted-2)">
+                    {item.number}
                   </div>
-
-                  <p className="max-w-md text-base leading-relaxed" style={{ color: "var(--muted-2)" }}>
-                    We&apos;re always looking for the next underserved niche — professionals
-                    doing complex, important work with tools that don&apos;t fit.
-                    Know one? We&apos;d love to hear it.
-                  </p>
-
-                  <a
-                    href="mailto:naveen@quantrex.com.au"
-                    className="inline-flex items-center gap-1.5 text-sm font-medium transition-colors hover:opacity-80"
-                    style={{ color: "var(--muted)" }}
-                  >
-                    Share an idea →
-                  </a>
+                  <div>
+                    <h3 className="text-sm font-semibold">{item.title}</h3>
+                    <p className="mt-1.5 text-sm leading-6 text-(--muted)">{item.body}</p>
+                  </div>
                 </div>
-              </div>
+              ))}
             </div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* ── About ── */}
-        <section
-          id="about"
-          className="py-20"
-          style={{ borderTop: "1px solid var(--border)" }}
-        >
-          <p
-            className="mb-10 text-xs font-semibold uppercase tracking-widest"
-            style={{ color: "var(--muted-2)" }}
-          >
-            About
+      <section className="border-t border-(--border) py-20">
+        <div className="card p-10 text-center">
+          <p className="section-eyebrow">Next step</p>
+          <h2 className="text-3xl font-bold tracking-[-0.04em] sm:text-4xl">
+            Need support, onsite engineering, or a system built properly?
+          </h2>
+          <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-(--muted)">
+            Quantrex works with businesses that need reliable service and software that makes operations easier.
           </p>
-
-          <div className="grid gap-12 lg:grid-cols-2 lg:items-start">
-            <div className="space-y-5">
-              <p className="text-lg leading-[1.85]" style={{ color: "var(--muted)" }}>
-                <strong style={{ color: "var(--text)", fontWeight: 600 }}>Quantrex</strong>{" "}
-                is an independent software company based in Australia. We find industries
-                where professionals are stuck using generic tools that were never designed
-                for them — then we build something that actually fits.
-              </p>
-              <p className="text-lg leading-[1.85]" style={{ color: "var(--muted)" }}>
-                We&apos;re{" "}
-                <strong style={{ color: "var(--text)", fontWeight: 600 }}>
-                  small by design.
-                </strong>{" "}
-                Less overhead means more focus on craft, quality, and building real
-                relationships with the people who use our products.
-              </p>
-            </div>
-
-            <div className="space-y-3">
-              {/* Founder card */}
-              <div
-                className="rounded-xl p-5"
-                style={{ background: "var(--surface)", border: "1px solid var(--border)" }}
-              >
-                <div className="flex items-center gap-4">
-                  <div
-                    className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full text-base font-bold text-white"
-                    style={{ background: "var(--accent)" }}
-                  >
-                    N
-                  </div>
-                  <div>
-                    <p className="text-sm font-semibold" style={{ color: "var(--text)" }}>
-                      Naveen Gugulothu
-                    </p>
-                    <p className="text-xs" style={{ color: "var(--muted)" }}>
-                      Founder & CEO
-                    </p>
-                  </div>
-                </div>
-                <div className="mt-4 flex items-center gap-2">
-                  <a
-                    href="mailto:naveen@quantrex.com.au"
-                    className="text-xs transition-opacity hover:opacity-70"
-                    style={{ color: "var(--accent)" }}
-                  >
-                    naveen@quantrex.com.au
-                  </a>
-                </div>
-              </div>
-
-              <div className="grid grid-cols-2 gap-3">
-                {[
-                  { title: "Vertical SaaS", desc: "Deep focus on specific industries" },
-                  { title: "Built in Australia", desc: "Proudly Australian made" },
-                  { title: "Small by design", desc: "Quality over growth for its own sake" },
-                  { title: "Regulated industries", desc: "Complex problems, real solutions" },
-                ].map((item) => (
-                  <div
-                    key={item.title}
-                    className="rounded-xl p-4"
-                    style={{ background: "var(--surface)", border: "1px solid var(--border)" }}
-                  >
-                    <p className="text-sm font-semibold" style={{ color: "var(--text)" }}>
-                      {item.title}
-                    </p>
-                    <p className="mt-1 text-xs leading-relaxed" style={{ color: "var(--muted)" }}>
-                      {item.desc}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </div>
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
+            <Link href="/contact" className="btn-primary">
+              Contact Quantrex
+            </Link>
+            <Link href="/products" className="btn-secondary">
+              View products
+            </Link>
           </div>
-        </section>
-
-        {/* ── Contact ── */}
-        <section
-          className="py-20"
-          style={{ borderTop: "1px solid var(--border)" }}
-        >
-          <div
-            className="rounded-2xl p-10 text-center"
-            style={{
-              background: "var(--surface)",
-              border: "1px solid var(--border)",
-            }}
-          >
-            <p
-              className="mb-3 text-xs font-semibold uppercase tracking-widest"
-              style={{ color: "var(--muted-2)" }}
-            >
-              Get in touch
-            </p>
-            <h2
-              className="mb-4 text-3xl font-bold tracking-tight sm:text-4xl"
-              style={{ color: "var(--text)" }}
-            >
-              Have a problem worth solving?
-            </h2>
-            <p className="mx-auto mb-8 max-w-md text-base leading-relaxed" style={{ color: "var(--muted)" }}>
-              Working in a space where the software just doesn&apos;t cut it?
-              We&apos;d genuinely like to hear from you — whether you&apos;re a potential
-              customer, partner, or just have an idea.
-            </p>
-            <a
-              href="mailto:naveen@quantrex.com.au"
-              className="inline-flex items-center gap-2.5 rounded-full px-6 py-3 text-sm font-semibold text-white transition-opacity hover:opacity-85"
-              style={{ background: "var(--accent)" }}
-            >
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <rect x="2" y="4" width="20" height="16" rx="2" />
-                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
-              </svg>
-              naveen@quantrex.com.au
-            </a>
-          </div>
-        </section>
-
-        {/* ── Footer ── */}
-        <footer
-          className="flex flex-wrap items-center justify-between gap-4 py-8"
-          style={{ borderTop: "1px solid var(--border)" }}
-        >
-          <div className="flex items-center gap-2">
-            <div
-              className="flex h-5 w-5 items-center justify-center rounded text-[10px] font-black text-white"
-              style={{ background: "var(--accent)" }}
-            >
-              Q
-            </div>
-            <p className="text-sm" style={{ color: "var(--muted-2)" }}>
-              © {new Date().getFullYear()} Quantrex Pty Ltd
-            </p>
-          </div>
-          <div className="flex items-center gap-5">
-            <a
-              href="https://visadocket.com.au"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-sm transition-colors hover:opacity-80"
-              style={{ color: "var(--muted-2)" }}
-            >
-              VisaDocket
-            </a>
-            <a
-              href="mailto:naveen@quantrex.com.au"
-              className="text-sm transition-colors hover:opacity-80"
-              style={{ color: "var(--muted-2)" }}
-            >
-              naveen@quantrex.com.au
-            </a>
-          </div>
-        </footer>
-
-      </div>
-    </div>
+        </div>
+      </section>
+    </SiteShell>
   );
 }

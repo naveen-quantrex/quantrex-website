@@ -13,21 +13,21 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Quantrex — Software for professionals",
+  title: "Quantrex | IT Support, Field Engineering, Software & SaaS",
   description:
-    "Quantrex builds focused, purpose-built software for professionals working in complex, regulated industries.",
+    "Quantrex delivers IT support, field engineering, custom software development, and SaaS products for growing businesses.",
   metadataBase: new URL("https://quantrex.com.au"),
   openGraph: {
-    title: "Quantrex — Software for professionals",
-    description: "Software built for the niches that matter.",
-    url: "https://quantrex.com",
+    title: "Quantrex | IT Support, Field Engineering, Software & SaaS",
+    description: "Practical technology services and products for modern businesses.",
+    url: "https://quantrex.com.au",
     siteName: "Quantrex",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
     title: "Quantrex",
-    description: "Software built for the niches that matter.",
+    description: "IT support, field engineering, custom software, and SaaS.",
   },
 };
 
