@@ -24,13 +24,10 @@ export function ContactForm() {
     setStatus("loading");
 
     try {
-      const res = await fetch("https://formsubmit.co/ajax/hello@quantrex.com.au", {
+      const res = await fetch("/api/contact", {
         method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify({
-          ...formData,
-          _subject: `New enquiry from ${formData.name} — Quantrex`,
-        }),
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
       });
 
       if (res.ok) {
