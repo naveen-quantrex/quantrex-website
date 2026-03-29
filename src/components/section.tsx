@@ -8,7 +8,7 @@ export function SectionIntro({
   description: string;
 }) {
   return (
-    <div className="grid gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-end">
+    <div className="grid gap-6 sm:gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-end">
       <div className="max-w-4xl">
         <p className="section-eyebrow">{eyebrow}</p>
         <h1 className="section-title">{title}</h1>

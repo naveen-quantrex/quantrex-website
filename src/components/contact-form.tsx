@@ -42,7 +42,7 @@ export function ContactForm() {
 
   if (status === "success") {
     return (
-      <div className="card flex flex-col items-center justify-center gap-4 p-12 text-center">
+      <div className="card flex flex-col items-center justify-center gap-4 p-8 text-center sm:p-12">
         <div className="flex h-14 w-14 items-center justify-center rounded-full bg-[var(--green-light)]">
           <CheckCircle2 className="h-7 w-7 text-[var(--green)]" />
         </div>
@@ -56,7 +56,7 @@ export function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="card space-y-5 p-8">
+    <form onSubmit={handleSubmit} className="card space-y-5 p-5 sm:p-8">
       <div>
         <p className="panel-label">Project details</p>
         <p className="mt-3 max-w-xl text-sm leading-7 text-[var(--muted)]">
@@ -159,7 +159,7 @@ export function ContactForm() {
       <button
         type="submit"
         disabled={status === "loading"}
-        className="btn-primary disabled:opacity-60"
+        className="btn-primary disabled:opacity-60 sm:w-auto"
       >
         {status === "loading" ? "Sending..." : "Send message"}
         {status !== "loading" && <ArrowRight className="h-4 w-4" />}

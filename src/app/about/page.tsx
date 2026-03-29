@@ -42,7 +42,7 @@ export default function AboutPage() {
 
       <section className="py-12 sm:py-16">
         <div className="grid gap-8 lg:grid-cols-[1.05fr_0.95fr]">
-          <div className="card p-8">
+          <div className="card p-5 sm:p-8">
             <div className="space-y-5 text-sm leading-8 text-[var(--muted)] sm:text-base">
               <p>
                 Quantrex operates at the intersection of IT services, field engineering, and
@@ -73,7 +73,7 @@ export default function AboutPage() {
 
           <div className="space-y-6">
             <div className="card overflow-hidden">
-              <div className="bg-[var(--accent-soft)] px-8 py-8">
+              <div className="bg-[var(--accent-soft)] px-5 py-7 sm:px-8 sm:py-8">
                 <div className="flex items-start gap-4">
                   <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-[var(--accent-strong)] text-base font-semibold text-white">
                     NG
@@ -84,7 +84,7 @@ export default function AboutPage() {
                   </div>
                 </div>
               </div>
-              <div className="px-8 py-8">
+              <div className="px-5 py-7 sm:px-8 sm:py-8">
                 <p className="text-sm leading-7 text-[var(--muted)]">
                   Technology operator and builder with experience across IT service delivery,
                   systems integration, and software product development. Naveen leads Quantrex
@@ -93,7 +93,7 @@ export default function AboutPage() {
                 <div className="fine-rule mt-6 flex flex-col gap-3 pt-6 text-sm">
                   <a
                     href="mailto:naveen@quantrex.com.au"
-                    className="flex items-center gap-2.5 text-[var(--accent-strong)] transition-opacity hover:opacity-80"
+                    className="flex items-center gap-2.5 break-all text-[var(--accent-strong)] transition-opacity hover:opacity-80"
                   >
                     <Mail className="h-4 w-4" />
                     naveen@quantrex.com.au
@@ -112,7 +112,7 @@ export default function AboutPage() {
             </div>
 
             <div className="card overflow-hidden">
-              <div className="bg-[var(--taupe)] px-8 py-8">
+              <div className="bg-[var(--taupe)] px-5 py-7 sm:px-8 sm:py-8">
                 <div className="flex items-start gap-4">
                   <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-[var(--text)] text-base font-semibold text-white">
                     SB
@@ -123,7 +123,7 @@ export default function AboutPage() {
                   </div>
                 </div>
               </div>
-              <div className="px-8 py-8">
+              <div className="px-5 py-7 sm:px-8 sm:py-8">
                 <p className="text-sm leading-7 text-[var(--muted)]">
                   Surpriya supports the operational side of Quantrex, helping keep delivery,
                   coordination, and day-to-day business flow structured and dependable.
@@ -131,7 +131,7 @@ export default function AboutPage() {
                 <div className="fine-rule mt-6 flex flex-col gap-3 pt-6 text-sm">
                   <a
                     href="mailto:supriya@quantrex.com.au"
-                    className="flex items-center gap-2.5 text-[var(--accent-strong)] transition-opacity hover:opacity-80"
+                    className="flex items-center gap-2.5 break-all text-[var(--accent-strong)] transition-opacity hover:opacity-80"
                   >
                     <Mail className="h-4 w-4" />
                     supriya@quantrex.com.au
@@ -158,22 +158,22 @@ export default function AboutPage() {
       <section className="pb-20 pt-8">
         <div className="card overflow-hidden">
           <div className="grid lg:grid-cols-[0.9fr_1.1fr]">
-            <div className="bg-[var(--taupe)] px-8 py-10">
+            <div className="bg-[var(--taupe)] px-5 py-8 sm:px-8 sm:py-10">
               <p className="panel-label text-[var(--text)]">Work with us</p>
               <h2 className="mt-4 text-3xl font-semibold tracking-[-0.05em]">
                 Ready to work with a technology partner who delivers?
               </h2>
             </div>
-            <div className="px-8 py-10">
+            <div className="px-5 py-8 sm:px-8 sm:py-10">
               <p className="max-w-xl text-sm leading-7 text-[var(--muted)]">
                 Whether you need ongoing IT support, an onsite engineer, or a system built from
                 scratch, we can start with a practical conversation.
               </p>
-              <div className="mt-8 flex flex-wrap items-center gap-4">
-                <Link href="/contact" className="btn-primary">
+              <div className="mt-8 flex flex-col items-stretch gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4">
+                <Link href="/contact" className="btn-primary sm:w-auto">
                   Get in touch
                 </Link>
-                <Link href="/services" className="btn-secondary">
+                <Link href="/services" className="btn-secondary sm:w-auto">
                   View services
                 </Link>
               </div>

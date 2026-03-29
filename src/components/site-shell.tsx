@@ -27,18 +27,18 @@ export function SiteShell({
       <div className="site-glow" />
       <div className="site-orb" />
 
-      <div className="relative z-10 mx-auto flex min-h-screen max-w-7xl flex-col px-5 sm:px-6 lg:px-8">
-        <header className="sticky top-0 z-40 pt-4">
-          <nav className="card flex items-center justify-between rounded-full px-4 py-3 sm:px-6">
-            <Link href="/" className="flex items-center gap-3" onClick={() => setMenuOpen(false)}>
-              <div className="flex h-11 w-11 items-center justify-center rounded-full bg-[var(--accent)] text-sm font-bold text-white shadow-lg shadow-[rgba(129,166,198,0.3)]">
+      <div className="relative z-10 mx-auto flex min-h-screen max-w-7xl flex-col px-4 sm:px-6 lg:px-8">
+        <header className="sticky top-0 z-40 pt-3 sm:pt-4">
+          <nav className="card flex items-center justify-between rounded-[1.5rem] px-3 py-3 sm:rounded-full sm:px-6">
+            <Link href="/" className="flex min-w-0 items-center gap-2.5 sm:gap-3" onClick={() => setMenuOpen(false)}>
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[var(--accent)] text-sm font-bold text-white shadow-lg shadow-[rgba(129,166,198,0.3)] sm:h-11 sm:w-11">
                 Q
               </div>
-              <div>
-                <div className="text-sm font-semibold tracking-[0.28em] text-[var(--text)]">
+              <div className="min-w-0">
+                <div className="truncate text-xs font-semibold tracking-[0.18em] text-[var(--text)] sm:text-sm sm:tracking-[0.28em]">
                   QUANTREX
                 </div>
-                <div className="font-mono text-[11px] uppercase tracking-[0.18em] text-[var(--muted)]">
+                <div className="hidden font-mono text-[11px] uppercase tracking-[0.18em] text-[var(--muted)] sm:block">
                   Services and software
                 </div>
               </div>
@@ -110,7 +110,7 @@ export function SiteShell({
               <div className="fine-rule pt-4">
                 <a
                   href="mailto:naveen@quantrex.com.au"
-                  className="block rounded-2xl px-4 py-3 font-mono text-xs uppercase tracking-[0.18em] text-[var(--muted)]"
+                  className="block break-all rounded-2xl px-4 py-3 font-mono text-xs uppercase tracking-[0.18em] text-[var(--muted)]"
                 >
                   naveen@quantrex.com.au
                 </a>
@@ -119,11 +119,11 @@ export function SiteShell({
           ) : null}
         </header>
 
-        <main className="flex-1 pt-6">{children}</main>
+        <main className="flex-1 pt-4 sm:pt-6">{children}</main>
 
         <footer className="py-10">
           <div className="card overflow-hidden">
-            <div className="grid gap-8 px-6 py-8 sm:px-8 lg:grid-cols-[1.2fr_0.8fr] lg:px-10">
+            <div className="grid gap-8 px-5 py-7 sm:px-8 sm:py-8 lg:grid-cols-[1.2fr_0.8fr] lg:px-10">
               <div>
                 <p className="panel-label">Quantrex</p>
                 <h2 className="mt-3 max-w-xl text-2xl font-semibold tracking-[-0.05em] sm:text-3xl">
@@ -150,10 +150,10 @@ export function SiteShell({
                 <div>
                   <p className="panel-label">Contact</p>
                   <div className="mt-4 space-y-3 text-sm text-[var(--muted)]">
-                    <a href="mailto:naveen@quantrex.com.au" className="block hover:text-[var(--text)]">
+                    <a href="mailto:naveen@quantrex.com.au" className="block break-all hover:text-[var(--text)]">
                       naveen@quantrex.com.au
                     </a>
-                    <a href="mailto:supriya@quantrex.com.au" className="block hover:text-[var(--text)]">
+                    <a href="mailto:supriya@quantrex.com.au" className="block break-all hover:text-[var(--text)]">
                       supriya@quantrex.com.au
                     </a>
                     <a href="tel:+61466300421" className="block hover:text-[var(--text)]">
@@ -168,7 +168,7 @@ export function SiteShell({
               </div>
             </div>
 
-            <div className="fine-rule flex flex-col gap-3 px-6 py-4 text-xs text-[var(--muted-2)] sm:flex-row sm:items-center sm:justify-between sm:px-8 lg:px-10">
+            <div className="fine-rule flex flex-col gap-3 px-5 py-4 text-xs text-[var(--muted-2)] sm:flex-row sm:items-center sm:justify-between sm:px-8 lg:px-10">
               <p>(c) {new Date().getFullYear()} Quantrex Pty Ltd</p>
               <p className="font-mono uppercase tracking-[0.18em]">
                 Built for support, engineering, and modern operations

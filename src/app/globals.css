@@ -270,3 +270,43 @@ a {
 .fine-rule {
   border-top: 1px solid var(--border);
 }
+
+@media (max-width: 640px) {
+  .site-grid {
+    background-size: 48px 48px;
+  }
+
+  .site-orb {
+    display: none;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    width: 100%;
+  }
+
+  .btn-tertiary {
+    width: fit-content;
+  }
+
+  .section-title {
+    font-size: clamp(2.2rem, 11vw, 3.5rem);
+    line-height: 0.98;
+  }
+
+  .section-description {
+    margin-top: 1rem;
+    font-size: 1rem;
+    line-height: 1.75;
+  }
+
+  .card {
+    border-radius: 1.35rem;
+  }
+
+  .pill {
+    max-width: 100%;
+    white-space: normal;
+    line-height: 1.4;
+  }
+}

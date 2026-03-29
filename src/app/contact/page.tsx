@@ -56,7 +56,7 @@ export default function ContactPage() {
                 content: <div className="mt-1 text-sm text-[var(--muted)]">Melbourne, VIC, Australia</div>,
               },
             ].map((item) => (
-              <div key={item.title} className="card p-6">
+              <div key={item.title} className="card p-5 sm:p-6">
                 <div className="flex items-start gap-4">
                   <item.icon className="mt-1 h-5 w-5 text-[var(--accent-strong)]" />
                   <div>

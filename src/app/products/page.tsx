@@ -29,11 +29,11 @@ export default function ProductsPage() {
             rel="noopener noreferrer"
             className="card block overflow-hidden transition-transform hover:-translate-y-0.5"
           >
-            <div className="bg-[var(--accent)] px-8 py-10 text-white">
+            <div className="bg-[var(--accent)] px-5 py-8 text-white sm:px-8 sm:py-10">
               <div className="pill border-white/20 bg-white/10 text-white">Live product</div>
               <div className="mt-6 flex items-start justify-between gap-6">
                 <div>
-                  <h2 className="text-4xl font-semibold tracking-[-0.05em]">VisaDocket</h2>
+                  <h2 className="text-3xl font-semibold tracking-[-0.05em] sm:text-4xl">VisaDocket</h2>
                   <p className="mt-4 max-w-2xl text-sm leading-7 text-white/78">
                     A vertical SaaS platform for migration professionals, combining client
                     records, applications, documents, compliance support, and operational tooling.
@@ -42,7 +42,7 @@ export default function ProductsPage() {
                 <ArrowUpRight className="mt-1 hidden h-5 w-5 sm:block" />
               </div>
             </div>
-            <div className="grid gap-3 bg-[var(--surface-strong)] px-8 py-8 sm:grid-cols-2">
+            <div className="grid gap-3 bg-[var(--surface-strong)] px-5 py-7 sm:grid-cols-2 sm:px-8 sm:py-8">
               {[
                 "Client and application tracking",
                 "Document workflows",
@@ -59,7 +59,7 @@ export default function ProductsPage() {
             </div>
           </a>
 
-          <div className="card p-8">
+          <div className="card p-5 sm:p-8">
             <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[var(--accent-light)] text-[var(--accent-strong)]">
               <Sparkles className="h-5 w-5" />
             </div>
@@ -73,7 +73,7 @@ export default function ProductsPage() {
               open to shaping the right product with you.
             </p>
             <div className="mt-8">
-              <Link href="/contact" className="btn-secondary">
+              <Link href="/contact" className="btn-secondary sm:w-auto">
                 Share an idea
               </Link>
             </div>

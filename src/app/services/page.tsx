@@ -90,7 +90,7 @@ export default function ServicesPage() {
       <section className="py-12 sm:py-16">
         <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
           {serviceGroups.map((service) => (
-            <div key={service.title} className="card flex flex-col p-6 sm:p-7">
+            <div key={service.title} className="card flex flex-col p-5 sm:p-7">
               <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[var(--accent-light)] text-[var(--accent-strong)]">
                 <service.icon className="h-5 w-5" />
               </div>
@@ -111,13 +111,13 @@ export default function ServicesPage() {
       <section className="pb-20 pt-8">
         <div className="card overflow-hidden">
           <div className="grid lg:grid-cols-[0.8fr_1.2fr]">
-            <div className="bg-[var(--accent-soft)] px-8 py-10">
+            <div className="bg-[var(--accent-soft)] px-5 py-8 sm:px-8 sm:py-10">
               <p className="panel-label text-[var(--text)]">How we work</p>
               <h2 className="mt-4 text-3xl font-semibold tracking-[-0.05em]">
                 Diagnose clearly. Deliver the right layer. Improve from there.
               </h2>
             </div>
-            <div className="px-8 py-10">
+            <div className="px-5 py-8 sm:px-8 sm:py-10">
               <div className="grid gap-8 md:grid-cols-3">
                 {[
                   {
@@ -148,7 +148,7 @@ export default function ServicesPage() {
                 ))}
               </div>
               <div className="mt-10">
-                <Link href="/contact" className="btn-primary">
+                <Link href="/contact" className="btn-primary sm:w-auto">
                   Discuss your requirements
                   <ArrowRight className="h-4 w-4" />
                 </Link>
