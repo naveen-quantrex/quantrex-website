@@ -1,21 +1,26 @@
 import { Resend } from "resend";
 import { NextResponse } from "next/server";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 export async function POST(req: Request) {
   const { name, email, phone, service, message } = await req.json();
+  const apiKey = process.env.RESEND_API_KEY;
 
   if (!name || !email || !message) {
     return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
   }
 
+  if (!apiKey) {
+    return NextResponse.json({ error: "Email service is not configured" }, { status: 500 });
+  }
+
   try {
+    const resend = new Resend(apiKey);
+
     await resend.emails.send({
       from: "Quantrex Website <onboarding@resend.dev>",
-      to: "naveen@quantrex.com",
+      to: "naveen@quantrex.com.au",
       replyTo: email,
-      subject: `New enquiry from ${name}${service ? ` — ${service}` : ""}`,
+      subject: `New enquiry from ${name}${service ? ` - ${service}` : ""}`,
       html: `
         <div style="font-family: sans-serif; max-width: 600px; color: #111;">
           <h2 style="margin-bottom: 4px;">New enquiry via quantrex.com.au</h2>

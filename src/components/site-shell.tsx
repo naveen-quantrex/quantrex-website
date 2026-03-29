@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X } from "lucide-react";
+import { ArrowRight, Menu, X } from "lucide-react";
 import { useState } from "react";
 
 const navItems = [
@@ -25,25 +25,26 @@ export function SiteShell({
     <div className="min-h-screen bg-[var(--bg)] text-[var(--text)]">
       <div className="site-grid" />
       <div className="site-glow" />
+      <div className="site-orb" />
 
-      <div className="relative z-10 mx-auto flex min-h-screen max-w-6xl flex-col px-6">
-        <header className="sticky top-0 z-30 border-b border-[var(--border)] bg-[rgba(9,9,11,0.8)] backdrop-blur">
-          <nav className="flex items-center justify-between py-5">
-            <Link href="/" className="flex items-center gap-2.5">
-              <div className="flex h-8 w-8 items-center justify-center rounded-md bg-[var(--accent)] text-xs font-black text-white">
+      <div className="relative z-10 mx-auto flex min-h-screen max-w-7xl flex-col px-5 sm:px-6 lg:px-8">
+        <header className="sticky top-0 z-40 pt-4">
+          <nav className="card flex items-center justify-between rounded-full px-4 py-3 sm:px-6">
+            <Link href="/" className="flex items-center gap-3" onClick={() => setMenuOpen(false)}>
+              <div className="flex h-11 w-11 items-center justify-center rounded-full bg-[var(--accent)] text-sm font-bold text-white shadow-lg shadow-[rgba(129,166,198,0.3)]">
                 Q
               </div>
               <div>
-                <div className="text-sm font-bold tracking-[0.28em] text-[var(--text)]">
+                <div className="text-sm font-semibold tracking-[0.28em] text-[var(--text)]">
                   QUANTREX
                 </div>
-                <div className="text-[11px] text-[var(--muted)]">
-                  Services + Software
+                <div className="font-mono text-[11px] uppercase tracking-[0.18em] text-[var(--muted)]">
+                  Services and software
                 </div>
               </div>
             </Link>
 
-            <div className="hidden items-center gap-6 md:flex">
+            <div className="hidden items-center gap-2 md:flex">
               {navItems.map((item) => {
                 const active = pathname === item.href;
 
@@ -51,22 +52,34 @@ export function SiteShell({
                   <Link
                     key={item.href}
                     href={item.href}
-                    className={`text-sm transition-colors ${
-                      active ? "text-[var(--text)]" : "text-[var(--muted)] hover:text-foreground"
+                    className={`rounded-full px-4 py-2 text-sm transition-colors ${
+                      active
+                        ? "bg-[var(--accent-light)] text-[var(--accent-strong)]"
+                        : "text-[var(--muted)] hover:text-[var(--text)]"
                     }`}
                   >
                     {item.label}
                   </Link>
                 );
               })}
-              <Link href="/contact" className="btn-secondary">
+            </div>
+
+            <div className="hidden items-center gap-3 md:flex">
+              <a
+                href="mailto:naveen@quantrex.com.au"
+                className="font-mono text-xs uppercase tracking-[0.16em] text-[var(--muted)] transition-colors hover:text-[var(--text)]"
+              >
+                naveen@quantrex.com.au
+              </a>
+              <Link href="/contact" className="btn-primary">
                 Let&apos;s talk
+                <ArrowRight className="h-4 w-4" />
               </Link>
             </div>
 
             <button
               type="button"
-              className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[var(--border)] bg-[var(--surface)] text-[var(--text)] md:hidden"
+              className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-[var(--border)] bg-[var(--surface-strong)] text-[var(--text)] md:hidden"
               onClick={() => setMenuOpen((value) => !value)}
               aria-label="Toggle menu"
             >
@@ -75,50 +88,95 @@ export function SiteShell({
           </nav>
 
           {menuOpen ? (
-            <div className="space-y-2 border-t border-[var(--border)] py-4 md:hidden">
-              {navItems.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className="block rounded-xl border border-transparent px-4 py-3 text-sm text-[var(--muted)] transition-colors hover:border-[var(--border)] hover:bg-[var(--surface)] hover:text-foreground"
-                  onClick={() => setMenuOpen(false)}
+            <div className="card mt-3 space-y-2 p-4 md:hidden">
+              {navItems.map((item) => {
+                const active = pathname === item.href;
+
+                return (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    className={`block rounded-2xl px-4 py-3 text-sm transition-colors ${
+                      active
+                        ? "bg-[var(--accent-light)] text-[var(--accent-strong)]"
+                        : "text-[var(--muted)] hover:bg-[var(--surface-hover)] hover:text-[var(--text)]"
+                    }`}
+                    onClick={() => setMenuOpen(false)}
+                  >
+                    {item.label}
+                  </Link>
+                );
+              })}
+              <div className="fine-rule pt-4">
+                <a
+                  href="mailto:naveen@quantrex.com.au"
+                  className="block rounded-2xl px-4 py-3 font-mono text-xs uppercase tracking-[0.18em] text-[var(--muted)]"
                 >
-                  {item.label}
-                </Link>
-              ))}
+                  naveen@quantrex.com.au
+                </a>
+              </div>
             </div>
           ) : null}
         </header>
 
-        <main className="flex-1">{children}</main>
+        <main className="flex-1 pt-6">{children}</main>
 
-        <footer className="mt-12 border-t border-[var(--border)] py-8">
-          <div className="flex flex-wrap items-center justify-between gap-4">
-            <div className="flex items-center gap-2">
-              <div className="flex h-5 w-5 items-center justify-center rounded bg-[var(--accent)] text-[10px] font-black text-white">
-                Q
+        <footer className="py-10">
+          <div className="card overflow-hidden">
+            <div className="grid gap-8 px-6 py-8 sm:px-8 lg:grid-cols-[1.2fr_0.8fr] lg:px-10">
+              <div>
+                <p className="panel-label">Quantrex</p>
+                <h2 className="mt-3 max-w-xl text-2xl font-semibold tracking-[-0.05em] sm:text-3xl">
+                  Operational technology support with a softer, more human presence.
+                </h2>
+                <p className="mt-4 max-w-2xl text-sm leading-7 text-[var(--muted)]">
+                  We help teams stay supported, deliver field work reliably, and build software
+                  that fits how the business actually runs.
+                </p>
               </div>
-              <p className="text-sm text-[var(--muted-2)]">
-                © {new Date().getFullYear()} Quantrex Pty Ltd
+
+              <div className="grid gap-8 sm:grid-cols-2">
+                <div>
+                  <p className="panel-label">Navigate</p>
+                  <div className="mt-4 space-y-3 text-sm text-[var(--muted)]">
+                    {navItems.map((item) => (
+                      <Link key={item.href} href={item.href} className="block hover:text-[var(--text)]">
+                        {item.label}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+
+                <div>
+                  <p className="panel-label">Contact</p>
+                  <div className="mt-4 space-y-3 text-sm text-[var(--muted)]">
+                    <a href="mailto:naveen@quantrex.com.au" className="block hover:text-[var(--text)]">
+                      naveen@quantrex.com.au
+                    </a>
+                    <a href="mailto:supriya@quantrex.com.au" className="block hover:text-[var(--text)]">
+                      supriya@quantrex.com.au
+                    </a>
+                    <a href="tel:+61466300421" className="block hover:text-[var(--text)]">
+                      0466 300 421
+                    </a>
+                    <span className="block">Melbourne, Australia</span>
+                    <Link href="/privacy" className="block hover:text-[var(--text)]">
+                      Privacy Policy
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="fine-rule flex flex-col gap-3 px-6 py-4 text-xs text-[var(--muted-2)] sm:flex-row sm:items-center sm:justify-between sm:px-8 lg:px-10">
+              <p>(c) {new Date().getFullYear()} Quantrex Pty Ltd</p>
+              <p className="font-mono uppercase tracking-[0.18em]">
+                Built for support, engineering, and modern operations
               </p>
             </div>
-            <div className="flex flex-wrap items-center gap-5 text-sm text-[var(--muted-2)]">
-              <Link href="/services" className="hover:text-foreground">Services</Link>
-              <Link href="/products" className="hover:text-foreground">Products</Link>
-              <Link href="/about" className="hover:text-foreground">About</Link>
-              <Link href="/contact" className="hover:text-foreground">Contact</Link>
-              <a href="tel:+61466300421" className="hover:text-foreground">0466 300 421</a>
-              <a href="mailto:hello@quantrex.com.au" className="hover:text-foreground">hello@quantrex.com.au</a>
-            </div>
-          </div>
-          <div className="mt-4 flex items-center gap-4 text-xs text-[var(--muted-2)]">
-            <Link href="/privacy" className="hover:text-foreground">Privacy Policy</Link>
-            <span>·</span>
-            <span>Melbourne, VIC, Australia</span>
           </div>
         </footer>
       </div>
     </div>
   );
 }
-

@@ -43,24 +43,32 @@ export function ContactForm() {
   if (status === "success") {
     return (
       <div className="card flex flex-col items-center justify-center gap-4 p-12 text-center">
-        <div className="flex h-14 w-14 items-center justify-center rounded-full bg-(--green-light)">
-          <CheckCircle2 className="h-7 w-7 text-(--green)" />
+        <div className="flex h-14 w-14 items-center justify-center rounded-full bg-[var(--green-light)]">
+          <CheckCircle2 className="h-7 w-7 text-[var(--green)]" />
         </div>
         <h2 className="text-xl font-semibold">Message received</h2>
-        <p className="max-w-sm text-sm leading-6 text-(--muted)">
+        <p className="max-w-sm text-sm leading-6 text-[var(--muted)]">
           Thanks for reaching out. Naveen will get back to you shortly at{" "}
-          <span className="text-foreground">{formData.email}</span>.
+          <span className="text-[var(--text)]">{formData.email}</span>.
         </p>
       </div>
     );
   }
 
   return (
-    <form onSubmit={handleSubmit} className="card p-8 space-y-5">
+    <form onSubmit={handleSubmit} className="card space-y-5 p-8">
+      <div>
+        <p className="panel-label">Project details</p>
+        <p className="mt-3 max-w-xl text-sm leading-7 text-[var(--muted)]">
+          Share a little context about your support needs, onsite work, or software project and
+          we&apos;ll come back with the most relevant next step.
+        </p>
+      </div>
+
       <div className="grid gap-5 sm:grid-cols-2">
         <div className="space-y-1.5">
           <label htmlFor="name" className="block text-sm font-medium">
-            Full name <span className="text-(--accent)">*</span>
+            Full name <span className="text-[var(--accent-strong)]">*</span>
           </label>
           <input
             id="name"
@@ -70,12 +78,12 @@ export function ContactForm() {
             value={formData.name}
             onChange={handleChange}
             placeholder="Jane Smith"
-            className="w-full rounded-xl border border-(--border) bg-background px-4 py-3 text-sm text-foreground placeholder:text-(--muted-2) outline-none transition-colors focus:border-(--accent)"
+            className="w-full rounded-2xl border border-[var(--border)] bg-[var(--surface-strong)] px-4 py-3 text-sm text-[var(--text)] placeholder:text-[var(--muted-2)] outline-none transition-colors focus:border-[var(--accent)]"
           />
         </div>
         <div className="space-y-1.5">
           <label htmlFor="email" className="block text-sm font-medium">
-            Email address <span className="text-(--accent)">*</span>
+            Email address <span className="text-[var(--accent-strong)]">*</span>
           </label>
           <input
             id="email"
@@ -85,7 +93,7 @@ export function ContactForm() {
             value={formData.email}
             onChange={handleChange}
             placeholder="you@company.com"
-            className="w-full rounded-xl border border-(--border) bg-background px-4 py-3 text-sm text-foreground placeholder:text-(--muted-2) outline-none transition-colors focus:border-(--accent)"
+            className="w-full rounded-2xl border border-[var(--border)] bg-[var(--surface-strong)] px-4 py-3 text-sm text-[var(--text)] placeholder:text-[var(--muted-2)] outline-none transition-colors focus:border-[var(--accent)]"
           />
         </div>
       </div>
@@ -93,7 +101,7 @@ export function ContactForm() {
       <div className="grid gap-5 sm:grid-cols-2">
         <div className="space-y-1.5">
           <label htmlFor="phone" className="block text-sm font-medium">
-            Phone <span className="text-(--muted-2) font-normal">(optional)</span>
+            Phone <span className="font-normal text-[var(--muted-2)]">(optional)</span>
           </label>
           <input
             id="phone"
@@ -102,7 +110,7 @@ export function ContactForm() {
             value={formData.phone}
             onChange={handleChange}
             placeholder="0400 000 000"
-            className="w-full rounded-xl border border-(--border) bg-background px-4 py-3 text-sm text-foreground placeholder:text-(--muted-2) outline-none transition-colors focus:border-(--accent)"
+            className="w-full rounded-2xl border border-[var(--border)] bg-[var(--surface-strong)] px-4 py-3 text-sm text-[var(--text)] placeholder:text-[var(--muted-2)] outline-none transition-colors focus:border-[var(--accent)]"
           />
         </div>
         <div className="space-y-1.5">
@@ -114,7 +122,7 @@ export function ContactForm() {
             name="service"
             value={formData.service}
             onChange={handleChange}
-            className="w-full rounded-xl border border-(--border) bg-background px-4 py-3 text-sm text-foreground outline-none transition-colors focus:border-(--accent)"
+            className="w-full rounded-2xl border border-[var(--border)] bg-[var(--surface-strong)] px-4 py-3 text-sm text-[var(--text)] outline-none transition-colors focus:border-[var(--accent)]"
           >
             <option value="">Select a service</option>
             <option value="IT Support">IT Support</option>
@@ -128,7 +136,7 @@ export function ContactForm() {
 
       <div className="space-y-1.5">
         <label htmlFor="message" className="block text-sm font-medium">
-          Message <span className="text-(--accent)">*</span>
+          Message <span className="text-[var(--accent-strong)]">*</span>
         </label>
         <textarea
           id="message"
@@ -138,13 +146,13 @@ export function ContactForm() {
           value={formData.message}
           onChange={handleChange}
           placeholder="Tell us what you need help with, what systems are involved, and any relevant context..."
-          className="w-full resize-none rounded-xl border border-(--border) bg-background px-4 py-3 text-sm text-foreground placeholder:text-(--muted-2) outline-none transition-colors focus:border-(--accent)"
+          className="w-full resize-none rounded-3xl border border-[var(--border)] bg-[var(--surface-strong)] px-4 py-3 text-sm text-[var(--text)] placeholder:text-[var(--muted-2)] outline-none transition-colors focus:border-[var(--accent)]"
         />
       </div>
 
       {status === "error" && (
-        <p className="text-sm text-red-400">
-          Something went wrong. Please email us directly at hello@quantrex.com.au
+        <p className="text-sm text-[var(--accent-strong)]">
+          Something went wrong. Please email us directly at naveen@quantrex.com.au
         </p>
       )}
 
