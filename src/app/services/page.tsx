@@ -12,12 +12,21 @@ import {
 } from "lucide-react";
 import { SiteShell } from "@/components/site-shell";
 import { SectionIntro } from "@/components/section";
+import { createSeoMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Services | Quantrex - IT Support, Field Engineering & Custom Software",
+export const metadata: Metadata = createSeoMetadata({
+  title: "Services - IT Support, Field Engineering & Custom Software",
   description:
-    "Quantrex delivers IT support, field engineering, custom software development, infrastructure management, and SaaS product strategy for Australian businesses.",
-};
+    "Explore Quantrex services for Australian businesses, including IT support, field engineering, custom software development, infrastructure management, and SaaS product strategy.",
+  path: "/services",
+  keywords: [
+    "IT support Melbourne",
+    "field engineering Australia",
+    "custom software development Australia",
+    "infrastructure management",
+    "SaaS product strategy",
+  ],
+});
 
 const serviceGroups = [
   {

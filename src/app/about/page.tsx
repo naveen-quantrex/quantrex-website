@@ -3,12 +3,15 @@ import Link from "next/link";
 import { Building2, Linkedin, Mail, MapPin } from "lucide-react";
 import { SiteShell } from "@/components/site-shell";
 import { SectionIntro } from "@/components/section";
+import { createSeoMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "About | Quantrex - Technology Company Based in Melbourne",
+export const metadata: Metadata = createSeoMetadata({
+  title: "About Quantrex - Melbourne Technology Company",
   description:
-    "Quantrex is a Melbourne-based technology company founded by Naveen Gugulothu, delivering IT services, engineering, and custom software for growing businesses.",
-};
+    "Learn about Quantrex, a Melbourne technology company delivering IT support, field engineering, custom software, and SaaS products for growing businesses.",
+  path: "/about",
+  keywords: ["about Quantrex", "Melbourne technology company", "Quantrex Pty Ltd"],
+});
 
 const values = [
   {

@@ -3,12 +3,15 @@ import Link from "next/link";
 import { ArrowUpRight, Sparkles } from "lucide-react";
 import { SiteShell } from "@/components/site-shell";
 import { SectionIntro } from "@/components/section";
+import { createSeoMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Products | Quantrex - VisaDocket & Vertical SaaS",
+export const metadata: Metadata = createSeoMetadata({
+  title: "Products - VisaDocket & Vertical SaaS",
   description:
-    "Quantrex builds focused software products for high-friction industries. VisaDocket is practice management software for migration professionals.",
-};
+    "See Quantrex software products for specialist industries, including VisaDocket, practice management software for migration professionals.",
+  path: "/products",
+  keywords: ["VisaDocket", "vertical SaaS Australia", "migration practice management software"],
+});
 
 export default function ProductsPage() {
   return (

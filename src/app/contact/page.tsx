@@ -3,12 +3,15 @@ import { Mail, MapPin, Phone } from "lucide-react";
 import { SiteShell } from "@/components/site-shell";
 import { SectionIntro } from "@/components/section";
 import { ContactForm } from "@/components/contact-form";
+import { createSeoMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Contact | Quantrex - Get in Touch",
+export const metadata: Metadata = createSeoMetadata({
+  title: "Contact Quantrex - Get in Touch",
   description:
-    "Contact Quantrex to discuss IT support, field engineering, custom software, or SaaS product development. Based in Melbourne, Australia.",
-};
+    "Contact Quantrex in Melbourne to discuss IT support, field engineering, custom software development, or SaaS product work.",
+  path: "/contact",
+  keywords: ["contact Quantrex", "IT support Melbourne contact", "custom software Melbourne"],
+});
 
 export default function ContactPage() {
   return (

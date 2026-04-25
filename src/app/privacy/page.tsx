@@ -1,10 +1,13 @@
 import type { Metadata } from "next";
 import { SiteShell } from "@/components/site-shell";
+import { createSeoMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Privacy Policy | Quantrex",
-  description: "Privacy policy for Quantrex Pty Ltd - how we collect, use, and protect your personal information.",
-};
+export const metadata: Metadata = createSeoMetadata({
+  title: "Privacy Policy",
+  description: "Privacy policy for Quantrex Pty Ltd, including how we collect, use, and protect personal information.",
+  path: "/privacy",
+  noIndex: true,
+});
 
 const sections = [
   {
