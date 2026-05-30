@@ -1,21 +1,71 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { ArrowUpRight, Sparkles } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { SiteShell } from "@/components/site-shell";
 import { SectionIntro } from "@/components/section";
 import { createSeoMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = createSeoMetadata({
-  title: "Products - VisaDocket & Vertical SaaS",
+  title: "Migration Practice Software & Fashion SaaS",
   description:
-    "See Quantrex software products for specialist industries, including VisaDocket, practice management software for migration professionals.",
+    "Quantrex builds focused software products for specialist industries — VisaDocket for migration professionals and Eva's Fashion Hub for boutique fashion retail.",
   path: "/products",
-  keywords: ["VisaDocket", "vertical SaaS Australia", "migration practice management software"],
+  keywords: [
+    "VisaDocket",
+    "Eva's Fashion Hub",
+    "vertical SaaS Australia",
+    "fashion e-commerce",
+    "migration software",
+    "boutique retail platform",
+  ],
 });
 
 export default function ProductsPage() {
   return (
     <SiteShell>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify([
+            {
+              "@context": "https://schema.org",
+              "@type": "SoftwareApplication",
+              name: "VisaDocket",
+              url: "https://visadocket.com.au",
+              applicationCategory: "BusinessApplication",
+              operatingSystem: "Web",
+              description:
+                "Practice management software for migration professionals covering client workflows, compliance, applications, and document operations.",
+              offers: {
+                "@type": "Offer",
+                availability: "https://schema.org/InStock",
+              },
+              creator: {
+                "@type": "Organization",
+                name: "Quantrex",
+                url: "https://quantrex.com.au",
+              },
+            },
+            {
+              "@context": "https://schema.org",
+              "@type": "BreadcrumbList",
+              itemListElement: [
+                {
+                  "@type": "ListItem",
+                  position: 1,
+                  name: "Home",
+                  item: "https://quantrex.com.au",
+                },
+                {
+                  "@type": "ListItem",
+                  position: 2,
+                  name: "Products",
+                  item: "https://quantrex.com.au/products",
+                },
+              ],
+            },
+          ]),
+        }}
+      />
       <section className="py-12 sm:py-16">
         <SectionIntro
           eyebrow="Products"
@@ -25,7 +75,7 @@ export default function ProductsPage() {
       </section>
 
       <section className="pb-20 pt-8">
-        <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
+        <div className="grid gap-6 lg:grid-cols-2">
           <a
             href="https://visadocket.com.au"
             target="_blank"
@@ -37,7 +87,7 @@ export default function ProductsPage() {
               <div className="mt-6 flex items-start justify-between gap-6">
                 <div>
                   <h2 className="text-3xl font-semibold tracking-[-0.05em] sm:text-4xl">VisaDocket</h2>
-                  <p className="mt-4 max-w-2xl text-sm leading-7 text-white/78">
+                  <p className="mt-4 max-w-2xl text-sm leading-7 text-white/80">
                     A vertical SaaS platform for migration professionals, combining client
                     records, applications, documents, compliance support, and operational tooling.
                   </p>
@@ -62,23 +112,37 @@ export default function ProductsPage() {
             </div>
           </a>
 
-          <div className="card p-5 sm:p-8">
-            <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[var(--accent-light)] text-[var(--accent-strong)]">
-              <Sparkles className="h-5 w-5" />
+          <div className="card block overflow-hidden">
+            <div className="bg-[var(--eva-brand)] px-5 py-8 sm:px-8 sm:py-10">
+              <div className="pill border-white/20 bg-white/10 text-white">In development</div>
+              <div className="mt-6 flex items-start justify-between gap-6">
+                <div>
+                  <h2 className="text-3xl font-semibold tracking-[-0.05em] text-white sm:text-4xl">
+                    Eva&apos;s Fashion Hub
+                  </h2>
+                  <p className="mt-4 max-w-2xl text-sm leading-7 text-white/80">
+                    A styling-led fashion storefront for curated looks, coordinated outfits, and
+                    affordable discovery. Built for boutique brands wanting an AI-powered retail
+                    presence.
+                  </p>
+                </div>
+              </div>
             </div>
-            <h3 className="mt-6 text-3xl font-semibold tracking-[-0.05em]">More products ahead</h3>
-            <p className="mt-4 text-sm leading-7 text-[var(--muted)]">
-              Quantrex is built around the idea that high-friction industries deserve software
-              that actually respects the details of the work.
-            </p>
-            <p className="mt-4 text-sm leading-7 text-[var(--muted)]">
-              If you operate in a niche where existing software is slowing your team down, we&apos;re
-              open to shaping the right product with you.
-            </p>
-            <div className="mt-8">
-              <Link href="/contact" className="btn-secondary sm:w-auto">
-                Share an idea
-              </Link>
+            <div className="grid gap-3 bg-[var(--surface-strong)] px-5 py-7 sm:grid-cols-2 sm:px-8 sm:py-8 [&>*:last-child:nth-child(odd)]:col-span-2">
+              {[
+                "Outfit curation engine",
+                "AI stylist chat",
+                "Dropshipping integrations",
+                "Stripe payments",
+                "Weather-aware recommendations",
+              ].map((item) => (
+                <div
+                  key={item}
+                  className="rounded-2xl border border-[var(--border)] bg-[var(--surface)] px-4 py-3 text-sm text-[var(--muted)]"
+                >
+                  {item}
+                </div>
+              ))}
             </div>
           </div>
         </div>

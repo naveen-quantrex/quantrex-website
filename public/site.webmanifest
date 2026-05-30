@@ -1,0 +1,12 @@
+{
+  "name": "Quantrex",
+  "short_name": "Quantrex",
+  "description": "IT Support, Field Engineering & Custom Software — Melbourne",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#f8f4ef",
+  "theme_color": "#81a6c6",
+  "icons": [
+    { "src": "/favicon.ico", "sizes": "any", "type": "image/x-icon" }
+  ]
+}

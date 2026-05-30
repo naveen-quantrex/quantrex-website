@@ -1,9 +1,7 @@
-"use client";
-
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { ArrowRight, Menu, X } from "lucide-react";
-import { useState } from "react";
+import { ArrowRight } from "lucide-react";
+import { MobileMenu } from "./mobile-menu";
+import { NavLinks } from "./nav-links";
 
 const navItems = [
   { href: "/", label: "Home" },
@@ -18,9 +16,6 @@ export function SiteShell({
 }: {
   children: React.ReactNode;
 }) {
-  const pathname = usePathname();
-  const [menuOpen, setMenuOpen] = useState(false);
-
   return (
     <div className="min-h-screen bg-[var(--bg)] text-[var(--text)]">
       <div className="site-grid" />
@@ -29,8 +24,8 @@ export function SiteShell({
 
       <div className="relative z-10 mx-auto flex min-h-screen max-w-7xl flex-col px-4 sm:px-6 lg:px-8">
         <header className="sticky top-0 z-40 pt-3 sm:pt-4">
-          <nav className="card flex items-center justify-between rounded-[1.5rem] px-3 py-3 sm:rounded-full sm:px-6">
-            <Link href="/" className="flex min-w-0 items-center gap-2.5 sm:gap-3" onClick={() => setMenuOpen(false)}>
+          <nav aria-label="Main navigation" className="card flex items-center justify-between rounded-[1.5rem] px-3 py-3 sm:rounded-full sm:px-6">
+            <Link href="/" className="flex min-w-0 items-center gap-2.5 sm:gap-3">
               <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[var(--accent)] text-sm font-bold text-white shadow-lg shadow-[rgba(129,166,198,0.3)] sm:h-11 sm:w-11">
                 Q
               </div>
@@ -44,79 +39,17 @@ export function SiteShell({
               </div>
             </Link>
 
-            <div className="hidden items-center gap-2 md:flex">
-              {navItems.map((item) => {
-                const active = pathname === item.href;
-
-                return (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    className={`rounded-full px-4 py-2 text-sm transition-colors ${
-                      active
-                        ? "bg-[var(--accent-light)] text-[var(--accent-strong)]"
-                        : "text-[var(--muted)] hover:text-[var(--text)]"
-                    }`}
-                  >
-                    {item.label}
-                  </Link>
-                );
-              })}
-            </div>
+            <NavLinks />
 
             <div className="hidden items-center gap-3 md:flex">
-              <a
-                href="mailto:naveen@quantrex.com.au"
-                className="font-mono text-xs uppercase tracking-[0.16em] text-[var(--muted)] transition-colors hover:text-[var(--text)]"
-              >
-                naveen@quantrex.com.au
-              </a>
               <Link href="/contact" className="btn-primary">
                 Let&apos;s talk
                 <ArrowRight className="h-4 w-4" />
               </Link>
             </div>
 
-            <button
-              type="button"
-              className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-[var(--border)] bg-[var(--surface-strong)] text-[var(--text)] md:hidden"
-              onClick={() => setMenuOpen((value) => !value)}
-              aria-label="Toggle menu"
-            >
-              {menuOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
-            </button>
+            <MobileMenu />
           </nav>
-
-          {menuOpen ? (
-            <div className="card mt-3 space-y-2 p-4 md:hidden">
-              {navItems.map((item) => {
-                const active = pathname === item.href;
-
-                return (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    className={`block rounded-2xl px-4 py-3 text-sm transition-colors ${
-                      active
-                        ? "bg-[var(--accent-light)] text-[var(--accent-strong)]"
-                        : "text-[var(--muted)] hover:bg-[var(--surface-hover)] hover:text-[var(--text)]"
-                    }`}
-                    onClick={() => setMenuOpen(false)}
-                  >
-                    {item.label}
-                  </Link>
-                );
-              })}
-              <div className="fine-rule pt-4">
-                <a
-                  href="mailto:naveen@quantrex.com.au"
-                  className="block break-all rounded-2xl px-4 py-3 font-mono text-xs uppercase tracking-[0.18em] text-[var(--muted)]"
-                >
-                  naveen@quantrex.com.au
-                </a>
-              </div>
-            </div>
-          ) : null}
         </header>
 
         <main className="flex-1 pt-4 sm:pt-6">{children}</main>
@@ -169,7 +102,7 @@ export function SiteShell({
             </div>
 
             <div className="fine-rule flex flex-col gap-3 px-5 py-4 text-xs text-[var(--muted-2)] sm:flex-row sm:items-center sm:justify-between sm:px-8 lg:px-10">
-              <p>(c) {new Date().getFullYear()} Quantrex Pty Ltd</p>
+              <p>© {new Date().getFullYear()} Quantrex Pty Ltd</p>
               <p className="font-mono uppercase tracking-[0.18em]">
                 Built for support, engineering, and modern operations
               </p>

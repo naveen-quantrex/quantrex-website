@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { defaultDescription, siteName, siteUrl } from "@/lib/seo";
 import "./globals.css";
 
-const title = "Quantrex | IT Support, Field Engineering, Software & SaaS";
+const title = "Quantrex Melbourne | IT Support & Field Engineering";
 
 export const metadata: Metadata = {
   title: {
@@ -34,12 +34,26 @@ export const metadata: Metadata = {
     siteName,
     locale: "en_AU",
     type: "website",
+    images: [
+      {
+        url: "/og",
+        width: 1200,
+        height: 630,
+        alt: "Quantrex — IT Support, Field Engineering & Custom Software, Melbourne",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title,
     description: defaultDescription,
+    images: ["/og"],
   },
+  icons: {
+    icon: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
+  },
+  manifest: "/site.webmanifest",
   robots: {
     index: true,
     follow: true,
@@ -56,23 +70,41 @@ export const metadata: Metadata = {
 const structuredData = [
   {
     "@context": "https://schema.org",
-    "@type": "Organization",
-    name: siteName,
+    "@type": "LocalBusiness",
+    name: "Quantrex",
     legalName: "Quantrex Pty Ltd",
-    url: siteUrl,
+    url: "https://quantrex.com.au",
     email: "naveen@quantrex.com.au",
     telephone: "+61466300421",
+    image: "https://quantrex.com.au/og",
+    logo: "https://quantrex.com.au/og",
     address: {
       "@type": "PostalAddress",
       addressLocality: "Melbourne",
       addressRegion: "VIC",
+      postalCode: "3000",
       addressCountry: "AU",
     },
-    sameAs: ["https://linkedin.com/in/naveengugulothu"],
-    areaServed: {
-      "@type": "Country",
-      name: "Australia",
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: -37.8136,
+      longitude: 144.9631,
     },
+    openingHoursSpecification: {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+      ],
+      opens: "09:00",
+      closes: "18:00",
+    },
+    sameAs: ["https://linkedin.com/in/naveengugulothu"],
+    areaServed: { "@type": "Country", name: "Australia" },
+    priceRange: "$$",
     knowsAbout: [
       "IT support",
       "Field engineering",
@@ -96,7 +128,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en-AU">
       <body className="antialiased">
         <script
           type="application/ld+json"

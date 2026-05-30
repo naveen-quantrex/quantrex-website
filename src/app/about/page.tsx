@@ -6,9 +6,9 @@ import { SectionIntro } from "@/components/section";
 import { createSeoMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = createSeoMetadata({
-  title: "About Quantrex - Melbourne Technology Company",
+  title: "About Quantrex — Melbourne Technology Company",
   description:
-    "Learn about Quantrex, a Melbourne technology company delivering IT support, field engineering, custom software, and SaaS products for growing businesses.",
+    "Quantrex is a Melbourne technology company founded by Naveen Gugulothu, delivering IT support, field engineering, and custom software for Australian SMBs.",
   path: "/about",
   keywords: ["about Quantrex", "Melbourne technology company", "Quantrex Pty Ltd"],
 });
@@ -35,6 +35,56 @@ const values = [
 export default function AboutPage() {
   return (
     <SiteShell>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify([
+            {
+              "@context": "https://schema.org",
+              "@type": "Person",
+              name: "Naveen Gugulothu",
+              jobTitle: "Founder & CEO",
+              worksFor: {
+                "@type": "Organization",
+                name: "Quantrex",
+                url: "https://quantrex.com.au",
+              },
+              email: "naveen@quantrex.com.au",
+              sameAs: ["https://linkedin.com/in/naveengugulothu"],
+            },
+            {
+              "@context": "https://schema.org",
+              "@type": "Person",
+              name: "Supriya Bhukya",
+              jobTitle: "Co-Founder",
+              worksFor: {
+                "@type": "Organization",
+                name: "Quantrex",
+                url: "https://quantrex.com.au",
+              },
+              email: "supriya@quantrex.com.au",
+            },
+            {
+              "@context": "https://schema.org",
+              "@type": "BreadcrumbList",
+              itemListElement: [
+                {
+                  "@type": "ListItem",
+                  position: 1,
+                  name: "Home",
+                  item: "https://quantrex.com.au",
+                },
+                {
+                  "@type": "ListItem",
+                  position: 2,
+                  name: "About",
+                  item: "https://quantrex.com.au/about",
+                },
+              ],
+            },
+          ]),
+        }}
+      />
       <section className="py-12 sm:py-16">
         <SectionIntro
           eyebrow="About"
@@ -44,6 +94,7 @@ export default function AboutPage() {
       </section>
 
       <section className="py-12 sm:py-16">
+        <h2 className="section-eyebrow mb-8">The team</h2>
         <div className="grid gap-8 lg:grid-cols-[1.05fr_0.95fr]">
           <div className="card p-5 sm:p-8">
             <div className="space-y-5 text-sm leading-8 text-[var(--muted)] sm:text-base">
@@ -82,8 +133,8 @@ export default function AboutPage() {
                     NG
                   </div>
                   <div>
-                    <p className="text-lg font-semibold text-[var(--text)]">Naveen Gugulothu</p>
-                    <p className="text-sm text-[var(--muted)]">CEO</p>
+                    <h3 className="text-lg font-semibold text-[var(--text)]">Naveen Gugulothu</h3>
+                    <p className="text-sm text-[var(--muted)]">Founder & CEO</p>
                   </div>
                 </div>
               </div>
@@ -105,6 +156,7 @@ export default function AboutPage() {
                     href="https://linkedin.com/in/naveengugulothu"
                     target="_blank"
                     rel="noopener noreferrer"
+                    aria-label="LinkedIn profile (opens in new tab)"
                     className="flex items-center gap-2.5 text-[var(--muted)] transition-colors hover:text-[var(--text)]"
                   >
                     <Linkedin className="h-4 w-4" />
@@ -121,14 +173,14 @@ export default function AboutPage() {
                     SB
                   </div>
                   <div>
-                    <p className="text-lg font-semibold text-[var(--text)]">Surpriya Bhukya</p>
-                    <p className="text-sm text-[var(--muted)]">Chief Operating Officer</p>
+                    <h3 className="text-lg font-semibold text-[var(--text)]">Supriya Bhukya</h3>
+                    <p className="text-sm text-[var(--muted)]">Co-Founder</p>
                   </div>
                 </div>
               </div>
               <div className="px-5 py-7 sm:px-8 sm:py-8">
                 <p className="text-sm leading-7 text-[var(--muted)]">
-                  Surpriya supports the operational side of Quantrex, helping keep delivery,
+                  Supriya supports the operational side of Quantrex, helping keep delivery,
                   coordination, and day-to-day business flow structured and dependable.
                 </p>
                 <div className="fine-rule mt-6 flex flex-col gap-3 pt-6 text-sm">
@@ -147,11 +199,11 @@ export default function AboutPage() {
       </section>
 
       <section className="py-12 sm:py-16">
-        <p className="section-eyebrow">How we operate</p>
+        <h2 className="section-eyebrow">How we operate</h2>
         <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
           {values.map((value) => (
             <div key={value.title} className="card p-6">
-              <h2 className="text-lg font-semibold tracking-[-0.03em]">{value.title}</h2>
+              <h3 className="text-lg font-semibold tracking-[-0.03em]">{value.title}</h3>
               <p className="mt-3 text-sm leading-7 text-[var(--muted)]">{value.description}</p>
             </div>
           ))}

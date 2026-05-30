@@ -1,79 +1,132 @@
 import type { Metadata } from "next";
 import { SiteShell } from "@/components/site-shell";
+import { SectionIntro } from "@/components/section";
 import { createSeoMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = createSeoMetadata({
-  title: "Privacy Policy",
-  description: "Privacy policy for Quantrex Pty Ltd, including how we collect, use, and protect personal information.",
+  title: "Privacy Policy — Quantrex",
+  description:
+    "Quantrex privacy policy. How we collect, use, and protect personal information submitted through our website.",
   path: "/privacy",
-  noIndex: true,
+  keywords: ["Quantrex privacy policy", "data handling", "Australian Privacy Act"],
 });
-
-const sections = [
-  {
-    title: "1. Who we are",
-    body: 'Quantrex Pty Ltd ("Quantrex", "we", "us", or "our") is an Australian technology company based in Melbourne, Victoria. We provide IT support, field engineering, custom software development, and SaaS products. Our website is quantrex.com.au.',
-  },
-  {
-    title: "2. Information we collect",
-    body: "We collect personal information you provide directly, such as your name, email address, phone number, and message when you contact us through our website form. We do not collect sensitive information unless you choose to provide it.",
-  },
-  {
-    title: "3. How we use your information",
-    body: "We use the information you provide solely to respond to your enquiry, communicate with you about our services, and fulfil any service agreements we enter into. We do not use your information for unsolicited marketing without your consent.",
-  },
-  {
-    title: "4. Disclosure of information",
-    body: "We do not sell, rent, or trade your personal information to third parties. We may share information with trusted service providers who assist us in operating our website and business, under strict confidentiality obligations.",
-  },
-  {
-    title: "5. Data storage and security",
-    body: "Your information is stored securely and we take reasonable steps to protect it from misuse, loss, unauthorised access, modification, or disclosure. Our website is hosted on Vercel, Inc. servers.",
-  },
-  {
-    title: "6. Your rights",
-    body: "Under the Australian Privacy Act 1988, you have the right to access and correct personal information we hold about you. To make a request, contact us at naveen@quantrex.com.au.",
-  },
-  {
-    title: "7. Cookies",
-    body: "Our website may use basic cookies for functionality and analytics purposes. We do not use cookies to identify you personally.",
-  },
-  {
-    title: "8. Third-party links",
-    body: "Our website contains links to third-party sites such as VisaDocket and LinkedIn. We are not responsible for the privacy practices of those sites and encourage you to review their policies.",
-  },
-  {
-    title: "9. Contact us",
-    body: "If you have questions or complaints about our privacy practices, please contact us at naveen@quantrex.com.au or by calling 0466 300 421.",
-  },
-  {
-    title: "10. Changes to this policy",
-    body: "We may update this policy from time to time. The current version will always be available at quantrex.com.au/privacy.",
-  },
-];
 
 export default function PrivacyPage() {
   return (
     <SiteShell>
       <section className="py-12 sm:py-16">
-        <div className="grid gap-6 lg:grid-cols-[1fr_1fr] lg:items-end">
-          <div>
-            <p className="section-eyebrow">Legal</p>
-            <h1 className="section-title">Privacy Policy</h1>
-          </div>
-          <p className="section-description lg:ml-auto">Last updated: March 2026 · Quantrex Pty Ltd</p>
-        </div>
+        <SectionIntro
+          eyebrow="Privacy"
+          title="How we handle your information."
+          description="Quantrex is committed to handling personal information responsibly and in accordance with the Australian Privacy Act 1988."
+        />
       </section>
 
-      <section className="pb-24 pt-8">
-        <div className="card max-w-4xl p-8 sm:p-10">
-          <div className="space-y-10">
-            {sections.map((section) => (
-              <div key={section.title}>
-                <h2 className="text-lg font-semibold tracking-[-0.03em]">{section.title}</h2>
-                <p className="mt-3 text-sm leading-7 text-[var(--muted)]">{section.body}</p>
-              </div>
-            ))}
+      <section className="pb-20">
+        <div className="card p-6 sm:p-10">
+          <div className="space-y-10 text-sm leading-8 text-[var(--muted)] sm:text-base">
+            <p className="text-xs text-[var(--muted)]">Last updated: May 2026</p>
+
+            <div className="space-y-3">
+              <h2 className="text-lg font-semibold tracking-[-0.03em] text-[var(--text)]">
+                What we collect
+              </h2>
+              <p>
+                When you submit the contact form on this website, we collect the information you
+                enter: your name, email address, and phone number. We do not collect any other
+                personal information automatically, and we do not use tracking cookies or
+                third-party analytics tools.
+              </p>
+            </div>
+
+            <div className="space-y-3">
+              <h2 className="text-lg font-semibold tracking-[-0.03em] text-[var(--text)]">
+                How we use it
+              </h2>
+              <p>
+                The information you submit is used solely to respond to your enquiry. We will
+                reply via email or phone as appropriate, and we will not contact you for any
+                other purpose unless you have asked us to.
+              </p>
+              <p>
+                We do not add contact form submissions to any mailing list, marketing sequence,
+                or CRM without your explicit consent.
+              </p>
+            </div>
+
+            <div className="space-y-3">
+              <h2 className="text-lg font-semibold tracking-[-0.03em] text-[var(--text)]">
+                Who we share it with
+              </h2>
+              <p>
+                We do not sell, rent, or share your personal information with any third party
+                for their own purposes. Your details stay within Quantrex and are used only to
+                handle your enquiry.
+              </p>
+            </div>
+
+            <div className="space-y-3">
+              <h2 className="text-lg font-semibold tracking-[-0.03em] text-[var(--text)]">
+                Third-party services
+              </h2>
+              <p>
+                Contact form submissions are routed through{" "}
+                <a
+                  href="https://resend.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[var(--accent-strong)] underline underline-offset-2 transition-opacity hover:opacity-80"
+                >
+                  Resend
+                </a>
+                , an email delivery service. Resend processes the message content and your
+                contact details only to the extent required to deliver the email to us. Resend
+                does not use this data for any other purpose. You can read their privacy policy
+                at{" "}
+                <a
+                  href="https://resend.com/privacy"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[var(--accent-strong)] underline underline-offset-2 transition-opacity hover:opacity-80"
+                >
+                  resend.com/privacy
+                </a>
+                .
+              </p>
+              <p>
+                This website does not use Google Analytics, Meta Pixel, or any other
+                behavioural tracking technology.
+              </p>
+            </div>
+
+            <div className="space-y-3">
+              <h2 className="text-lg font-semibold tracking-[-0.03em] text-[var(--text)]">
+                Your rights
+              </h2>
+              <p>
+                Under the Australian Privacy Act 1988, you have the right to access the
+                personal information we hold about you and to request its correction or
+                deletion. If you would like to exercise any of these rights, email us and we
+                will respond within a reasonable time.
+              </p>
+            </div>
+
+            <div className="space-y-3">
+              <h2 className="text-lg font-semibold tracking-[-0.03em] text-[var(--text)]">
+                Contact us
+              </h2>
+              <p>
+                If you have any questions about this policy or wish to request deletion of your
+                data, contact us at{" "}
+                <a
+                  href="mailto:naveen@quantrex.com.au"
+                  className="text-[var(--accent-strong)] underline underline-offset-2 transition-opacity hover:opacity-80"
+                >
+                  naveen@quantrex.com.au
+                </a>
+                .
+              </p>
+            </div>
           </div>
         </div>
       </section>
