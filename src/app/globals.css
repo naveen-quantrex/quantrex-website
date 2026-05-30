@@ -17,6 +17,8 @@
   --accent-border: rgba(129, 166, 198, 0.32);
   --accent-soft: #aacddc;
   --teal: #5e8ea8;
+  --eva-brand: #c49a8a;
+  --error: #c0392b;
   --teal-light: rgba(170, 205, 220, 0.18);
   --green: #5f7f86;
   --green-light: rgba(95, 127, 134, 0.16);
@@ -155,12 +157,20 @@ a {
   padding: 0.9rem 1.35rem;
   font-size: 0.95rem;
   font-weight: 600;
+  outline: none;
   transition:
     transform 0.18s ease,
     border-color 0.18s ease,
     background-color 0.18s ease,
     color 0.18s ease,
     opacity 0.18s ease;
+}
+
+.btn-primary:focus-visible,
+.btn-secondary:focus-visible,
+.btn-tertiary:focus-visible {
+  outline: 2px solid var(--accent-strong);
+  outline-offset: 2px;
 }
 
 .btn-primary {
@@ -278,15 +288,6 @@ a {
 
   .site-orb {
     display: none;
-  }
-
-  .btn-primary,
-  .btn-secondary {
-    width: 100%;
-  }
-
-  .btn-tertiary {
-    width: fit-content;
   }
 
   .section-title {

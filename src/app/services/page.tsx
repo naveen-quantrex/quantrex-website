@@ -97,13 +97,14 @@ export default function ServicesPage() {
       </section>
 
       <section className="py-12 sm:py-16">
+        <h2 className="section-eyebrow mb-8">What we offer</h2>
         <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
           {serviceGroups.map((service) => (
             <div key={service.title} className="card flex flex-col p-5 sm:p-7">
               <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[var(--accent-light)] text-[var(--accent-strong)]">
                 <service.icon className="h-5 w-5" />
               </div>
-              <h2 className="mt-5 text-2xl font-semibold tracking-[-0.04em]">{service.title}</h2>
+              <h3 className="mt-5 text-2xl font-semibold tracking-[-0.04em]">{service.title}</h3>
               <ul className="mt-5 flex-1 space-y-3">
                 {service.points.map((point) => (
                   <li key={point} className="flex items-start gap-3 text-sm leading-6 text-[var(--muted)]">
@@ -121,7 +122,7 @@ export default function ServicesPage() {
         <div className="card overflow-hidden">
           <div className="grid lg:grid-cols-[0.8fr_1.2fr]">
             <div className="bg-[var(--accent-soft)] px-5 py-8 sm:px-8 sm:py-10">
-              <p className="panel-label text-[var(--text)]">How we work</p>
+              <h2 className="panel-label text-[var(--text)]">How we work</h2>
               <h2 className="mt-4 text-3xl font-semibold tracking-[-0.05em]">
                 Diagnose clearly. Deliver the right layer. Improve from there.
               </h2>

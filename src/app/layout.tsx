@@ -96,7 +96,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en-AU">
       <body className="antialiased">
         <script
           type="application/ld+json"

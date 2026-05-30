@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { ArrowRight, CheckCircle2 } from "lucide-react";
+import { ArrowRight, CheckCircle2, ChevronDown } from "lucide-react";
 
 export function ContactForm() {
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
@@ -78,7 +78,7 @@ export function ContactForm() {
             value={formData.name}
             onChange={handleChange}
             placeholder="Jane Smith"
-            className="w-full rounded-2xl border border-[var(--border)] bg-[var(--surface-strong)] px-4 py-3 text-sm text-[var(--text)] placeholder:text-[var(--muted-2)] outline-none transition-colors focus:border-[var(--accent)]"
+            className="w-full rounded-2xl border border-[var(--border)] bg-[var(--surface-strong)] px-4 py-3 text-sm text-[var(--text)] placeholder:text-[var(--muted-2)] outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent-strong)] transition-colors focus:border-[var(--accent)]"
           />
         </div>
         <div className="space-y-1.5">
@@ -93,7 +93,7 @@ export function ContactForm() {
             value={formData.email}
             onChange={handleChange}
             placeholder="you@company.com"
-            className="w-full rounded-2xl border border-[var(--border)] bg-[var(--surface-strong)] px-4 py-3 text-sm text-[var(--text)] placeholder:text-[var(--muted-2)] outline-none transition-colors focus:border-[var(--accent)]"
+            className="w-full rounded-2xl border border-[var(--border)] bg-[var(--surface-strong)] px-4 py-3 text-sm text-[var(--text)] placeholder:text-[var(--muted-2)] outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent-strong)] transition-colors focus:border-[var(--accent)]"
           />
         </div>
       </div>
@@ -110,27 +110,30 @@ export function ContactForm() {
             value={formData.phone}
             onChange={handleChange}
             placeholder="0400 000 000"
-            className="w-full rounded-2xl border border-[var(--border)] bg-[var(--surface-strong)] px-4 py-3 text-sm text-[var(--text)] placeholder:text-[var(--muted-2)] outline-none transition-colors focus:border-[var(--accent)]"
+            className="w-full rounded-2xl border border-[var(--border)] bg-[var(--surface-strong)] px-4 py-3 text-sm text-[var(--text)] placeholder:text-[var(--muted-2)] outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent-strong)] transition-colors focus:border-[var(--accent)]"
           />
         </div>
         <div className="space-y-1.5">
           <label htmlFor="service" className="block text-sm font-medium">
             What do you need?
           </label>
-          <select
-            id="service"
-            name="service"
-            value={formData.service}
-            onChange={handleChange}
-            className="w-full rounded-2xl border border-[var(--border)] bg-[var(--surface-strong)] px-4 py-3 text-sm text-[var(--text)] outline-none transition-colors focus:border-[var(--accent)]"
-          >
-            <option value="">Select a service</option>
-            <option value="IT Support">IT Support</option>
-            <option value="Field Engineering">Field Engineering</option>
-            <option value="Custom Software">Custom Software</option>
-            <option value="SaaS Product">SaaS Product</option>
-            <option value="General enquiry">General enquiry</option>
-          </select>
+          <div className="relative">
+            <select
+              id="service"
+              name="service"
+              value={formData.service}
+              onChange={handleChange}
+              className="w-full appearance-none rounded-2xl border border-[var(--border)] bg-[var(--surface-strong)] px-4 py-3 pr-10 text-sm text-[var(--text)] outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent-strong)] transition-colors focus:border-[var(--accent)]"
+            >
+              <option value="">Select a service</option>
+              <option value="IT Support">IT Support</option>
+              <option value="Field Engineering">Field Engineering</option>
+              <option value="Custom Software">Custom Software</option>
+              <option value="SaaS Product">SaaS Product</option>
+              <option value="General enquiry">General enquiry</option>
+            </select>
+            <ChevronDown className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 h-4 w-4 text-[var(--muted)]" />
+          </div>
         </div>
       </div>
 
@@ -146,12 +149,12 @@ export function ContactForm() {
           value={formData.message}
           onChange={handleChange}
           placeholder="Tell us what you need help with, what systems are involved, and any relevant context..."
-          className="w-full resize-none rounded-3xl border border-[var(--border)] bg-[var(--surface-strong)] px-4 py-3 text-sm text-[var(--text)] placeholder:text-[var(--muted-2)] outline-none transition-colors focus:border-[var(--accent)]"
+          className="w-full resize-none rounded-2xl border border-[var(--border)] bg-[var(--surface-strong)] px-4 py-3 text-sm text-[var(--text)] placeholder:text-[var(--muted-2)] outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent-strong)] transition-colors focus:border-[var(--accent)]"
         />
       </div>
 
       {status === "error" && (
-        <p className="text-sm text-[var(--accent-strong)]">
+        <p role="alert" aria-live="polite" className="text-sm text-[var(--error)]">
           Something went wrong. Please email us directly at naveen@quantrex.com.au
         </p>
       )}
@@ -159,7 +162,7 @@ export function ContactForm() {
       <button
         type="submit"
         disabled={status === "loading"}
-        className="btn-primary disabled:opacity-60 sm:w-auto"
+        className="btn-primary w-full disabled:opacity-60 sm:w-auto"
       >
         {status === "loading" ? "Sending..." : "Send message"}
         {status !== "loading" && <ArrowRight className="h-4 w-4" />}

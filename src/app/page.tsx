@@ -52,23 +52,6 @@ const principles = [
   "Clear, practical execution without generic MSP packaging",
 ];
 
-const reasons = [
-  {
-    number: "01",
-    title: "Operations first",
-    body: "We start with the workflow, the friction point, and the delivery risk before recommending the technology.",
-  },
-  {
-    number: "02",
-    title: "One connected stack",
-    body: "Support, field work, systems, and software are delivered together so ownership stays clear.",
-  },
-  {
-    number: "03",
-    title: "Designed to fit",
-    body: "We do our best work where a business needs a tailored approach, not a standard package with extra jargon.",
-  },
-];
 
 export default function Home() {
   return (
@@ -86,11 +69,11 @@ export default function Home() {
               and product thinking into one consistent team.
             </p>
             <div className="animate-fade-up delay-300 mt-10 flex flex-col items-stretch gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4">
-              <Link href="/contact" className="btn-primary sm:w-auto">
+              <Link href="/contact" className="btn-primary w-full sm:w-auto">
                 Book a consultation
                 <ArrowRight className="h-4 w-4" />
               </Link>
-              <Link href="/services" className="btn-secondary sm:w-auto">
+              <Link href="/services" className="btn-secondary w-full sm:w-auto">
                 Explore services
               </Link>
             </div>
@@ -193,54 +176,56 @@ export default function Home() {
       </section>
 
       <section className="py-16 sm:py-20">
-        <div className="grid gap-6 lg:grid-cols-[1.05fr_0.95fr]">
-          <div className="card overflow-hidden">
-            <div className="bg-[var(--surface-strong)] px-5 py-7 sm:px-8 sm:py-8">
-              <p className="section-eyebrow mb-0">Products</p>
-              <h2 className="mt-4 text-3xl font-semibold tracking-[-0.05em] sm:text-4xl">
-                Purpose-built software for high-friction industries.
-              </h2>
-              <p className="mt-4 max-w-2xl text-sm leading-7 text-[var(--muted)]">
-                Quantrex builds focused products where specialist teams need deeper workflow fit
-                than a generic CRM or operations platform can provide.
+        <div className="mb-10 max-w-3xl">
+          <p className="section-eyebrow">Products</p>
+          <h2 className="text-3xl font-semibold tracking-[-0.05em] sm:text-4xl">
+            Purpose-built software for high-friction industries.
+          </h2>
+          <p className="section-description">
+            Quantrex builds focused products where specialist teams need deeper workflow fit
+            than a generic CRM or operations platform can provide.
+          </p>
+        </div>
+        <div className="grid gap-6 sm:grid-cols-2">
+          <a
+            href="https://visadocket.com.au"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="card block overflow-hidden transition-transform hover:-translate-y-0.5"
+          >
+            <div className="bg-[var(--accent)] px-5 py-7 text-white sm:px-7 sm:py-8">
+              <div className="pill border-white/20 bg-white/10 text-white">Live product</div>
+              <h3 className="mt-5 text-2xl font-semibold tracking-[-0.04em]">VisaDocket</h3>
+              <p className="mt-3 text-sm leading-7 text-white/80">
+                Practice management software for migration professionals covering client
+                workflows, compliance, applications, and document operations.
               </p>
             </div>
-            <a
-              href="https://visadocket.com.au"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block bg-[var(--accent-soft)] px-5 py-7 transition-colors hover:bg-[var(--bg-soft)] sm:px-8 sm:py-8"
-            >
-              <div className="flex items-center justify-between gap-4">
-                <div>
-                  <div className="pill border-[var(--border)] bg-[rgba(255,250,245,0.7)] text-[var(--accent-strong)]">
-                    Live product
-                  </div>
-                  <h3 className="mt-4 text-2xl font-semibold">VisaDocket</h3>
-                  <p className="mt-3 max-w-xl text-sm leading-7 text-[var(--muted)]">
-                    Practice management software for migration professionals covering client
-                    workflows, compliance, applications, and document operations.
-                  </p>
-                </div>
-                <ArrowUpRight className="hidden h-5 w-5 text-[var(--accent-strong)] sm:block" />
-              </div>
-            </a>
-          </div>
+            <div className="flex items-center justify-between gap-4 bg-[var(--surface-strong)] px-5 py-4 sm:px-7">
+              <span className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--accent-strong)]">
+                visadocket.com.au
+              </span>
+              <ArrowUpRight className="h-4 w-4 text-[var(--accent-strong)]" />
+            </div>
+          </a>
 
-          <div className="card p-5 sm:p-8">
-            <p className="section-eyebrow mb-6">Why Quantrex</p>
-            <div className="space-y-6">
-              {reasons.map((item) => (
-                <div key={item.number} className="flex gap-4">
-                  <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[var(--accent-light)] font-mono text-xs text-[var(--accent-strong)]">
-                    {item.number}
-                  </div>
-                  <div>
-                    <h3 className="text-base font-semibold">{item.title}</h3>
-                    <p className="mt-2 text-sm leading-7 text-[var(--muted)]">{item.body}</p>
-                  </div>
-                </div>
-              ))}
+          <div className="card overflow-hidden">
+            <div className="bg-[var(--eva-brand)] px-5 py-7 text-white sm:px-7 sm:py-8">
+              <div className="pill border-white/20 bg-white/10 text-white">In development</div>
+              <h3 className="mt-5 text-2xl font-semibold tracking-[-0.04em]">Eva&apos;s Fashion Hub</h3>
+              <p className="mt-3 text-sm leading-7 text-white/80">
+                A styling-led fashion storefront for curated looks, coordinated outfits, and
+                affordable discovery with AI-powered retail features.
+              </p>
+            </div>
+            <div className="flex items-center justify-between gap-4 bg-[var(--surface-strong)] px-5 py-4 sm:px-7">
+              <Link
+                href="/products"
+                className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--muted)] transition-colors hover:text-[var(--text)]"
+              >
+                Learn more
+              </Link>
+              <ChevronRight className="h-4 w-4 text-[var(--muted)]" />
             </div>
           </div>
         </div>
