@@ -6,9 +6,9 @@ import { SectionIntro } from "@/components/section";
 import { createSeoMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = createSeoMetadata({
-  title: "About Quantrex - Melbourne Technology Company",
+  title: "About Quantrex — Melbourne Technology Company",
   description:
-    "Learn about Quantrex, a Melbourne technology company delivering IT support, field engineering, custom software, and SaaS products for growing businesses.",
+    "Quantrex is a Melbourne technology company founded by Naveen Gugulothu, delivering IT support, field engineering, and custom software for Australian SMBs.",
   path: "/about",
   keywords: ["about Quantrex", "Melbourne technology company", "Quantrex Pty Ltd"],
 });
@@ -35,6 +35,56 @@ const values = [
 export default function AboutPage() {
   return (
     <SiteShell>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify([
+            {
+              "@context": "https://schema.org",
+              "@type": "Person",
+              name: "Naveen Gugulothu",
+              jobTitle: "Founder & CEO",
+              worksFor: {
+                "@type": "Organization",
+                name: "Quantrex",
+                url: "https://quantrex.com.au",
+              },
+              email: "naveen@quantrex.com.au",
+              sameAs: ["https://linkedin.com/in/naveengugulothu"],
+            },
+            {
+              "@context": "https://schema.org",
+              "@type": "Person",
+              name: "Supriya Bhukya",
+              jobTitle: "Co-Founder",
+              worksFor: {
+                "@type": "Organization",
+                name: "Quantrex",
+                url: "https://quantrex.com.au",
+              },
+              email: "supriya@quantrex.com.au",
+            },
+            {
+              "@context": "https://schema.org",
+              "@type": "BreadcrumbList",
+              itemListElement: [
+                {
+                  "@type": "ListItem",
+                  position: 1,
+                  name: "Home",
+                  item: "https://quantrex.com.au",
+                },
+                {
+                  "@type": "ListItem",
+                  position: 2,
+                  name: "About",
+                  item: "https://quantrex.com.au/about",
+                },
+              ],
+            },
+          ]),
+        }}
+      />
       <section className="py-12 sm:py-16">
         <SectionIntro
           eyebrow="About"

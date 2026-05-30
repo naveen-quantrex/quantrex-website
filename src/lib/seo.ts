@@ -36,11 +36,20 @@ export function createSeoMetadata({
       siteName,
       locale: "en_AU",
       type: "website",
+      images: [
+        {
+          url: "/og",
+          width: 1200,
+          height: 630,
+          alt: "Quantrex — IT Support, Field Engineering & Custom Software, Melbourne",
+        },
+      ],
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
+      images: ["/og"],
     },
     robots: noIndex
       ? {

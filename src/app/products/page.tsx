@@ -5,9 +5,9 @@ import { SectionIntro } from "@/components/section";
 import { createSeoMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = createSeoMetadata({
-  title: "Products — VisaDocket & Eva's Fashion Hub",
+  title: "Migration Practice Software & Fashion SaaS",
   description:
-    "Quantrex software products for specialist industries: VisaDocket for migration professionals and Eva's Fashion Hub for boutique fashion retail.",
+    "Quantrex builds focused software products for specialist industries — VisaDocket for migration professionals and Eva's Fashion Hub for boutique fashion retail.",
   path: "/products",
   keywords: [
     "VisaDocket",
@@ -22,6 +22,50 @@ export const metadata: Metadata = createSeoMetadata({
 export default function ProductsPage() {
   return (
     <SiteShell>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify([
+            {
+              "@context": "https://schema.org",
+              "@type": "SoftwareApplication",
+              name: "VisaDocket",
+              url: "https://visadocket.com.au",
+              applicationCategory: "BusinessApplication",
+              operatingSystem: "Web",
+              description:
+                "Practice management software for migration professionals covering client workflows, compliance, applications, and document operations.",
+              offers: {
+                "@type": "Offer",
+                availability: "https://schema.org/InStock",
+              },
+              creator: {
+                "@type": "Organization",
+                name: "Quantrex",
+                url: "https://quantrex.com.au",
+              },
+            },
+            {
+              "@context": "https://schema.org",
+              "@type": "BreadcrumbList",
+              itemListElement: [
+                {
+                  "@type": "ListItem",
+                  position: 1,
+                  name: "Home",
+                  item: "https://quantrex.com.au",
+                },
+                {
+                  "@type": "ListItem",
+                  position: 2,
+                  name: "Products",
+                  item: "https://quantrex.com.au/products",
+                },
+              ],
+            },
+          ]),
+        }}
+      />
       <section className="py-12 sm:py-16">
         <SectionIntro
           eyebrow="Products"

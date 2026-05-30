@@ -6,7 +6,7 @@ import { ContactForm } from "@/components/contact-form";
 import { createSeoMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = createSeoMetadata({
-  title: "Contact Quantrex - Get in Touch",
+  title: "Contact Quantrex — Melbourne IT Services",
   description:
     "Contact Quantrex in Melbourne to discuss IT support, field engineering, custom software development, or SaaS product work.",
   path: "/contact",
@@ -16,6 +16,29 @@ export const metadata: Metadata = createSeoMetadata({
 export default function ContactPage() {
   return (
     <SiteShell>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              {
+                "@type": "ListItem",
+                position: 1,
+                name: "Home",
+                item: "https://quantrex.com.au",
+              },
+              {
+                "@type": "ListItem",
+                position: 2,
+                name: "Contact",
+                item: "https://quantrex.com.au/contact",
+              },
+            ],
+          }),
+        }}
+      />
       <section className="py-12 sm:py-16">
         <SectionIntro
           eyebrow="Contact"

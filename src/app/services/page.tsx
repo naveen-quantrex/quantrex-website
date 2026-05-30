@@ -15,9 +15,9 @@ import { SectionIntro } from "@/components/section";
 import { createSeoMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = createSeoMetadata({
-  title: "Services - IT Support, Field Engineering & Custom Software",
+  title: "IT Support & Field Engineering Melbourne",
   description:
-    "Explore Quantrex services for Australian businesses, including IT support, field engineering, custom software development, infrastructure management, and SaaS product strategy.",
+    "Quantrex provides IT support, field engineering, custom software, infrastructure management, and product strategy for Australian businesses.",
   path: "/services",
   keywords: [
     "IT support Melbourne",
@@ -88,6 +88,143 @@ const serviceGroups = [
 export default function ServicesPage() {
   return (
     <SiteShell>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "ItemList",
+            name: "Quantrex IT Services",
+            itemListElement: [
+              {
+                "@type": "ListItem",
+                position: 1,
+                item: {
+                  "@type": "Service",
+                  name: "IT Support",
+                  description:
+                    "Responsive coverage for devices, users, networks, and day-to-day issues that slow teams down.",
+                  provider: {
+                    "@type": "LocalBusiness",
+                    name: "Quantrex",
+                    url: "https://quantrex.com.au",
+                  },
+                  areaServed: "Australia",
+                  serviceType: "IT Support",
+                },
+              },
+              {
+                "@type": "ListItem",
+                position: 2,
+                item: {
+                  "@type": "Service",
+                  name: "Field Engineering",
+                  description:
+                    "Onsite delivery for installations, upgrades, rollouts, and troubleshooting across physical sites.",
+                  provider: {
+                    "@type": "LocalBusiness",
+                    name: "Quantrex",
+                    url: "https://quantrex.com.au",
+                  },
+                  areaServed: "Australia",
+                  serviceType: "Field Engineering",
+                },
+              },
+              {
+                "@type": "ListItem",
+                position: 3,
+                item: {
+                  "@type": "Service",
+                  name: "Custom Software",
+                  description:
+                    "Internal tools, workflow systems, and portals shaped around the way your operation actually runs.",
+                  provider: {
+                    "@type": "LocalBusiness",
+                    name: "Quantrex",
+                    url: "https://quantrex.com.au",
+                  },
+                  areaServed: "Australia",
+                  serviceType: "Custom Software Development",
+                },
+              },
+              {
+                "@type": "ListItem",
+                position: 4,
+                item: {
+                  "@type": "Service",
+                  name: "Infrastructure & Systems",
+                  description:
+                    "Systems reviews, cloud-connected integrations, and reliable foundations for business continuity.",
+                  provider: {
+                    "@type": "LocalBusiness",
+                    name: "Quantrex",
+                    url: "https://quantrex.com.au",
+                  },
+                  areaServed: "Australia",
+                  serviceType: "Infrastructure Management",
+                },
+              },
+              {
+                "@type": "ListItem",
+                position: 5,
+                item: {
+                  "@type": "Service",
+                  name: "Security-Minded Delivery",
+                  description:
+                    "Sensible controls and operational resilience for regulated or risk-sensitive workflows.",
+                  provider: {
+                    "@type": "LocalBusiness",
+                    name: "Quantrex",
+                    url: "https://quantrex.com.au",
+                  },
+                  areaServed: "Australia",
+                  serviceType: "IT Security",
+                },
+              },
+              {
+                "@type": "ListItem",
+                position: 6,
+                item: {
+                  "@type": "Service",
+                  name: "Product Strategy",
+                  description:
+                    "Early shaping for focused software ideas, MVP design and delivery planning, long-term iteration for niche markets.",
+                  provider: {
+                    "@type": "LocalBusiness",
+                    name: "Quantrex",
+                    url: "https://quantrex.com.au",
+                  },
+                  areaServed: "Australia",
+                  serviceType: "Product Strategy",
+                },
+              },
+            ],
+          }),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              {
+                "@type": "ListItem",
+                position: 1,
+                name: "Home",
+                item: "https://quantrex.com.au",
+              },
+              {
+                "@type": "ListItem",
+                position: 2,
+                name: "Services",
+                item: "https://quantrex.com.au/services",
+              },
+            ],
+          }),
+        }}
+      />
       <section className="py-12 sm:py-16">
         <SectionIntro
           eyebrow="Services"
@@ -97,7 +234,7 @@ export default function ServicesPage() {
       </section>
 
       <section className="py-12 sm:py-16">
-        <h2 className="section-eyebrow mb-8">What we offer</h2>
+        <p className="section-eyebrow mb-8">What we offer</p>
         <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
           {serviceGroups.map((service) => (
             <div key={service.title} className="card flex flex-col p-5 sm:p-7">

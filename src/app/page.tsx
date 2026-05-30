@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import {
   ArrowRight,
@@ -12,6 +13,14 @@ import {
   Laptop,
 } from "lucide-react";
 import { SiteShell } from "@/components/site-shell";
+import { createSeoMetadata } from "@/lib/seo";
+
+export const metadata: Metadata = createSeoMetadata({
+  title: "Quantrex Melbourne | IT Support & Field Engineering",
+  description:
+    "Quantrex delivers IT support, field engineering, and custom software for growing Australian businesses. Melbourne-based technology partner.",
+  path: "/",
+});
 
 const services = [
   {
