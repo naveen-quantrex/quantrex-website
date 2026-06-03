@@ -119,10 +119,10 @@ export default function PrivacyPage() {
                 If you have any questions about this policy or wish to request deletion of your
                 data, contact us at{" "}
                 <a
-                  href="mailto:naveen@quantrex.com.au"
+                  href="mailto:hello@quantrex.com.au"
                   className="text-[var(--accent-strong)] underline underline-offset-2 transition-opacity hover:opacity-80"
                 >
-                  naveen@quantrex.com.au
+                  hello@quantrex.com.au
                 </a>
                 .
               </p>

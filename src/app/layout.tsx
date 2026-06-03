@@ -74,7 +74,7 @@ const structuredData = [
     name: "Quantrex",
     legalName: "Quantrex Pty Ltd",
     url: "https://quantrex.com.au",
-    email: "naveen@quantrex.com.au",
+    email: "hello@quantrex.com.au",
     telephone: "+61466300421",
     image: "https://quantrex.com.au/og",
     logo: "https://quantrex.com.au/og",

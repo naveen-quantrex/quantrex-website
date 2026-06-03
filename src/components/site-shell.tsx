@@ -83,11 +83,11 @@ export function SiteShell({
                 <div>
                   <p className="panel-label">Contact</p>
                   <div className="mt-4 space-y-3 text-sm text-[var(--muted)]">
-                    <a href="mailto:naveen@quantrex.com.au" className="block break-all hover:text-[var(--text)]">
-                      naveen@quantrex.com.au
+                    <a href="mailto:hello@quantrex.com.au" className="block break-all hover:text-[var(--text)]">
+                      hello@quantrex.com.au
                     </a>
-                    <a href="mailto:supriya@quantrex.com.au" className="block break-all hover:text-[var(--text)]">
-                      supriya@quantrex.com.au
+                    <a href="mailto:support@quantrex.com.au" className="block break-all hover:text-[var(--text)]">
+                      support@quantrex.com.au
                     </a>
                     <a href="tel:+61466300421" className="block hover:text-[var(--text)]">
                       0466 300 421
