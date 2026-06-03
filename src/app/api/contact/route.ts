@@ -18,7 +18,7 @@ export async function POST(req: Request) {
 
     await resend.emails.send({
       from: "Quantrex Website <onboarding@resend.dev>",
-      to: "naveen@quantrex.com.au",
+      to: "hello@quantrex.com.au",
       replyTo: email,
       subject: `New enquiry from ${name}${service ? ` - ${service}` : ""}`,
       html: `

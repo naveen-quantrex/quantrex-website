@@ -50,10 +50,10 @@ export function MobileMenu() {
           })}
           <div className="fine-rule pt-4">
             <a
-              href="mailto:naveen@quantrex.com.au"
+              href="mailto:hello@quantrex.com.au"
               className="block break-all rounded-2xl px-4 py-3 font-mono text-xs uppercase tracking-[0.18em] text-[var(--muted)]"
             >
-              naveen@quantrex.com.au
+              hello@quantrex.com.au
             </a>
           </div>
         </nav>

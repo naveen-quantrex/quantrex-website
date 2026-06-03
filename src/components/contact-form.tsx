@@ -155,7 +155,7 @@ export function ContactForm() {
 
       {status === "error" && (
         <p role="alert" aria-live="polite" className="text-sm text-[var(--error)]">
-          Something went wrong. Please email us directly at naveen@quantrex.com.au
+          Something went wrong. Please email us directly at hello@quantrex.com.au
         </p>
       )}
 

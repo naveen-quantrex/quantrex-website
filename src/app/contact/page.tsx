@@ -58,11 +58,11 @@ export default function ContactPage() {
                 title: "Email",
                 content: (
                   <div className="mt-1 space-y-1 text-sm text-[var(--muted)]">
-                    <a href="mailto:naveen@quantrex.com.au" className="block hover:text-[var(--text)]">
-                      naveen@quantrex.com.au
+                    <a href="mailto:hello@quantrex.com.au" className="block hover:text-[var(--text)]">
+                      hello@quantrex.com.au
                     </a>
-                    <a href="mailto:supriya@quantrex.com.au" className="block hover:text-[var(--text)]">
-                      supriya@quantrex.com.au
+                    <a href="mailto:support@quantrex.com.au" className="block hover:text-[var(--text)]">
+                      support@quantrex.com.au
                     </a>
                   </div>
                 ),
