@@ -50,7 +50,7 @@ export default function AboutPage() {
                 url: "https://quantrex.com.au",
               },
               email: "naveen@quantrex.com.au",
-              sameAs: ["https://linkedin.com/in/naveengugulothu"],
+              sameAs: ["https://www.linkedin.com/in/naveen-gugulothu/"],
             },
             {
               "@context": "https://schema.org",
@@ -153,7 +153,7 @@ export default function AboutPage() {
                     naveen@quantrex.com.au
                   </a>
                   <a
-                    href="https://linkedin.com/in/naveengugulothu"
+                    href="https://www.linkedin.com/in/naveen-gugulothu/"
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="LinkedIn profile (opens in new tab)"

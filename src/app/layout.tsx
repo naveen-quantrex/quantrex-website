@@ -102,7 +102,7 @@ const structuredData = [
       opens: "09:00",
       closes: "18:00",
     },
-    sameAs: ["https://linkedin.com/in/naveengugulothu"],
+    sameAs: ["https://www.linkedin.com/in/naveen-gugulothu/"],
     areaServed: { "@type": "Country", name: "Australia" },
     priceRange: "$$",
     knowsAbout: [
