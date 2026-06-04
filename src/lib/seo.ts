@@ -13,6 +13,14 @@ type SeoConfig = {
   noIndex?: boolean;
 };
 
+const baseKeywords = [
+  "Quantrex",
+  "quantrex.com.au",
+  "Quantrex Pty Ltd",
+  "IT support Melbourne",
+  "field engineering Australia",
+];
+
 export function createSeoMetadata({
   title,
   description,
@@ -25,7 +33,7 @@ export function createSeoMetadata({
   return {
     title,
     description,
-    keywords,
+    keywords: [...baseKeywords, ...keywords],
     alternates: {
       canonical: url,
     },

@@ -54,6 +54,9 @@ export const metadata: Metadata = {
     apple: "/apple-touch-icon.png",
   },
   manifest: "/site.webmanifest",
+  verification: {
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
+  },
   robots: {
     index: true,
     follow: true,
@@ -117,8 +120,17 @@ const structuredData = [
     "@context": "https://schema.org",
     "@type": "WebSite",
     name: siteName,
+    alternateName: "Quantrex Pty Ltd",
     url: siteUrl,
     inLanguage: "en-AU",
+    potentialAction: {
+      "@type": "SearchAction",
+      target: {
+        "@type": "EntryPoint",
+        urlTemplate: `${siteUrl}/services?q={search_term_string}`,
+      },
+      "query-input": "required name=search_term_string",
+    },
   },
 ];
 
