@@ -20,6 +20,14 @@ export const metadata: Metadata = createSeoMetadata({
   description:
     "Quantrex delivers IT support, field engineering, and custom software for growing Australian businesses. Melbourne-based technology partner.",
   path: "/",
+  keywords: [
+    "Melbourne IT company",
+    "IT support Melbourne small business",
+    "field engineering Melbourne",
+    "custom software Australia",
+    "technology services Melbourne",
+    "Quantrex Melbourne",
+  ],
 });
 
 const services = [
@@ -62,9 +70,52 @@ const principles = [
 ];
 
 
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "What services does Quantrex offer?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Quantrex offers IT support, field engineering, custom software development, infrastructure management, and vertical SaaS product development for Australian businesses.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Where is Quantrex based?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Quantrex is headquartered in Melbourne, Victoria, Australia, and serves clients across Australia.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What industries does Quantrex work with?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Quantrex works with Australian SMBs across various industries, particularly those with specialist workflows that need more than generic IT or software solutions.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "How do I contact Quantrex?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "You can contact Quantrex by email at hello@quantrex.com.au, by phone at +61 466 300 421, or by submitting the contact form at quantrex.com.au/contact.",
+      },
+    },
+  ],
+};
+
 export default function Home() {
   return (
     <SiteShell>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <section className="pb-16 pt-8 sm:pb-24 sm:pt-16">
         <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
           <div className="max-w-4xl">
