@@ -1,152 +1,82 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
+import { Geist, Geist_Mono } from "next/font/google";
+import { siteConfig } from "@/config/site";
 import { defaultDescription, siteName, siteUrl } from "@/lib/seo";
+import { JsonLd } from "@/lib/json-ld";
+import { SiteShell } from "@/components/site-shell";
 import "./globals.css";
 
-const title = "Quantrex Melbourne | IT Support & Field Engineering";
+const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"], display: "swap" });
+const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"], display: "swap" });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: {
-    default: title,
-    template: "%s | Quantrex",
+    default: `${siteName}: ${siteConfig.tagline}`,
+    template: `%s | ${siteName}`,
   },
   description: defaultDescription,
-  metadataBase: new URL(siteUrl),
   applicationName: siteName,
-  authors: [{ name: "Quantrex Pty Ltd" }],
-  creator: siteName,
-  publisher: siteName,
-  category: "Technology services",
-  keywords: [
-    "Quantrex",
-    "IT support Melbourne",
-    "field engineering Australia",
-    "custom software development",
-    "SaaS product development",
-    "technology services Australia",
-  ],
-  alternates: {
-    canonical: siteUrl,
-  },
+  authors: [{ name: siteConfig.founder.name }],
+  creator: siteConfig.founder.name,
+  alternates: { canonical: siteUrl },
   openGraph: {
-    title,
+    title: `${siteName}: ${siteConfig.tagline}`,
     description: defaultDescription,
     url: siteUrl,
     siteName,
-    locale: "en_AU",
+    locale: siteConfig.locale,
     type: "website",
-    images: [
-      {
-        url: "/og",
-        width: 1200,
-        height: 630,
-        alt: "Quantrex — IT Support, Field Engineering & Custom Software, Melbourne",
-      },
-    ],
+    images: [{ url: "/og", width: 1200, height: 630, alt: `${siteName}: ${siteConfig.tagline}` }],
   },
   twitter: {
     card: "summary_large_image",
-    title,
+    title: `${siteName}: ${siteConfig.tagline}`,
     description: defaultDescription,
     images: ["/og"],
   },
-  icons: {
-    icon: "/favicon.ico",
-    apple: "/apple-touch-icon.png",
-  },
-  manifest: "/site.webmanifest",
-  verification: {
-    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-      "max-video-preview": -1,
-    },
-  },
+  verification: { google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION },
+  robots: { index: true, follow: true },
 };
 
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#fafaf9" },
+    { media: "(prefers-color-scheme: dark)", color: "#0b1020" },
+  ],
+};
+
+// Only facts that are true today: a brand, a website, a contact address and a location.
+// No legal name, ABN, opening hours, geo-coordinates or price range are published.
 const structuredData = [
   {
     "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    name: "Quantrex",
-    legalName: "Quantrex Pty Ltd",
-    url: "https://quantrex.com.au",
-    email: "hello@quantrex.com.au",
-    telephone: "+61466300421",
-    image: "https://quantrex.com.au/og",
-    logo: "https://quantrex.com.au/og",
-    address: {
-      "@type": "PostalAddress",
-      addressLocality: "Melbourne",
-      addressRegion: "VIC",
-      postalCode: "3000",
-      addressCountry: "AU",
-    },
-    geo: {
-      "@type": "GeoCoordinates",
-      latitude: -37.8136,
-      longitude: 144.9631,
-    },
-    openingHoursSpecification: {
-      "@type": "OpeningHoursSpecification",
-      dayOfWeek: [
-        "Monday",
-        "Tuesday",
-        "Wednesday",
-        "Thursday",
-        "Friday",
-      ],
-      opens: "09:00",
-      closes: "18:00",
-    },
-    sameAs: ["https://www.linkedin.com/in/naveen-gugulothu/"],
-    areaServed: { "@type": "Country", name: "Australia" },
-    priceRange: "$$",
-    knowsAbout: [
-      "IT support",
-      "Field engineering",
-      "Custom software development",
-      "Vertical SaaS",
-      "Infrastructure management",
-    ],
+    "@type": "Organization",
+    name: siteName,
+    ...(siteConfig.legalName ? { legalName: siteConfig.legalName } : {}),
+    url: siteUrl,
+    logo: `${siteUrl}/icon`,
+    email: siteConfig.contactEmail,
+    description: defaultDescription,
+    address: { "@type": "PostalAddress", addressLocality: "Melbourne", addressCountry: "AU" },
+    founder: { "@type": "Person", name: siteConfig.founder.name },
+    ...(siteConfig.social.length ? { sameAs: siteConfig.social.map((s) => s.href) } : {}),
   },
   {
     "@context": "https://schema.org",
     "@type": "WebSite",
     name: siteName,
-    alternateName: "Quantrex Pty Ltd",
     url: siteUrl,
     inLanguage: "en-AU",
-    potentialAction: {
-      "@type": "SearchAction",
-      target: {
-        "@type": "EntryPoint",
-        urlTemplate: `${siteUrl}/services?q={search_term_string}`,
-      },
-      "query-input": "required name=search_term_string",
-    },
   },
 ];
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en-AU">
+    <html lang="en-AU" className={`${geistSans.variable} ${geistMono.variable}`}>
       <body className="antialiased">
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-        />
-        {children}
+        <JsonLd data={structuredData} />
+        <SiteShell>{children}</SiteShell>
       </body>
     </html>
   );

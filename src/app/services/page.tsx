@@ -1,309 +1,74 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import {
-  ArrowRight,
-  CheckCircle2,
-  Cloud,
-  Headphones,
-  Network,
-  ShieldCheck,
-  Workflow,
-  Wrench,
-} from "lucide-react";
-import { SiteShell } from "@/components/site-shell";
-import { SectionIntro } from "@/components/section";
+import { ArrowRight, Check } from "lucide-react";
+import { services, workSteps } from "@/config/content";
+import { Container, PageHeader, SectionHeading } from "@/components/section";
 import { createSeoMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = createSeoMetadata({
-  title: "IT Support & Field Engineering Melbourne",
+  title: "Services: custom software, AI automation and IT support",
   description:
-    "Quantrex provides IT support, field engineering, custom software, infrastructure management, and product strategy for Australian businesses.",
+    "Custom software, AI and workflow automation, product and MVP builds, and hands-on IT support for small and growing businesses in Melbourne.",
   path: "/services",
-  keywords: [
-    "IT support Melbourne",
-    "field engineering Australia",
-    "custom software development Australia",
-    "infrastructure management",
-    "SaaS product strategy",
-  ],
 });
-
-const serviceGroups = [
-  {
-    title: "IT Support",
-    icon: Headphones,
-    points: [
-      "User support and issue resolution",
-      "Devices, email, and connectivity troubleshooting",
-      "Managed maintenance for stable day-to-day operations",
-    ],
-  },
-  {
-    title: "Field Engineering",
-    icon: Wrench,
-    points: [
-      "Onsite deployments and installations",
-      "Hardware rollouts and replacements",
-      "Hands-on engineering and site troubleshooting",
-    ],
-  },
-  {
-    title: "Custom Software",
-    icon: Workflow,
-    points: [
-      "Internal tools and workflow systems",
-      "Operational dashboards and portals",
-      "Automation for repetitive manual processes",
-    ],
-  },
-  {
-    title: "Infrastructure & Systems",
-    icon: Network,
-    points: [
-      "Systems reviews and technical improvements",
-      "Cloud-connected applications and integrations",
-      "Reliable foundations for business continuity",
-    ],
-  },
-  {
-    title: "Security-Minded Delivery",
-    icon: ShieldCheck,
-    points: [
-      "Sensible controls and operational resilience",
-      "Support for regulated or risk-sensitive workflows",
-      "Clear documentation and maintainable setups",
-    ],
-  },
-  {
-    title: "Product Strategy",
-    icon: Cloud,
-    points: [
-      "Early shaping for focused software ideas",
-      "MVP design and delivery planning",
-      "Long-term iteration for niche markets",
-    ],
-  },
-];
 
 export default function ServicesPage() {
   return (
-    <SiteShell>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "ItemList",
-            name: "Quantrex IT Services",
-            itemListElement: [
-              {
-                "@type": "ListItem",
-                position: 1,
-                item: {
-                  "@type": "Service",
-                  name: "IT Support",
-                  description:
-                    "Responsive coverage for devices, users, networks, and day-to-day issues that slow teams down.",
-                  provider: {
-                    "@type": "LocalBusiness",
-                    name: "Quantrex",
-                    url: "https://quantrex.com.au",
-                  },
-                  areaServed: "Australia",
-                  serviceType: "IT Support",
-                },
-              },
-              {
-                "@type": "ListItem",
-                position: 2,
-                item: {
-                  "@type": "Service",
-                  name: "Field Engineering",
-                  description:
-                    "Onsite delivery for installations, upgrades, rollouts, and troubleshooting across physical sites.",
-                  provider: {
-                    "@type": "LocalBusiness",
-                    name: "Quantrex",
-                    url: "https://quantrex.com.au",
-                  },
-                  areaServed: "Australia",
-                  serviceType: "Field Engineering",
-                },
-              },
-              {
-                "@type": "ListItem",
-                position: 3,
-                item: {
-                  "@type": "Service",
-                  name: "Custom Software",
-                  description:
-                    "Internal tools, workflow systems, and portals shaped around the way your operation actually runs.",
-                  provider: {
-                    "@type": "LocalBusiness",
-                    name: "Quantrex",
-                    url: "https://quantrex.com.au",
-                  },
-                  areaServed: "Australia",
-                  serviceType: "Custom Software Development",
-                },
-              },
-              {
-                "@type": "ListItem",
-                position: 4,
-                item: {
-                  "@type": "Service",
-                  name: "Infrastructure & Systems",
-                  description:
-                    "Systems reviews, cloud-connected integrations, and reliable foundations for business continuity.",
-                  provider: {
-                    "@type": "LocalBusiness",
-                    name: "Quantrex",
-                    url: "https://quantrex.com.au",
-                  },
-                  areaServed: "Australia",
-                  serviceType: "Infrastructure Management",
-                },
-              },
-              {
-                "@type": "ListItem",
-                position: 5,
-                item: {
-                  "@type": "Service",
-                  name: "Security-Minded Delivery",
-                  description:
-                    "Sensible controls and operational resilience for regulated or risk-sensitive workflows.",
-                  provider: {
-                    "@type": "LocalBusiness",
-                    name: "Quantrex",
-                    url: "https://quantrex.com.au",
-                  },
-                  areaServed: "Australia",
-                  serviceType: "IT Security",
-                },
-              },
-              {
-                "@type": "ListItem",
-                position: 6,
-                item: {
-                  "@type": "Service",
-                  name: "Product Strategy",
-                  description:
-                    "Early shaping for focused software ideas, MVP design and delivery planning, long-term iteration for niche markets.",
-                  provider: {
-                    "@type": "LocalBusiness",
-                    name: "Quantrex",
-                    url: "https://quantrex.com.au",
-                  },
-                  areaServed: "Australia",
-                  serviceType: "Product Strategy",
-                },
-              },
-            ],
-          }),
-        }}
+    <>
+      <PageHeader
+        eyebrow="Services"
+        title="Software, automation and IT help, from one person you can reach"
+        description="Pick one service or combine them. Each project starts with a short call and a written scope."
       />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "BreadcrumbList",
-            itemListElement: [
-              {
-                "@type": "ListItem",
-                position: 1,
-                name: "Home",
-                item: "https://quantrex.com.au",
-              },
-              {
-                "@type": "ListItem",
-                position: 2,
-                name: "Services",
-                item: "https://quantrex.com.au/services",
-              },
-            ],
-          }),
-        }}
-      />
-      <section className="py-12 sm:py-16">
-        <SectionIntro
-          eyebrow="Services"
-          title="Technology services that keep the operation steady and moving."
-          description="Quantrex supports clients across day-to-day IT operations, onsite engineering work, custom software delivery, and long-term product development."
-        />
+
+      <section className="py-16 sm:py-20" aria-label="Services">
+        <Container>
+          <ul className="grid gap-5 md:grid-cols-2">
+            {services.map((s) => (
+              <li key={s.slug} id={s.slug} className="card scroll-mt-24 p-6 sm:p-8">
+                <h2 className="text-2xl font-semibold tracking-tight">{s.title}</h2>
+                <p className="mt-2 leading-7 text-muted">{s.summary}</p>
+                <ul className="mt-5 space-y-3">
+                  {s.points.map((point) => (
+                    <li key={point} className="flex items-start gap-3 text-[0.95rem] leading-6">
+                      <Check className="mt-0.5 h-5 w-5 shrink-0 text-accent" aria-hidden="true" />
+                      <span>{point}</span>
+                    </li>
+                  ))}
+                </ul>
+              </li>
+            ))}
+          </ul>
+        </Container>
       </section>
 
-      <section className="py-12 sm:py-16">
-        <p className="section-eyebrow mb-8">What we offer</p>
-        <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-          {serviceGroups.map((service) => (
-            <div key={service.title} className="card flex flex-col p-5 sm:p-7">
-              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[var(--accent-light)] text-[var(--accent-strong)]">
-                <service.icon className="h-5 w-5" />
-              </div>
-              <h3 className="mt-5 text-2xl font-semibold tracking-[-0.04em]">{service.title}</h3>
-              <ul className="mt-5 flex-1 space-y-3">
-                {service.points.map((point) => (
-                  <li key={point} className="flex items-start gap-3 text-sm leading-6 text-[var(--muted)]">
-                    <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-[var(--accent-strong)]" />
-                    {point}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section className="pb-20 pt-8">
-        <div className="card overflow-hidden">
-          <div className="grid lg:grid-cols-[0.8fr_1.2fr]">
-            <div className="bg-[var(--accent-soft)] px-5 py-8 sm:px-8 sm:py-10">
-              <h2 className="panel-label text-[var(--text)]">How we work</h2>
-              <h2 className="mt-4 text-3xl font-semibold tracking-[-0.05em]">
-                Diagnose clearly. Deliver the right layer. Improve from there.
-              </h2>
-            </div>
-            <div className="px-5 py-8 sm:px-8 sm:py-10">
-              <div className="grid gap-8 md:grid-cols-3">
-                {[
-                  {
-                    step: "01",
-                    title: "Understand the operation",
-                    body: "We begin with the workflow, support gap, or systems friction that is slowing the team down.",
-                  },
-                  {
-                    step: "02",
-                    title: "Deliver the right mix",
-                    body: "That may be support coverage, onsite engineering, custom software, or a combination of all three.",
-                  },
-                  {
-                    step: "03",
-                    title: "Build momentum",
-                    body: "Once the operation is stable, we create leverage through better tooling, systems, and automation.",
-                  },
-                ].map((item) => (
-                  <div key={item.step} className="flex gap-4">
-                    <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[var(--bg-soft)] font-mono text-xs text-[var(--accent-strong)]">
-                      {item.step}
-                    </div>
-                    <div>
-                      <h3 className="text-base font-semibold">{item.title}</h3>
-                      <p className="mt-2 text-sm leading-7 text-[var(--muted)]">{item.body}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-              <div className="mt-10">
-                <Link href="/contact" className="btn-primary sm:w-auto">
-                  Discuss your requirements
-                  <ArrowRight className="h-4 w-4" />
-                </Link>
-              </div>
-            </div>
+      <section className="border-y border-line bg-surface-2 py-16 sm:py-20">
+        <Container>
+          <div>
+            <SectionHeading eyebrow="How we work" title="From first call to launch" />
           </div>
-        </div>
+          <ol className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+            {workSteps.map((step, i) => (
+              <li key={step.title} className="card p-6">
+                <span className="font-mono text-sm font-medium text-accent">{String(i + 1).padStart(2, "0")}</span>
+                <h3 className="mt-3 text-lg font-semibold tracking-tight">{step.title}</h3>
+                <p className="mt-2 text-[0.95rem] leading-7 text-muted">{step.text}</p>
+              </li>
+            ))}
+          </ol>
+        </Container>
       </section>
-    </SiteShell>
+
+      <section className="py-16 sm:py-20">
+        <Container className="flex flex-col items-start gap-5">
+          <h2 className="h-section max-w-xl">Not sure which one you need?</h2>
+          <p className="lead max-w-xl">Describe the problem and I will tell you honestly whether I can help, and how.</p>
+          <Link href="/contact" className="btn btn-primary">
+            Get in touch
+            <ArrowRight className="h-4 w-4" aria-hidden="true" />
+          </Link>
+        </Container>
+      </section>
+    </>
   );
 }

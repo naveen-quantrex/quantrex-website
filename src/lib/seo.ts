@@ -1,80 +1,36 @@
 import type { Metadata } from "next";
+import { siteConfig } from "@/config/site";
 
-export const siteUrl = "https://quantrex.com.au";
-export const siteName = "Quantrex";
-export const defaultDescription =
-  "Quantrex delivers IT support, field engineering, custom software development, and SaaS products for growing businesses in Australia.";
+export const siteUrl = siteConfig.url;
+export const siteName = siteConfig.name;
+export const defaultDescription = siteConfig.description;
 
 type SeoConfig = {
+  /** Page title without the brand suffix (the layout template appends it). */
   title: string;
   description: string;
   path?: string;
-  keywords?: string[];
   noIndex?: boolean;
 };
 
-const baseKeywords = [
-  "Quantrex",
-  "quantrex.com.au",
-  "Quantrex Pty Ltd",
-  "IT support Melbourne",
-  "field engineering Australia",
-];
-
-export function createSeoMetadata({
-  title,
-  description,
-  path = "/",
-  keywords = [],
-  noIndex = false,
-}: SeoConfig): Metadata {
+export function createSeoMetadata({ title, description, path = "/", noIndex = false }: SeoConfig): Metadata {
   const url = new URL(path, siteUrl).toString();
+  const ogTitle = `${title} | ${siteName}`;
 
   return {
     title,
     description,
-    keywords: [...baseKeywords, ...keywords],
-    alternates: {
-      canonical: url,
-    },
+    alternates: { canonical: url },
     openGraph: {
-      title,
+      title: ogTitle,
       description,
       url,
       siteName,
-      locale: "en_AU",
+      locale: siteConfig.locale,
       type: "website",
-      images: [
-        {
-          url: "/og",
-          width: 1200,
-          height: 630,
-          alt: "Quantrex — IT Support, Field Engineering & Custom Software, Melbourne",
-        },
-      ],
+      images: [{ url: "/og", width: 1200, height: 630, alt: `${siteName}: ${siteConfig.tagline}` }],
     },
-    twitter: {
-      card: "summary_large_image",
-      title,
-      description,
-      images: ["/og"],
-    },
-    robots: noIndex
-      ? {
-          index: false,
-          follow: true,
-        }
-      : {
-          index: true,
-          follow: true,
-          googleBot: {
-            index: true,
-            follow: true,
-            "max-image-preview": "large",
-            "max-snippet": -1,
-            "max-video-preview": -1,
-          },
-        },
+    twitter: { card: "summary_large_image", title: ogTitle, description, images: ["/og"] },
+    robots: noIndex ? { index: false, follow: true } : { index: true, follow: true },
   };
 }
-

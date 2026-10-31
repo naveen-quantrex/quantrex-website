@@ -1,241 +1,98 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Building2, Linkedin, Mail, MapPin } from "lucide-react";
-import { SiteShell } from "@/components/site-shell";
-import { SectionIntro } from "@/components/section";
+import { ArrowRight, Linkedin, MapPin } from "lucide-react";
+import { siteConfig } from "@/config/site";
+import { aboutText } from "@/config/content";
+import { Container, PageHeader } from "@/components/section";
+import { JsonLd } from "@/lib/json-ld";
 import { createSeoMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = createSeoMetadata({
-  title: "About Quantrex — Melbourne Technology Company",
-  description:
-    "Quantrex is a Melbourne technology company founded by Naveen Gugulothu, delivering IT support, field engineering, and custom software for Australian SMBs.",
+  title: `About ${siteConfig.name}`,
+  description: `${siteConfig.name} is a small Melbourne software studio run by ${siteConfig.founder.name}.`,
   path: "/about",
-  keywords: ["about Quantrex", "Melbourne technology company", "Quantrex Pty Ltd"],
 });
 
-const values = [
-  {
-    title: "Practical first",
-    description: "We prioritise useful outcomes over complexity for its own sake.",
-  },
-  {
-    title: "Small by design",
-    description: "A focused team means closer communication, stronger judgment, and clear accountability.",
-  },
-  {
-    title: "Built around fit",
-    description: "We care about matching the solution to the way the business actually operates.",
-  },
-  {
-    title: "Long-term thinking",
-    description: "Good systems should reduce friction today and stay maintainable tomorrow.",
-  },
-];
+const initials = siteConfig.founder.name
+  .split(" ")
+  .map((p) => p[0])
+  .slice(0, 2)
+  .join("");
 
 export default function AboutPage() {
   return (
-    <SiteShell>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify([
-            {
-              "@context": "https://schema.org",
-              "@type": "Person",
-              name: "Naveen Gugulothu",
-              jobTitle: "Founder & CEO",
-              worksFor: {
-                "@type": "Organization",
-                name: "Quantrex",
-                url: "https://quantrex.com.au",
-              },
-              email: "naveen@quantrex.com.au",
-              sameAs: ["https://www.linkedin.com/in/naveen-gugulothu/"],
-            },
-            {
-              "@context": "https://schema.org",
-              "@type": "Person",
-              name: "Supriya Bhukya",
-              jobTitle: "Co-Founder",
-              worksFor: {
-                "@type": "Organization",
-                name: "Quantrex",
-                url: "https://quantrex.com.au",
-              },
-              email: "supriya@quantrex.com.au",
-            },
-            {
-              "@context": "https://schema.org",
-              "@type": "BreadcrumbList",
-              itemListElement: [
-                {
-                  "@type": "ListItem",
-                  position: 1,
-                  name: "Home",
-                  item: "https://quantrex.com.au",
-                },
-                {
-                  "@type": "ListItem",
-                  position: 2,
-                  name: "About",
-                  item: "https://quantrex.com.au/about",
-                },
-              ],
-            },
-          ]),
+    <>
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "Person",
+          name: siteConfig.founder.name,
+          jobTitle: siteConfig.founder.role,
+          worksFor: { "@type": "Organization", name: siteConfig.name, url: siteConfig.url },
+          sameAs: [siteConfig.founder.linkedin],
         }}
       />
-      <section className="py-12 sm:py-16">
-        <SectionIntro
-          eyebrow="About"
-          title="Quantrex is built around operational clarity."
-          description="We combine hands-on services with software capability so clients can solve support issues, improve delivery, and build systems that scale properly."
-        />
-      </section>
+      <PageHeader
+        eyebrow="About"
+        title="A small studio, on purpose"
+        description="One developer, direct communication, and software built to be useful rather than impressive."
+      />
 
-      <section className="py-12 sm:py-16">
-        <h2 className="section-eyebrow mb-8">The team</h2>
-        <div className="grid gap-8 lg:grid-cols-[1.05fr_0.95fr]">
-          <div className="card p-5 sm:p-8">
-            <div className="space-y-5 text-sm leading-8 text-[var(--muted)] sm:text-base">
-              <p>
-                Quantrex operates at the intersection of IT services, field engineering, and
-                software development. We work with businesses that need more than a generic managed
-                services provider and more than a software shop that never sees the real-world operation.
-              </p>
-              <p>
-                Some clients need dependable day-to-day IT support and onsite coverage. Others need
-                internal tools, purpose-built software, or a SaaS product designed around a specialist
-                workflow. Quantrex is structured to support both, within the same relationship if needed.
-              </p>
-              <p>
-                The goal is simple: reduce friction in how businesses operate and give teams technology
-                that feels calm, useful, and aligned with the work.
-              </p>
-            </div>
-            <div className="fine-rule mt-8 flex flex-wrap gap-4 pt-6 text-sm text-[var(--muted)]">
-              <span className="flex items-center gap-2">
-                <Building2 className="h-4 w-4 text-[var(--accent-strong)]" />
-                Quantrex Pty Ltd
+      <section className="py-16 sm:py-20">
+        <Container className="grid gap-10 lg:grid-cols-[1.4fr_1fr]">
+          <div className="max-w-2xl space-y-5 text-lg leading-8 text-muted">
+            {aboutText.map((p) => (
+              <p key={p}>{p}</p>
+            ))}
+          </div>
+
+          <aside className="card h-fit p-6 sm:p-8" aria-label="Founder">
+            <div className="flex items-center gap-4">
+              {/* TODO(Naveen): replace the initials with a real photo (public/ + next/image, with alt text). */}
+              <span
+                aria-hidden="true"
+                className="inline-flex h-16 w-16 items-center justify-center rounded-full bg-accent text-xl font-semibold text-accent-ink"
+              >
+                {initials}
               </span>
-              <span className="flex items-center gap-2">
-                <MapPin className="h-4 w-4 text-[var(--accent-strong)]" />
-                Melbourne, Australia
-              </span>
-            </div>
-          </div>
-
-          <div className="space-y-6">
-            <div className="card overflow-hidden">
-              <div className="bg-[var(--accent-soft)] px-5 py-7 sm:px-8 sm:py-8">
-                <div className="flex items-start gap-4">
-                  <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-[var(--accent-strong)] text-base font-semibold text-white">
-                    NG
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-semibold text-[var(--text)]">Naveen Gugulothu</h3>
-                    <p className="text-sm text-[var(--muted)]">Founder & CEO</p>
-                  </div>
-                </div>
-              </div>
-              <div className="px-5 py-7 sm:px-8 sm:py-8">
-                <p className="text-sm leading-7 text-[var(--muted)]">
-                  Technology operator and builder with experience across IT service delivery,
-                  systems integration, and software product development. Naveen leads Quantrex
-                  across service delivery, systems thinking, and product direction.
-                </p>
-                <div className="fine-rule mt-6 flex flex-col gap-3 pt-6 text-sm">
-                  <a
-                    href="mailto:naveen@quantrex.com.au"
-                    className="flex items-center gap-2.5 break-all text-[var(--accent-strong)] transition-opacity hover:opacity-80"
-                  >
-                    <Mail className="h-4 w-4" />
-                    naveen@quantrex.com.au
-                  </a>
-                  <a
-                    href="https://www.linkedin.com/in/naveen-gugulothu/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="LinkedIn profile (opens in new tab)"
-                    className="flex items-center gap-2.5 text-[var(--muted)] transition-colors hover:text-[var(--text)]"
-                  >
-                    <Linkedin className="h-4 w-4" />
-                    LinkedIn profile
-                  </a>
-                </div>
+              <div>
+                <h2 className="text-lg font-semibold">{siteConfig.founder.name}</h2>
+                <p className="text-sm text-muted">{siteConfig.founder.role}</p>
               </div>
             </div>
-
-            <div className="card overflow-hidden">
-              <div className="bg-[var(--taupe)] px-5 py-7 sm:px-8 sm:py-8">
-                <div className="flex items-start gap-4">
-                  <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-[var(--text)] text-base font-semibold text-white">
-                    SB
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-semibold text-[var(--text)]">Supriya Bhukya</h3>
-                    <p className="text-sm text-[var(--muted)]">Co-Founder</p>
-                  </div>
-                </div>
-              </div>
-              <div className="px-5 py-7 sm:px-8 sm:py-8">
-                <p className="text-sm leading-7 text-[var(--muted)]">
-                  Supriya supports the operational side of Quantrex, helping keep delivery,
-                  coordination, and day-to-day business flow structured and dependable.
-                </p>
-                <div className="fine-rule mt-6 flex flex-col gap-3 pt-6 text-sm">
-                  <a
-                    href="mailto:supriya@quantrex.com.au"
-                    className="flex items-center gap-2.5 break-all text-[var(--accent-strong)] transition-opacity hover:opacity-80"
-                  >
-                    <Mail className="h-4 w-4" />
-                    supriya@quantrex.com.au
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+            <ul className="mt-6 space-y-3 border-t border-line pt-5 text-sm">
+              <li className="flex items-center gap-2.5 text-muted">
+                <MapPin className="h-4 w-4" aria-hidden="true" />
+                {siteConfig.location}
+              </li>
+              <li>
+                <a
+                  href={siteConfig.founder.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2.5 font-medium text-accent underline-offset-4 hover:underline"
+                >
+                  <Linkedin className="h-4 w-4" aria-hidden="true" />
+                  LinkedIn
+                  <span className="sr-only"> (opens in a new tab)</span>
+                </a>
+              </li>
+            </ul>
+          </aside>
+        </Container>
       </section>
 
-      <section className="py-12 sm:py-16">
-        <h2 className="section-eyebrow">How we operate</h2>
-        <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
-          {values.map((value) => (
-            <div key={value.title} className="card p-6">
-              <h3 className="text-lg font-semibold tracking-[-0.03em]">{value.title}</h3>
-              <p className="mt-3 text-sm leading-7 text-[var(--muted)]">{value.description}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section className="pb-20 pt-8">
-        <div className="card overflow-hidden">
-          <div className="grid lg:grid-cols-[0.9fr_1.1fr]">
-            <div className="bg-[var(--taupe)] px-5 py-8 sm:px-8 sm:py-10">
-              <p className="panel-label text-[var(--text)]">Work with us</p>
-              <h2 className="mt-4 text-3xl font-semibold tracking-[-0.05em]">
-                Ready to work with a technology partner who delivers?
-              </h2>
-            </div>
-            <div className="px-5 py-8 sm:px-8 sm:py-10">
-              <p className="max-w-xl text-sm leading-7 text-[var(--muted)]">
-                Whether you need ongoing IT support, an onsite engineer, or a system built from
-                scratch, we can start with a practical conversation.
-              </p>
-              <div className="mt-8 flex flex-col items-stretch gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4">
-                <Link href="/contact" className="btn-primary sm:w-auto">
-                  Get in touch
-                </Link>
-                <Link href="/services" className="btn-secondary sm:w-auto">
-                  View services
-                </Link>
-              </div>
-            </div>
+      <section className="pb-20">
+        <Container>
+          <div className="card flex flex-col items-start justify-between gap-6 bg-accent-soft p-8 sm:p-10 md:flex-row md:items-center">
+            <h2 className="h-section max-w-xl">Want to talk about your project?</h2>
+            <Link href="/contact" className="btn btn-primary shrink-0">
+              Get in touch
+              <ArrowRight className="h-4 w-4" aria-hidden="true" />
+            </Link>
           </div>
-        </div>
+        </Container>
       </section>
-    </SiteShell>
+    </>
   );
 }

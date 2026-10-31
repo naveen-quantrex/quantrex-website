@@ -2,62 +2,70 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useEffect, useRef, useState } from "react";
 import { Menu, X } from "lucide-react";
-import { useState } from "react";
-
-const navItems = [
-  { href: "/", label: "Home" },
-  { href: "/services", label: "Services" },
-  { href: "/products", label: "Products" },
-  { href: "/about", label: "About" },
-  { href: "/contact", label: "Contact" },
-];
+import { siteConfig } from "@/config/site";
+import { navItems } from "@/config/nav";
 
 export function MobileMenu() {
   const pathname = usePathname();
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [open, setOpen] = useState(false);
+  const buttonRef = useRef<HTMLButtonElement>(null);
+
+  // Close on Escape and return focus to the toggle.
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setOpen(false);
+        buttonRef.current?.focus();
+      }
+    };
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [open]);
 
   return (
-    <>
+    <div className="md:hidden">
       <button
+        ref={buttonRef}
         type="button"
-        className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-[var(--border)] bg-[var(--surface-strong)] text-[var(--text)] md:hidden"
-        onClick={() => setMenuOpen((value) => !value)}
-        aria-label="Toggle menu"
+        aria-expanded={open}
+        aria-controls="mobile-nav"
+        aria-label={open ? "Close menu" : "Open menu"}
+        onClick={() => setOpen((v) => !v)}
+        className="inline-flex h-11 w-11 items-center justify-center rounded-lg border border-line bg-surface text-ink"
       >
-        {menuOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
+        {open ? <X className="h-5 w-5" aria-hidden="true" /> : <Menu className="h-5 w-5" aria-hidden="true" />}
       </button>
 
-      {menuOpen ? (
-        <nav aria-label="Mobile navigation" className="card mt-3 space-y-2 p-4 md:hidden">
-          {navItems.map((item) => {
-            const active = pathname === item.href;
-
-            return (
-              <Link
-                key={item.href}
-                href={item.href}
-                className={`block rounded-2xl px-4 py-3 text-sm transition-colors ${
-                  active
-                    ? "bg-[var(--accent-light)] text-[var(--accent-strong)]"
-                    : "text-[var(--muted)] hover:bg-[var(--surface-hover)] hover:text-[var(--text)]"
-                }`}
-                onClick={() => setMenuOpen(false)}
-              >
-                {item.label}
-              </Link>
-            );
-          })}
-          <div className="fine-rule pt-4">
-            <a
-              href="mailto:hello@quantrex.com.au"
-              className="block break-all rounded-2xl px-4 py-3 font-mono text-xs uppercase tracking-[0.18em] text-[var(--muted)]"
-            >
-              hello@quantrex.com.au
-            </a>
-          </div>
+      {open ? (
+        <nav
+          id="mobile-nav"
+          aria-label="Mobile"
+          className="absolute inset-x-0 top-full border-b border-line bg-bg px-4 pb-5 pt-2 shadow-lg"
+        >
+          <ul className="mx-auto flex max-w-6xl flex-col">
+            {navItems.map((item) => (
+              <li key={item.href}>
+                <Link
+                  href={item.href}
+                  aria-current={pathname === item.href ? "page" : undefined}
+                  onClick={() => setOpen(false)}
+                  className="block rounded-lg px-3 py-3.5 text-base font-medium aria-[current=page]:text-accent"
+                >
+                  {item.label}
+                </Link>
+              </li>
+            ))}
+            <li className="mt-2">
+              <a href={`mailto:${siteConfig.contactEmail}`} onClick={() => setOpen(false)} className="btn btn-primary w-full">
+                Email {siteConfig.name}
+              </a>
+            </li>
+          </ul>
         </nav>
       ) : null}
-    </>
+    </div>
   );
 }

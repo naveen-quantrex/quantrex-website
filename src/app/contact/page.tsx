@@ -1,106 +1,58 @@
 import type { Metadata } from "next";
 import { Mail, MapPin, Phone } from "lucide-react";
-import { SiteShell } from "@/components/site-shell";
-import { SectionIntro } from "@/components/section";
+import { siteConfig } from "@/config/site";
 import { ContactForm } from "@/components/contact-form";
+import { Container, PageHeader } from "@/components/section";
 import { createSeoMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = createSeoMetadata({
-  title: "Contact Quantrex — Melbourne IT Services",
-  description:
-    "Contact Quantrex in Melbourne to discuss IT support, field engineering, custom software development, or SaaS product work.",
+  title: "Contact",
+  description: `Tell ${siteConfig.name} about your project. Custom software, AI automation and IT support in Melbourne.`,
   path: "/contact",
-  keywords: ["contact Quantrex", "IT support Melbourne contact", "custom software Melbourne"],
 });
 
 export default function ContactPage() {
   return (
-    <SiteShell>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "BreadcrumbList",
-            itemListElement: [
-              {
-                "@type": "ListItem",
-                position: 1,
-                name: "Home",
-                item: "https://quantrex.com.au",
-              },
-              {
-                "@type": "ListItem",
-                position: 2,
-                name: "Contact",
-                item: "https://quantrex.com.au/contact",
-              },
-            ],
-          }),
-        }}
+    <>
+      <PageHeader
+        eyebrow="Contact"
+        title="Tell me what you are trying to fix or build"
+        description="A few sentences is plenty. I will reply by email and, if it looks like a fit, suggest a short call."
       />
-      <section className="py-12 sm:py-16">
-        <SectionIntro
-          eyebrow="Contact"
-          title="Start the conversation."
-          description="If you need IT support, field engineering, custom software, or want to discuss a SaaS idea, Quantrex is ready to talk."
-        />
-      </section>
-
-      <section className="pb-20 pt-8">
-        <div className="grid gap-8 lg:grid-cols-[1.25fr_0.75fr]">
+      <section className="py-16 sm:py-20">
+        <Container className="grid gap-8 lg:grid-cols-[1.4fr_1fr]">
           <ContactForm />
-
-          <div className="space-y-4">
-            {[
-              {
-                icon: Mail,
-                title: "Email",
-                content: (
-                  <div className="mt-1 space-y-1 text-sm text-[var(--muted)]">
-                    <a href="mailto:hello@quantrex.com.au" className="block hover:text-[var(--text)]">
-                      hello@quantrex.com.au
-                    </a>
-                    <a href="mailto:support@quantrex.com.au" className="block hover:text-[var(--text)]">
-                      support@quantrex.com.au
-                    </a>
-                  </div>
-                ),
-              },
-              {
-                icon: Phone,
-                title: "Phone",
-                content: (
-                  <a href="tel:+61466300421" className="mt-1 block text-sm text-[var(--muted)] hover:text-[var(--text)]">
-                    0466 300 421
+          <aside aria-label="Other ways to reach us" className="space-y-4">
+            <div className="card flex items-start gap-4 p-6">
+              <Mail className="mt-0.5 h-5 w-5 text-accent" aria-hidden="true" />
+              <div>
+                <h2 className="font-semibold">Email</h2>
+                <a href={`mailto:${siteConfig.contactEmail}`} className="break-all text-muted underline-offset-4 hover:text-ink hover:underline">
+                  {siteConfig.contactEmail}
+                </a>
+              </div>
+            </div>
+            {siteConfig.phone ? (
+              <div className="card flex items-start gap-4 p-6">
+                <Phone className="mt-0.5 h-5 w-5 text-accent" aria-hidden="true" />
+                <div>
+                  <h2 className="font-semibold">Phone</h2>
+                  <a href={`tel:${siteConfig.phone.replace(/\s/g, "")}`} className="text-muted hover:text-ink">
+                    {siteConfig.phone}
                   </a>
-                ),
-              },
-              {
-                icon: MapPin,
-                title: "Location",
-                content: <div className="mt-1 text-sm text-[var(--muted)]">Melbourne, VIC, Australia</div>,
-              },
-            ].map((item) => (
-              <div key={item.title} className="card p-5 sm:p-6">
-                <div className="flex items-start gap-4">
-                  <item.icon className="mt-1 h-5 w-5 text-[var(--accent-strong)]" />
-                  <div>
-                    <div className="text-sm font-semibold">{item.title}</div>
-                    {item.content}
-                  </div>
                 </div>
               </div>
-            ))}
-            <div className="card bg-[var(--accent-soft)] p-6">
-              <p className="panel-label text-[var(--text)]">Response time</p>
-              <p className="mt-3 text-sm leading-7 text-[var(--muted)]">
-                Usually within one business day.
-              </p>
+            ) : null}
+            <div className="card flex items-start gap-4 p-6">
+              <MapPin className="mt-0.5 h-5 w-5 text-accent" aria-hidden="true" />
+              <div>
+                <h2 className="font-semibold">Location</h2>
+                <p className="text-muted">{siteConfig.location}</p>
+              </div>
             </div>
-          </div>
-        </div>
+          </aside>
+        </Container>
       </section>
-    </SiteShell>
+    </>
   );
 }
