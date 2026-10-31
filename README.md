@@ -1,36 +1,25 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Marketing website
 
-## Getting Started
+Next.js (App Router), TypeScript and Tailwind CSS v4. Deployed on Vercel.
 
-First, run the development server:
+## Develop
 
 ```bash
+npm install
+cp .env.example .env.local   # fill in RESEND_API_KEY to test the contact form
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Checks: `npm run lint`, `npx tsc --noEmit`, `npm run build`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Changing the brand name
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Everything brand-related lives in **`src/config/site.ts`**: name, legal entity (null until one exists, nothing legal is rendered while it is empty), tagline, URL, contact email, social links and logo. Page copy (services, process, projects, about) lives in **`src/config/content.ts`**. The logo mark is **`src/components/logo.tsx`**. The favicon, Apple icon, OG image and web manifest are generated from the same config.
 
-## Learn More
+## Environment variables
 
-To learn more about Next.js, take a look at the following resources:
+See `.env.example`. `RESEND_API_KEY` is required for the contact form; the rest have fallbacks.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Contact form
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+`POST /api/contact` validates with zod (`src/lib/contact-schema.ts`), escapes all input in the email HTML, has a honeypot field and a small in-memory rate limit (5 per 10 minutes per IP, per server instance; add Vercel Firewall rate limiting for a hard limit).

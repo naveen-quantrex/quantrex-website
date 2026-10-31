@@ -1,323 +1,200 @@
+import type { CSSProperties } from "react";
 import type { Metadata } from "next";
 import Link from "next/link";
-import {
-  ArrowRight,
-  ArrowUpRight,
-  Building2,
-  CheckCircle2,
-  ChevronRight,
-  MapPin,
-  Server,
-  Shield,
-  Wrench,
-  Laptop,
-} from "lucide-react";
-import { SiteShell } from "@/components/site-shell";
+import { ArrowRight, ArrowUpRight, Bot, Code2, Headset, Rocket } from "lucide-react";
+import { siteConfig } from "@/config/site";
+import { clientProjects, ownProducts, services, workSteps } from "@/config/content";
+import { Container, SectionHeading } from "@/components/section";
+import { HeroBackground } from "@/components/motion/hero-background";
+import { MaskWords } from "@/components/motion/mask-words";
+import { Marquee } from "@/components/motion/marquee";
+import { ProcessTimeline } from "@/components/motion/process-timeline";
 import { createSeoMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = createSeoMetadata({
-  title: "Quantrex Melbourne | IT Support & Field Engineering",
-  description:
-    "Quantrex delivers IT support, field engineering, and custom software for growing Australian businesses. Melbourne-based technology partner.",
-  path: "/",
-  keywords: [
-    "Melbourne IT company",
-    "IT support Melbourne small business",
-    "field engineering Melbourne",
-    "custom software Australia",
-    "technology services Melbourne",
-    "Quantrex Melbourne",
-  ],
-});
-
-const services = [
-  {
-    title: "IT Support",
-    description:
-      "Responsive coverage for devices, users, networks, and the day-to-day issues that slow teams down.",
-    icon: Laptop,
-  },
-  {
-    title: "Field Engineering",
-    description:
-      "Onsite delivery for installations, upgrades, rollouts, troubleshooting, and project work across physical sites.",
-    icon: Wrench,
-  },
-  {
-    title: "Custom Software",
-    description:
-      "Internal tools, workflow systems, and portals shaped around the way your operation actually runs.",
-    icon: Server,
-  },
-  {
-    title: "Vertical SaaS",
-    description:
-      "Focused products for specialist industries where generic platforms create friction instead of clarity.",
-    icon: Shield,
-  },
-];
-
-const metrics = [
-  { value: "4", label: "service layers under one team" },
-  { value: "1", label: "partner for support through software" },
-  { value: "100%", label: "built around operational fit" },
-];
-
-const principles = [
-  "Support, engineering, and software in one delivery partner",
-  "Built for businesses with specialist workflows and real-world complexity",
-  "Clear, practical execution without generic MSP packaging",
-];
-
-
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: [
-    {
-      "@type": "Question",
-      name: "What services does Quantrex offer?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Quantrex offers IT support, field engineering, custom software development, infrastructure management, and vertical SaaS product development for Australian businesses.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Where is Quantrex based?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Quantrex is headquartered in Melbourne, Victoria, Australia, and serves clients across Australia.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "What industries does Quantrex work with?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Quantrex works with Australian SMBs across various industries, particularly those with specialist workflows that need more than generic IT or software solutions.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "How do I contact Quantrex?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "You can contact Quantrex by email at hello@quantrex.com.au, by phone at +61 466 300 421, or by submitting the contact form at quantrex.com.au/contact.",
-      },
-    },
-  ],
+export const metadata: Metadata = {
+  ...createSeoMetadata({
+    title: `${siteConfig.name}: ${siteConfig.tagline}`,
+    description: siteConfig.description,
+    path: "/",
+  }),
+  title: { absolute: `${siteConfig.name}: ${siteConfig.tagline}` },
 };
+
+const icons = { "custom-software": Code2, "ai-automation": Bot, "product-builds": Rocket, "it-support": Headset } as const;
+
+/** Sets the CSS variable that staggers an entrance animation. */
+const delay = (seconds: number) => ({ "--d": `${seconds}s` }) as CSSProperties;
 
 export default function Home() {
   return (
-    <SiteShell>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
-      <section className="pb-16 pt-8 sm:pb-24 sm:pt-16">
-        <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
-          <div className="max-w-4xl">
-            <span className="pill animate-fade-up">Australia-based technology partner</span>
-            <h1 className="animate-fade-up delay-100 mt-6 max-w-5xl text-4xl font-semibold leading-[0.96] tracking-[-0.07em] sm:text-6xl lg:text-7xl">
-              A calmer, smarter way to run support, field engineering, and software delivery.
-            </h1>
-            <p className="editorial-kicker animate-fade-up delay-200 mt-6 max-w-2xl">
-              Quantrex helps businesses stay operational with dependable IT services and
-              software that matches the shape of the work. We bring support, engineering,
-              and product thinking into one consistent team.
+    <>
+      {/* Hero: always dark and cinematic, whatever the visitor's theme */}
+      <section className="hero grain relative overflow-hidden" data-pause-offscreen>
+        <HeroBackground />
+        <div className="hero-beam" aria-hidden="true" />
+        <Container className="relative z-10 grid min-h-[min(88svh,820px)] items-center gap-12 py-20 sm:py-24 lg:grid-cols-[1.25fr_0.75fr]">
+          <div className="max-w-3xl">
+            <p className="eyebrow hero-in" style={delay(0.05)}>
+              {siteConfig.location}
             </p>
-            <div className="animate-fade-up delay-300 mt-10 flex flex-col items-stretch gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4">
-              <Link href="/contact" className="btn-primary w-full sm:w-auto">
-                Book a consultation
-                <ArrowRight className="h-4 w-4" />
+            <h1 className="h-display mt-5">
+              <MaskWords text="Software and AI that fit how your business already runs." accentFrom={7} />
+            </h1>
+            <p className="lead hero-in mt-6 max-w-2xl" style={delay(0.75)}>
+              {siteConfig.name} builds custom software, automation and focused products for small and growing
+              businesses. You work directly with the developer, from the first call to launch and after.
+            </p>
+            <div className="hero-in mt-9 flex flex-col gap-3 sm:flex-row" style={delay(0.95)}>
+              <Link href="/contact" className="btn btn-primary" data-magnetic>
+                Start a project
+                <ArrowRight className="h-4 w-4" aria-hidden="true" />
               </Link>
-              <Link href="/services" className="btn-secondary w-full sm:w-auto">
-                Explore services
+              <Link href="/services" className="btn btn-secondary" data-magnetic>
+                See what I build
               </Link>
-            </div>
-            <div className="mt-8 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-[var(--muted)]">
-              <span className="flex items-center gap-2">
-                <Building2 className="h-4 w-4 text-[var(--accent-strong)]" />
-                Quantrex Pty Ltd
-              </span>
-              <span className="flex items-center gap-2">
-                <MapPin className="h-4 w-4 text-[var(--accent-strong)]" />
-                Melbourne, Australia
-              </span>
             </div>
           </div>
 
-          <div className="card overflow-hidden">
-            <div className="bg-[var(--accent)] px-5 py-7 text-white sm:px-8 sm:py-8">
-              <p className="font-mono text-xs uppercase tracking-[0.18em] text-white/80">
-                Operational design
-              </p>
-              <p className="mt-4 max-w-sm text-2xl font-semibold tracking-[-0.04em]">
-                Technology support shaped around real business conditions.
-              </p>
-            </div>
-            <div className="grid gap-0 sm:grid-cols-2">
-              <div className="bg-[var(--accent-soft)] px-5 py-7 sm:px-8 sm:py-8">
-                <p className="panel-label text-[var(--text)]">Coverage</p>
-                <p className="mt-3 text-sm leading-7 text-[var(--muted)]">
-                  User support, onsite delivery, custom software, and product capability.
-                </p>
-              </div>
-              <div className="bg-[var(--bg-soft)] px-5 py-7 sm:px-8 sm:py-8">
-                <p className="panel-label text-[var(--text)]">Approach</p>
-                <p className="mt-3 text-sm leading-7 text-[var(--muted)]">
-                  Practical, steady delivery for operations that need reliability more than noise.
-                </p>
-              </div>
-            </div>
-            <div className="bg-[var(--taupe)] px-5 py-6 sm:px-8">
-              <p className="font-mono text-xs uppercase tracking-[0.18em] text-[var(--muted)]">
-                Quantrex blends service capability with product discipline.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div className="mt-8 grid gap-5 lg:grid-cols-[1.1fr_0.9fr]">
-          <div className="card p-5 sm:p-8">
-            <p className="panel-label">What we do</p>
-            <div className="mt-6 grid gap-4 sm:grid-cols-3">
-              {metrics.map((metric) => (
-                <div key={metric.label}>
-                  <div className="stat-value text-[var(--accent-strong)]">{metric.value}</div>
-                  <p className="mt-2 text-sm leading-6 text-[var(--muted)]">{metric.label}</p>
+          {/* Decorative illustration of the idea, not a claim about any client. */}
+          <div className="hero-panel-in hidden lg:block" style={delay(0.7)} aria-hidden="true">
+            <div className="card space-y-3 p-6 backdrop-blur-sm" data-tilt data-spot>
+              {[
+                { label: "Today", text: "Spreadsheets, email threads, copy and paste" },
+                { label: "Build", text: "One simple web app your team actually uses" },
+                { label: "Next", text: "Automation and AI take the repetitive steps" },
+              ].map((row, i) => (
+                <div key={row.label}>
+                  <div className="rounded-xl border border-line bg-surface-2 p-4">
+                    <p className="eyebrow">{row.label}</p>
+                    <p className="mt-1.5 text-[0.95rem] leading-6">{row.text}</p>
+                  </div>
+                  {i < 2 ? <div className="mx-auto h-4 w-px bg-line" /> : null}
                 </div>
               ))}
             </div>
           </div>
+        </Container>
+      </section>
 
-          <div className="card p-5 sm:p-8">
-            <p className="panel-label">Best fit</p>
-            <div className="mt-4 space-y-4">
-              {principles.map((item) => (
-                <div key={item} className="flex items-start gap-3">
-                  <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-[var(--accent-strong)]" />
-                  <p className="text-sm leading-6 text-[var(--muted)]">{item}</p>
+      <Marquee items={[...services.map((s) => s.title), "Melbourne, Australia"]} />
+
+      {/* Services */}
+      <section className="py-20 sm:py-24">
+        <Container>
+          <div data-reveal>
+            <SectionHeading
+              eyebrow="Services"
+              title="Four ways I can help"
+              description="Most projects start with one of these. Many end up using two."
+            />
+          </div>
+          <ul className="mt-12 grid gap-5 sm:grid-cols-2" data-stagger>
+            {services.map((s) => {
+              const Icon = icons[s.slug];
+              return (
+                <li key={s.slug} className="card p-6 sm:p-7" data-spot>
+                  <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-accent-soft text-accent">
+                    <Icon className="h-5 w-5" aria-hidden="true" />
+                  </span>
+                  <h3 className="mt-5 text-xl font-semibold tracking-tight">{s.title}</h3>
+                  <p className="mt-2 leading-7 text-muted">{s.summary}</p>
+                </li>
+              );
+            })}
+          </ul>
+          <p className="mt-8" data-reveal>
+            <Link href="/services" className="link-u inline-flex items-center gap-1.5 font-semibold text-accent">
+              Details on each service
+              <ArrowRight className="h-4 w-4" aria-hidden="true" />
+            </Link>
+          </p>
+        </Container>
+      </section>
+
+      <div className="divider-glow" data-reveal aria-hidden="true" />
+
+      {/* Process */}
+      <section className="section-band py-20 sm:py-24">
+        <Container>
+          <div data-reveal>
+            <SectionHeading
+              eyebrow="How we work"
+              title="Small steps, clear scope, no surprises"
+              description="A simple process that keeps you in control and keeps projects moving."
+            />
+          </div>
+          <div className="mt-12">
+            <ProcessTimeline steps={workSteps} />
+          </div>
+        </Container>
+      </section>
+
+      <div className="divider-glow" data-reveal aria-hidden="true" />
+
+      {/* Selected work */}
+      <section className="py-20 sm:py-24">
+        <Container>
+          <div data-reveal>
+            <SectionHeading
+              eyebrow="Selected work"
+              title="Products I build and run myself"
+              description="Client case studies will appear here as projects wrap up and clients agree to be named."
+            />
+          </div>
+          <ul className="mt-12 grid gap-5 md:grid-cols-2" data-stagger>
+            {ownProducts.map((p) => (
+              <li key={p.name} className="card flex flex-col p-6 sm:p-7" data-spot>
+                <div className="flex items-center justify-between gap-3">
+                  <h3 className="text-xl font-semibold tracking-tight">{p.name}</h3>
+                  <span className="rounded-full border border-line bg-surface-2 px-3 py-1 text-xs font-medium text-muted">
+                    {p.status}
+                  </span>
                 </div>
-              ))}
+                <p className="mt-3 leading-7 text-muted">{p.description}</p>
+                {p.href ? (
+                  <a
+                    href={p.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="link-u mt-5 inline-flex items-center gap-1.5 self-start font-semibold text-accent"
+                  >
+                    Visit {p.name}
+                    <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+                    <span className="sr-only"> (opens in a new tab)</span>
+                  </a>
+                ) : null}
+              </li>
+            ))}
+            {clientProjects.map((p) => (
+              <li key={p.name} className="card p-6 sm:p-7" data-spot>
+                <h3 className="text-xl font-semibold tracking-tight">{p.name}</h3>
+                <p className="mt-1 text-sm text-muted">{p.client}</p>
+                <p className="mt-3 leading-7 text-muted">{p.built}</p>
+              </li>
+            ))}
+          </ul>
+        </Container>
+      </section>
+
+      {/* CTA: night band to close the page */}
+      <section className="cta-band grain relative overflow-hidden py-20 sm:py-28">
+        <div className="hero-bg" aria-hidden="true">
+          <div className="hero-mesh hero-mesh-a" data-parallax="0.08" />
+          <div className="hero-mesh hero-mesh-b" data-parallax="0.14" />
+        </div>
+        <Container className="relative z-10">
+          <div className="flex flex-col items-start justify-between gap-8 md:flex-row md:items-center" data-reveal>
+            <div className="max-w-xl">
+              <h2 className="h-section">Got something that needs fixing, automating or building?</h2>
+              <p className="lead mt-3">Tell me about it. A short message is enough to start the conversation.</p>
             </div>
+            <Link href="/contact" className="btn btn-primary shrink-0" data-magnetic>
+              Start a project
+              <ArrowRight className="h-4 w-4" aria-hidden="true" />
+            </Link>
           </div>
-        </div>
+        </Container>
       </section>
-
-      <section className="py-16 sm:py-20">
-        <div className="mb-12 max-w-3xl">
-          <p className="section-eyebrow">Services</p>
-          <h2 className="text-3xl font-semibold tracking-[-0.05em] sm:text-4xl">
-            Four connected capabilities, designed to feel like one team.
-          </h2>
-          <p className="section-description">
-            From frontline support to specialist product work, Quantrex closes the gaps that
-            usually appear when service providers, engineers, and software teams are separated.
-          </p>
-        </div>
-        <div className="grid gap-5 md:grid-cols-2">
-          {services.map((service) => (
-            <div key={service.title} className="card p-6 sm:p-7">
-              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[var(--accent-light)] text-[var(--accent-strong)]">
-                <service.icon className="h-5 w-5" />
-              </div>
-              <h3 className="mt-5 text-2xl font-semibold tracking-[-0.04em]">{service.title}</h3>
-              <p className="mt-3 text-sm leading-7 text-[var(--muted)]">{service.description}</p>
-              <Link href="/services" className="btn-tertiary mt-5">
-                Learn more
-                <ChevronRight className="h-4 w-4" />
-              </Link>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section className="py-16 sm:py-20">
-        <div className="mb-10 max-w-3xl">
-          <p className="section-eyebrow">Products</p>
-          <h2 className="text-3xl font-semibold tracking-[-0.05em] sm:text-4xl">
-            Purpose-built software for high-friction industries.
-          </h2>
-          <p className="section-description">
-            Quantrex builds focused products where specialist teams need deeper workflow fit
-            than a generic CRM or operations platform can provide.
-          </p>
-        </div>
-        <div className="grid gap-6 sm:grid-cols-2">
-          <a
-            href="https://visadocket.com.au"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="card block overflow-hidden transition-transform hover:-translate-y-0.5"
-          >
-            <div className="bg-[var(--accent)] px-5 py-7 text-white sm:px-7 sm:py-8">
-              <div className="pill border-white/20 bg-white/10 text-white">Live product</div>
-              <h3 className="mt-5 text-2xl font-semibold tracking-[-0.04em]">VisaDocket</h3>
-              <p className="mt-3 text-sm leading-7 text-white/80">
-                Practice management software for migration professionals covering client
-                workflows, compliance, applications, and document operations.
-              </p>
-            </div>
-            <div className="flex items-center justify-between gap-4 bg-[var(--surface-strong)] px-5 py-4 sm:px-7">
-              <span className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--accent-strong)]">
-                visadocket.com.au
-              </span>
-              <ArrowUpRight className="h-4 w-4 text-[var(--accent-strong)]" />
-            </div>
-          </a>
-
-          <div className="card overflow-hidden">
-            <div className="bg-[var(--eva-brand)] px-5 py-7 text-white sm:px-7 sm:py-8">
-              <div className="pill border-white/20 bg-white/10 text-white">In development</div>
-              <h3 className="mt-5 text-2xl font-semibold tracking-[-0.04em]">Eva&apos;s Fashion Hub</h3>
-              <p className="mt-3 text-sm leading-7 text-white/80">
-                A styling-led fashion storefront for curated looks, coordinated outfits, and
-                affordable discovery with AI-powered retail features.
-              </p>
-            </div>
-            <div className="flex items-center justify-between gap-4 bg-[var(--surface-strong)] px-5 py-4 sm:px-7">
-              <Link
-                href="/products"
-                className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--muted)] transition-colors hover:text-[var(--text)]"
-              >
-                Learn more
-              </Link>
-              <ChevronRight className="h-4 w-4 text-[var(--muted)]" />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="pb-20 pt-8 sm:pt-10">
-        <div className="card overflow-hidden">
-          <div className="grid lg:grid-cols-[0.9fr_1.1fr]">
-            <div className="bg-[var(--taupe)] px-5 py-8 sm:px-8 sm:py-10">
-              <p className="panel-label text-[var(--text)]">Next step</p>
-              <h2 className="mt-4 text-3xl font-semibold tracking-[-0.05em] sm:text-4xl">
-                Need support, onsite engineering, or a system built properly?
-              </h2>
-            </div>
-            <div className="px-5 py-8 sm:px-8 sm:py-10">
-              <p className="max-w-2xl text-sm leading-7 text-[var(--muted)]">
-                Quantrex works with businesses that need reliable service and software that
-                reduces operational friction. Start with a conversation and we can shape the
-                right mix of support, engineering, and product capability.
-              </p>
-              <div className="mt-8 flex flex-col items-stretch gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4">
-                <Link href="/contact" className="btn-primary sm:w-auto">
-                  Contact Quantrex
-                </Link>
-                <Link href="/products" className="btn-secondary sm:w-auto">
-                  View products
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-    </SiteShell>
+    </>
   );
 }
