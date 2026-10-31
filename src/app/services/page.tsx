@@ -43,7 +43,7 @@ export default function ServicesPage() {
         </Container>
       </section>
 
-      <section className="border-y border-line bg-surface-2 py-16 sm:py-20">
+      <section className="section-band py-16 sm:py-20">
         <Container>
           <div data-reveal>
             <SectionHeading eyebrow="How we work" title="From first call to launch" />

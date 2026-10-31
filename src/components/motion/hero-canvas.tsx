@@ -78,7 +78,9 @@ export default function HeroCanvas() {
     let inView = true;
     const pointer = { x: -9999, y: -9999, active: false };
 
+    let light = false;
     function readColors() {
+      light = document.documentElement.getAttribute("data-theme") === "light";
       const cs = getComputedStyle(host);
       rgb1 = hexToRgb(cs.getPropertyValue("--accent"), rgb1);
       rgb2 = hexToRgb(cs.getPropertyValue("--accent-2"), rgb2);
@@ -169,7 +171,8 @@ export default function HeroCanvas() {
     function draw() {
       const c = ctx!;
       c.clearRect(0, 0, w, h);
-      c.globalCompositeOperation = "lighter";
+      // Additive glow on dark; plain alpha on light (white + anything is invisible).
+      c.globalCompositeOperation = light ? "source-over" : "lighter";
       c.lineWidth = 1;
       const ld2 = linkDist * linkDist;
 
@@ -283,6 +286,12 @@ export default function HeroCanvas() {
       pointer.active = false;
     }
 
+    const themeObserver = new MutationObserver(() => {
+      readColors();
+      draw();
+    });
+    themeObserver.observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
+
     readColors();
     resize();
     canvas.style.opacity = "1";
@@ -310,6 +319,7 @@ export default function HeroCanvas() {
       stop();
       io.disconnect();
       ro.disconnect();
+      themeObserver.disconnect();
       reduceMq.removeEventListener("change", onReduceChange);
       document.removeEventListener("visibilitychange", onVisibility);
       host.removeEventListener("pointermove", onMove);

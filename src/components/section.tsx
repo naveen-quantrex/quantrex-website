@@ -34,7 +34,7 @@ export function SectionHeading({
 
 export function PageHeader({ eyebrow, title, description }: { eyebrow: string; title: string; description: string }) {
   return (
-    <section className="theme-night page-hero grain relative overflow-hidden border-b border-line" data-pause-offscreen>
+    <section className="page-hero grain relative overflow-hidden" data-pause-offscreen>
       <div className="hero-bg" aria-hidden="true">
         <div className="hero-mesh hero-mesh-a" data-parallax="0.08" />
         <div className="bg-grid absolute inset-0" />

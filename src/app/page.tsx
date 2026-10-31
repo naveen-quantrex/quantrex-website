@@ -29,7 +29,7 @@ export default function Home() {
   return (
     <>
       {/* Hero: always dark and cinematic, whatever the visitor's theme */}
-      <section className="theme-night hero grain relative overflow-hidden" data-pause-offscreen>
+      <section className="hero grain relative overflow-hidden" data-pause-offscreen>
         <HeroBackground />
         <div className="hero-beam" aria-hidden="true" />
         <Container className="relative z-10 grid min-h-[min(88svh,820px)] items-center gap-12 py-20 sm:py-24 lg:grid-cols-[1.25fr_0.75fr]">
@@ -114,7 +114,7 @@ export default function Home() {
       <div className="divider-glow" data-reveal aria-hidden="true" />
 
       {/* Process */}
-      <section className="bg-surface-2 py-20 sm:py-24">
+      <section className="section-band py-20 sm:py-24">
         <Container>
           <div data-reveal>
             <SectionHeading
@@ -177,7 +177,7 @@ export default function Home() {
       </section>
 
       {/* CTA: night band to close the page */}
-      <section className="theme-night grain relative overflow-hidden border-t border-line py-20 sm:py-28">
+      <section className="cta-band grain relative overflow-hidden py-20 sm:py-28">
         <div className="hero-bg" aria-hidden="true">
           <div className="hero-mesh hero-mesh-a" data-parallax="0.08" />
           <div className="hero-mesh hero-mesh-b" data-parallax="0.14" />

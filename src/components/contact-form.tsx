@@ -16,7 +16,7 @@ type Status = "idle" | "sending" | "sent" | "error";
 const empty: ContactInput = { name: "", email: "", phone: "", service: "", message: "", website: "" };
 
 const inputClass =
-  "mt-1.5 w-full rounded-xl border border-line bg-surface px-4 py-3 text-base text-ink placeholder:text-muted/70 aria-[invalid=true]:border-red-600 dark:aria-[invalid=true]:border-red-400";
+  "mt-1.5 w-full rounded-xl border border-line bg-field px-4 py-3 text-base text-ink placeholder:text-muted/70 aria-[invalid=true]:border-red-600 dark:aria-[invalid=true]:border-red-400";
 
 export function ContactForm() {
   const [values, setValues] = useState<ContactInput>(empty);

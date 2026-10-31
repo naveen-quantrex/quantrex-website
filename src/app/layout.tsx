@@ -5,6 +5,7 @@ import { defaultDescription, siteName, siteUrl } from "@/lib/seo";
 import { JsonLd } from "@/lib/json-ld";
 import { SiteShell } from "@/components/site-shell";
 import { MotionController } from "@/components/motion/motion-controller";
+import { themeInitScript } from "@/lib/theme";
 import "./globals.css";
 import "./motion.css";
 
@@ -42,10 +43,9 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#fafaf9" },
-    { media: "(prefers-color-scheme: dark)", color: "#0b1020" },
-  ],
+  // Dark is the default theme; the theme toggle updates this tag when switching to light.
+  themeColor: "#05070f",
+  colorScheme: "dark light",
 };
 
 // Only facts that are true today: a brand, a website, a contact address and a location.
@@ -75,8 +75,13 @@ const structuredData = [
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en-AU" className={`${geistSans.variable} ${geistMono.variable}`}>
+    <html lang="en-AU" data-theme="dark" suppressHydrationWarning className={`${geistSans.variable} ${geistMono.variable}`}>
+      <head>
+        {/* Runs before first paint so there is no flash of the wrong theme. */}
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+      </head>
       <body className="antialiased">
+        <div className="ambient" aria-hidden="true" />
         <JsonLd data={structuredData} />
         <div className="scroll-progress" aria-hidden="true" />
         <MotionController />

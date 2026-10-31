@@ -1,49 +1,69 @@
 @import "tailwindcss";
 
 /* ------------------------------------------------------------------ */
-/* Design tokens. Light by default, dark follows the visitor's system. */
+/* Design tokens. Dark is the default for everyone; light is opt-in    */
+/* via the header toggle (html[data-theme="light"], saved in           */
+/* localStorage and applied by an inline script before first paint).   */
 /* ------------------------------------------------------------------ */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
 :root {
-  color-scheme: light dark;
-  --bg: #fafaf9;
-  --surface: #ffffff;
-  --surface-2: #f4f4f2;
-  --ink: #0f172a;
-  --muted: #475569;
-  --line: #e2e8f0;
-  --accent: #4338ca; /* text and buttons on --bg; 8.6:1 against white */
-  --accent-ink: #ffffff; /* text placed on --accent */
-  --accent-hover: #3730a3;
-  --accent-soft: #eef2ff;
-  --accent-2: #0e7490; /* secondary glow colour, 5.4:1 on --bg */
-  --focus: #4338ca;
-  --shadow: 0 1px 2px rgba(15, 23, 42, 0.04), 0 8px 24px rgba(15, 23, 42, 0.05);
-  --grid-line: rgba(15, 23, 42, 0.06);
+  color-scheme: dark;
+  --bg: #05070f;
+  --surface: rgba(255, 255, 255, 0.05);
+  --surface-2: rgba(255, 255, 255, 0.075);
+  --field: #0c1224;
+  --ink: #f1f5f9;
+  --muted: #b4bfd3; /* 10.9:1 on --bg */
+  --prose: #ccd5e4; /* long-form body text, 13.6:1 on --bg */
+  --line: rgba(165, 180, 252, 0.2);
+  --accent: #a5b4fc;
+  --accent-ink: #05070f;
+  --accent-hover: #c7d2fe;
+  --accent-soft: rgba(129, 140, 248, 0.14);
+  --accent-2: #67e8f9;
+  --focus: #c7d2fe;
+  --shadow: none;
+  --grid-line: rgba(165, 180, 252, 0.08);
+  --band: rgba(99, 102, 241, 0.07);
+  --amb-1: rgba(99, 102, 241, 0.2);
+  --amb-2: rgba(34, 211, 238, 0.08);
+  --mesh-1: rgba(99, 102, 241, 0.42);
+  --mesh-2: rgba(34, 211, 238, 0.2);
+  --grain-opacity: 0.07;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #0b1020;
-    --surface: #111831;
-    --surface-2: #161f3d;
-    --ink: #f1f5f9;
-    --muted: #a8b3c7;
-    --line: #243052;
-    --accent: #a5b4fc;
-    --accent-ink: #0b1020;
-    --accent-hover: #c7d2fe;
-    --accent-soft: rgba(129, 140, 248, 0.12);
-    --accent-2: #67e8f9;
-    --focus: #c7d2fe;
-    --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.25);
-    --grid-line: rgba(165, 180, 252, 0.07);
-  }
+html[data-theme="light"] {
+  color-scheme: light;
+  --bg: #f6f7fc;
+  --surface: #ffffff;
+  --surface-2: #eceffa;
+  --field: #ffffff;
+  --ink: #0f172a;
+  --muted: #475569;
+  --prose: #334155;
+  --line: #d9dfef;
+  --accent: #4338ca; /* 7.4:1 on --bg */
+  --accent-ink: #ffffff;
+  --accent-hover: #3730a3;
+  --accent-soft: #e8ebff;
+  --accent-2: #0e7490;
+  --focus: #4338ca;
+  --shadow: 0 1px 2px rgba(15, 23, 42, 0.04), 0 10px 28px rgba(67, 56, 202, 0.07);
+  --grid-line: rgba(67, 56, 202, 0.07);
+  --band: rgba(67, 56, 202, 0.055);
+  --amb-1: rgba(99, 102, 241, 0.16);
+  --amb-2: rgba(34, 211, 238, 0.12);
+  --mesh-1: rgba(99, 102, 241, 0.26);
+  --mesh-2: rgba(34, 211, 238, 0.2);
+  --grain-opacity: 0.035;
 }
 
 @theme inline {
   --color-bg: var(--bg);
   --color-surface: var(--surface);
   --color-surface-2: var(--surface-2);
+  --color-field: var(--field);
   --color-ink: var(--ink);
   --color-muted: var(--muted);
   --color-line: var(--line);
@@ -68,6 +88,7 @@ html {
 }
 
 body {
+  position: relative;
   background: var(--bg);
   color: var(--ink);
   font-family: var(--font-sans);
@@ -184,10 +205,20 @@ body {
   font-weight: 650;
   letter-spacing: -0.01em;
 }
+.prose-legal {
+  max-width: 68ch;
+  font-size: 1.0625rem;
+}
 .prose-legal p,
 .prose-legal li {
-  color: var(--muted);
-  line-height: 1.8;
+  color: var(--prose);
+  line-height: 1.85;
+}
+.prose-legal ul + p {
+  margin-top: 1rem;
+}
+.prose-legal li + li {
+  margin-top: 0.4rem;
 }
 .prose-legal p + p {
   margin-top: 0.8rem;

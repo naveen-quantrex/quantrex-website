@@ -69,6 +69,7 @@ export const siteConfig = {
   colors: {
     ink: "#0f172a",
     accent: "#4338ca",
+    accentOnDark: "#a5b4fc",
     paper: "#fafaf9",
   },
 } as const;

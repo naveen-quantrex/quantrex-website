@@ -5,6 +5,7 @@ import { Logo } from "./logo";
 import { MobileMenu } from "./mobile-menu";
 import { navItems } from "@/config/nav";
 import { NavLinks } from "./nav-links";
+import { ThemeToggle } from "./theme-toggle";
 
 export function SiteShell({ children }: { children: React.ReactNode }) {
   return (
@@ -25,6 +26,7 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
             <NavLinks />
           </nav>
           <div className="flex items-center gap-2">
+            <ThemeToggle />
             <Link href="/contact" className="btn btn-primary hidden !py-2.5 md:inline-flex">
               Start a project
               <ArrowRight className="h-4 w-4" aria-hidden="true" />
@@ -38,7 +40,7 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
         {children}
       </main>
 
-      <footer className="border-t border-line bg-surface-2">
+      <footer className="footer-surface border-t border-line">
         <div className="mx-auto grid max-w-6xl gap-10 px-4 py-12 sm:px-6 md:grid-cols-[1.4fr_1fr_1fr] lg:px-8">
           <div>
             <Logo />
