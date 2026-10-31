@@ -40,13 +40,13 @@ export default function AboutPage() {
 
       <section className="py-16 sm:py-20">
         <Container className="grid gap-10 lg:grid-cols-[1.4fr_1fr]">
-          <div className="max-w-2xl space-y-5 text-lg leading-8 text-muted">
+          <div className="max-w-2xl space-y-5 text-lg leading-8 text-muted" data-reveal>
             {aboutText.map((p) => (
               <p key={p}>{p}</p>
             ))}
           </div>
 
-          <aside className="card h-fit p-6 sm:p-8" aria-label="Founder">
+          <aside className="card h-fit p-6 sm:p-8" aria-label="Founder" data-spot data-reveal>
             <div className="flex items-center gap-4">
               {/* TODO(Naveen): replace the initials with a real photo (public/ + next/image, with alt text). */}
               <span
@@ -70,7 +70,7 @@ export default function AboutPage() {
                   href={siteConfig.founder.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2.5 font-medium text-accent underline-offset-4 hover:underline"
+                  className="link-u flex items-center gap-2.5 self-start font-medium text-accent"
                 >
                   <Linkedin className="h-4 w-4" aria-hidden="true" />
                   LinkedIn
@@ -84,7 +84,7 @@ export default function AboutPage() {
 
       <section className="pb-20">
         <Container>
-          <div className="card flex flex-col items-start justify-between gap-6 bg-accent-soft p-8 sm:p-10 md:flex-row md:items-center">
+          <div className="card flex flex-col items-start justify-between gap-6 bg-accent-soft p-8 sm:p-10 md:flex-row md:items-center" data-spot data-reveal>
             <h2 className="h-section max-w-xl">Want to talk about your project?</h2>
             <Link href="/contact" className="btn btn-primary shrink-0">
               Get in touch

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ArrowRight, Check } from "lucide-react";
 import { services, workSteps } from "@/config/content";
 import { Container, PageHeader, SectionHeading } from "@/components/section";
+import { ProcessTimeline } from "@/components/motion/process-timeline";
 import { createSeoMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = createSeoMetadata({
@@ -23,9 +24,9 @@ export default function ServicesPage() {
 
       <section className="py-16 sm:py-20" aria-label="Services">
         <Container>
-          <ul className="grid gap-5 md:grid-cols-2">
+          <ul className="grid gap-5 md:grid-cols-2" data-stagger>
             {services.map((s) => (
-              <li key={s.slug} id={s.slug} className="card scroll-mt-24 p-6 sm:p-8">
+              <li key={s.slug} id={s.slug} className="card scroll-mt-24 p-6 sm:p-8" data-spot>
                 <h2 className="text-2xl font-semibold tracking-tight">{s.title}</h2>
                 <p className="mt-2 leading-7 text-muted">{s.summary}</p>
                 <ul className="mt-5 space-y-3">
@@ -44,23 +45,17 @@ export default function ServicesPage() {
 
       <section className="border-y border-line bg-surface-2 py-16 sm:py-20">
         <Container>
-          <div>
+          <div data-reveal>
             <SectionHeading eyebrow="How we work" title="From first call to launch" />
           </div>
-          <ol className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
-            {workSteps.map((step, i) => (
-              <li key={step.title} className="card p-6">
-                <span className="font-mono text-sm font-medium text-accent">{String(i + 1).padStart(2, "0")}</span>
-                <h3 className="mt-3 text-lg font-semibold tracking-tight">{step.title}</h3>
-                <p className="mt-2 text-[0.95rem] leading-7 text-muted">{step.text}</p>
-              </li>
-            ))}
-          </ol>
+          <div className="mt-10">
+            <ProcessTimeline steps={workSteps} />
+          </div>
         </Container>
       </section>
 
       <section className="py-16 sm:py-20">
-        <Container className="flex flex-col items-start gap-5">
+        <Container className="flex flex-col items-start gap-5" data-reveal>
           <h2 className="h-section max-w-xl">Not sure which one you need?</h2>
           <p className="lead max-w-xl">Describe the problem and I will tell you honestly whether I can help, and how.</p>
           <Link href="/contact" className="btn btn-primary">

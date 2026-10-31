@@ -22,18 +22,18 @@ export default function ContactPage() {
       <section className="py-16 sm:py-20">
         <Container className="grid gap-8 lg:grid-cols-[1.4fr_1fr]">
           <ContactForm />
-          <aside aria-label="Other ways to reach us" className="space-y-4">
-            <div className="card flex items-start gap-4 p-6">
+          <aside aria-label="Other ways to reach us" className="space-y-4" data-stagger>
+            <div className="card flex items-start gap-4 p-6" data-spot>
               <Mail className="mt-0.5 h-5 w-5 text-accent" aria-hidden="true" />
               <div>
                 <h2 className="font-semibold">Email</h2>
-                <a href={`mailto:${siteConfig.contactEmail}`} className="break-all text-muted underline-offset-4 hover:text-ink hover:underline">
+                <a href={`mailto:${siteConfig.contactEmail}`} className="link-u break-all text-muted hover:text-ink">
                   {siteConfig.contactEmail}
                 </a>
               </div>
             </div>
             {siteConfig.phone ? (
-              <div className="card flex items-start gap-4 p-6">
+              <div className="card flex items-start gap-4 p-6" data-spot>
                 <Phone className="mt-0.5 h-5 w-5 text-accent" aria-hidden="true" />
                 <div>
                   <h2 className="font-semibold">Phone</h2>
@@ -43,7 +43,7 @@ export default function ContactPage() {
                 </div>
               </div>
             ) : null}
-            <div className="card flex items-start gap-4 p-6">
+            <div className="card flex items-start gap-4 p-6" data-spot>
               <MapPin className="mt-0.5 h-5 w-5 text-accent" aria-hidden="true" />
               <div>
                 <h2 className="font-semibold">Location</h2>

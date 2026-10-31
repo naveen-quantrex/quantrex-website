@@ -4,7 +4,9 @@ import { siteConfig } from "@/config/site";
 import { defaultDescription, siteName, siteUrl } from "@/lib/seo";
 import { JsonLd } from "@/lib/json-ld";
 import { SiteShell } from "@/components/site-shell";
+import { MotionController } from "@/components/motion/motion-controller";
 import "./globals.css";
+import "./motion.css";
 
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"], display: "swap" });
 const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"], display: "swap" });
@@ -76,6 +78,8 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     <html lang="en-AU" className={`${geistSans.variable} ${geistMono.variable}`}>
       <body className="antialiased">
         <JsonLd data={structuredData} />
+        <div className="scroll-progress" aria-hidden="true" />
+        <MotionController />
         <SiteShell>{children}</SiteShell>
       </body>
     </html>

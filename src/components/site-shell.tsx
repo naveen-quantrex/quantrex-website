@@ -51,7 +51,7 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
             <ul className="mt-4 space-y-2.5 text-sm">
               {[{ href: "/", label: "Home" }, ...navItems].map((item) => (
                 <li key={item.href}>
-                  <Link href={item.href} className="text-muted hover:text-ink">
+                  <Link href={item.href} className="link-u text-muted hover:text-ink">
                     {item.label}
                   </Link>
                 </li>
@@ -63,20 +63,20 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
             <h2 className="eyebrow">Contact</h2>
             <ul className="mt-4 space-y-2.5 text-sm">
               <li>
-                <a href={`mailto:${siteConfig.contactEmail}`} className="break-all text-muted hover:text-ink">
+                <a href={`mailto:${siteConfig.contactEmail}`} className="link-u break-all text-muted hover:text-ink">
                   {siteConfig.contactEmail}
                 </a>
               </li>
               {siteConfig.phone ? (
                 <li>
-                  <a href={`tel:${siteConfig.phone.replace(/\s/g, "")}`} className="text-muted hover:text-ink">
+                  <a href={`tel:${siteConfig.phone.replace(/\s/g, "")}`} className="link-u text-muted hover:text-ink">
                     {siteConfig.phone}
                   </a>
                 </li>
               ) : null}
               {siteConfig.social.map((s) => (
                 <li key={s.href}>
-                  <a href={s.href} target="_blank" rel="noopener noreferrer" className="text-muted hover:text-ink">
+                  <a href={s.href} target="_blank" rel="noopener noreferrer" className="link-u text-muted hover:text-ink">
                     {s.label}
                     <span className="sr-only"> (opens in a new tab)</span>
                   </a>
@@ -93,10 +93,10 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
               {siteConfig.legalName && siteConfig.abn ? ` · ABN ${siteConfig.abn}` : ""}
             </p>
             <p className="flex gap-4">
-              <Link href="/privacy" className="hover:text-ink">
+              <Link href="/privacy" className="link-u hover:text-ink">
                 Privacy
               </Link>
-              <Link href="/terms" className="hover:text-ink">
+              <Link href="/terms" className="link-u hover:text-ink">
                 Terms
               </Link>
             </p>

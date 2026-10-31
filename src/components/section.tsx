@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { MaskWords } from "./motion/mask-words";
 
 export function Container({ children, className = "" }: { children: ReactNode; className?: string }) {
   return <div className={`mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 ${className}`}>{children}</div>;
@@ -33,10 +34,23 @@ export function SectionHeading({
 
 export function PageHeader({ eyebrow, title, description }: { eyebrow: string; title: string; description: string }) {
   return (
-    <section className="relative overflow-hidden border-b border-line">
-      <div className="bg-grid absolute inset-0" aria-hidden="true" />
-      <Container className="relative py-16 sm:py-20">
-        <SectionHeading as="h1" size="page" eyebrow={eyebrow} title={title} description={description} />
+    <section className="theme-night page-hero grain relative overflow-hidden border-b border-line" data-pause-offscreen>
+      <div className="hero-bg" aria-hidden="true">
+        <div className="hero-mesh hero-mesh-a" data-parallax="0.08" />
+        <div className="bg-grid absolute inset-0" />
+      </div>
+      <Container className="relative z-10 py-16 sm:py-20">
+        <div className="max-w-2xl">
+          <p className="eyebrow hero-in" style={{ "--d": "0.05s" } as React.CSSProperties}>
+            {eyebrow}
+          </p>
+          <h1 className="h-page mt-3">
+            <MaskWords text={title} />
+          </h1>
+          <p className="lead hero-in mt-4" style={{ "--d": "0.45s" } as React.CSSProperties}>
+            {description}
+          </p>
+        </div>
       </Container>
     </section>
   );
